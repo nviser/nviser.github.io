@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'museosans300';
+	src: url('../fonts/museosans300/museosans300.eot');
+	src: url('../fonts/museosans300/museosans300.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/museosans300/museosans300.woff') format('woff'),
+		 url('../fonts/museosans300/museosans300.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'museosans500';
+	src: url('../fonts/museosans500/museosans500.eot');
+	src: url('../fonts/museosans500/museosans500.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/museosans500/museosans500.woff') format('woff'),
+		 url('../fonts/museosans500/museosans500.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'museosans700';
+	src: url('../fonts/museosans700/museosans700.eot');
+	src: url('../fonts/museosans700/museosans700.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/museosans700/museosans700.woff') format('woff'),
+		 url('../fonts/museosans700/museosans700.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
