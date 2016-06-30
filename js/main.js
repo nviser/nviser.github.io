@@ -2,7 +2,6 @@
         $(function () {
             var ring;
            $('.menu').click(function () {
-                console.log(ring);
                 if(ring){
                     ring = false;
                 } else {
@@ -13,6 +12,7 @@
                 } else {
                     $('.menu_expand').css('display', 'none');
                 }
+                $(this).toggleClass('open');
            });
         });
   

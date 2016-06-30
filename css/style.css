@@ -75,10 +75,50 @@ nav .menu + a {
 		opacity: 0;
 	}
 	.menu div {
-		margin-bottom: 5px;
+		position: absolute;
 		height: 5px;
 		width: 30px;
 		background: #F05125;
+		-webkit-transition: .3s ease-in-out;
+  	-moz-transition: .3s ease-in-out;
+  	-o-transition: .3s ease-in-out;
+  	transition: .3s ease-in-out;
+	}
+	.menu div:nth-child(1) {
+		top: 0;
+		left: 0;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.menu div:nth-child(2) {
+		top: 10px;
+	}
+	.menu div:nth-child(3) {
+		top: 20px;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.menu.open div:nth-child(1) {
+		top: 10px;
+		-webkit-transform: rotate(135deg);
+  	-moz-transform: rotate(135deg);
+  	-o-transform: rotate(135deg);
+  	transform: rotate(135deg);	
+	}
+	.menu.open div:nth-child(2) {	
+		top: 10px;
+		opacity: 0;
+	}
+	.menu.open div:nth-child(3) {
+		top: 10px;
+		-webkit-transform: rotate(-135deg);
+  	-moz-transform: rotate(-135deg);
+  	-o-transform: rotate(-135deg);
+  	transform: rotate(-135deg);	
 	}
 	nav a {
 		text-decoration: none;
