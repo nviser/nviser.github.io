@@ -1,0 +1,329 @@
+* {
+  -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+   box-sizing: border-box;
+   -webkit-hyphens: auto;
+   -moz-hyphens: auto;
+   -ms-hyphens: auto;
+   hyphens: auto;
+   color: #373737;
+}
+body {
+  background-color: #D6D6D6;
+}
+section, header, footer {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+/* Header */
+.header {
+  height: 610px;
+  background: #fbc840;
+  background: url(../img/bg_head.jpg);
+}
+.center_header {
+  max-width: 940px;
+  height: 100%;
+  margin: 0 auto; 
+}
+.h_top div{
+  display: inline-block;
+}
+.logo {
+  margin-top: 15px;
+}
+nav {
+  display: inline-block;
+  max-width: 660px;
+  margin-top: 40px;
+  vertical-align: top;
+}
+nav ul li {
+  float: left;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: "LatoRegular", sans-serif;
+}
+nav a {
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+.search {
+  float: right;
+  margin-top: 41px;
+  cursor: pointer;
+}
+.header_visie {
+  width: 460px;
+  height: 430px;
+  background-color: #fff;
+  float: right;
+  margin-top: 25px;
+  padding: 25px;
+  overflow: hidden;
+
+}
+.header_visie h2 {
+  font-family: "LatoLight", sans-serif;
+  font-size: 38px;
+  margin-left: 10px;
+}
+hr {
+  margin: 20px 0;
+}
+.header_visie .txt {
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+  width: 344px;
+  height: 255px;
+  margin-left: 10px;
+}
+
+/* Over */
+.over {
+  background-color: #fff;
+}
+.over_center {
+  max-width: 940px;
+  height: 420px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+.over_container {
+  max-width: 655px;
+  height: 240px;
+  margin: 0 auto;
+  line-height: 1;
+}
+.over_center .over_title {
+  font-family: "LatoLight", sans-serif;
+  font-size: 42px;
+  margin-bottom: 30px;
+}
+.over_container .over_txt {
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Verpraaksaam */
+.ver {
+  background-color: #fcc941;
+}
+.ver_center {
+  max-width: 940px;
+  min-height: 560px;
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
+}
+.ver_header {
+  text-align: center;
+}
+.ver_header div{
+  display: inline-block;
+}
+.ver_header .ver_header_title {
+  vertical-align: top;
+  margin-top: 35px;
+  text-transform: uppercase;
+  font-family: "LatoLight", sans-serif;
+  font-size: 42px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.ver_container {
+  margin-top: 65px;
+}
+.ver .ver_center .ver_txt {
+  max-width: 240px;
+  display: inline-block;
+  text-align: left;
+  margin-right: 98px;
+}
+.ver .ver_center .ver_container :last-child {
+  margin-right: 0;
+}
+.ver_txth {
+  font-family: "Neucha", sans-serif;
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+.ver_txtp {
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.ver_container .mf {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "LatoRegular", sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+}
+ 
+ /* Communicate */
+.com {
+  background-color: #f4f2e5;
+  min-height: 425px;
+}
+.com_center {
+  max-width: 940px;
+  margin: 0 auto;
+  position: relative;
+}
+.com_txt {
+  max-width: 460px;
+  min-height: 400px;
+  display: inline-block;
+  background-color: #fff;
+  padding: 40px 25px;
+  margin-right: 15px;
+  position: absolute;
+}
+.com_txt:last-child {
+  margin-right: 0;
+}
+.com_r {
+  left: 475px;
+  top: -90px;
+  padding-bottom: 0;
+}
+.com_l {
+  top: -90px;
+}
+.com_txt .com_h {
+  text-transform: uppercase;
+  font-family: "Neucha", sans-serif;
+  font-size: 34px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+.com_txt p {
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Team */
+.team {
+  background-color: #fff;
+  min-height: 870px;
+}
+.team_center {
+  max-width: 940px;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+.team_center_top {
+  text-transform: uppercase;
+  font-family: "LatoLight", sans-serif;
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 45px;
+}
+.team_center_main {
+  text-align: center;
+}
+.team_img {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  background-color: #dbdbdb;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.team_img img {
+  position: absolute;
+  top: -120px;
+  left: 0;
+}
+.team_img .descr {
+  position: absolute;
+  left: 8px;
+  bottom: 7px;
+  width: 285px;
+  height: 70px;
+  background-color: #fff;
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 5px;
+}
+.team_img h4 {
+  font-size: 21px;
+}
+.team_img p {
+  margin-top: -30px;
+}
+.descr .fb {
+  position: absolute;
+  right: 43px;
+  bottom: -67px;
+}
+
+/* Footer */
+.footer {
+  min-height: 440px;
+  background-color: #fff;
+  border-top: 2px solid #aaaaaa;
+}
+.footer_center {
+  margin: 0 auto;
+  max-width: 940px;
+  padding-top: 60px;
+}
+.footer_logo {
+  text-align: center;
+  padding-bottom: 40px;
+}
+.footer_adr {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+}
+.footer_soc {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.footer_soc img {
+  margin-left: 10px;
+}
+.lang {
+  text-align: center;
+}
+.lang_center {
+  width: 80px;
+  margin: 0 auto;
+}
+.lang ul {
+  padding-top: 2px;
+  display: block;
+  width: 80px;
+  border: 2px solid #373737;
+}
+.lang ul li {
+  display: inline-block;
+  padding-left: -12px;
+}
+.lang a {
+  text-decoration: none;
+  font-family: "LatoLight", sans-serif;
+  font-size: 18px;
+}
+.lang .active a {
+  background-color: #e95d12;
+  margin-right: 5px;
+  padding: 0 5px;
+  color: #fff;
+}
