@@ -1,0 +1,34 @@
+@font-face {
+	font-family: 'MyriadPro';
+	src: url('../fonts/MyriadPro/MyriadPro.eot');
+	src: url('../fonts/MyriadPro/MyriadPro.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/MyriadPro/MyriadPro.woff') format('woff'),
+		 url('../fonts/MyriadPro/MyriadPro.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'ZurichCondensedBT';
+	src: url('../fonts/ZurichCondensedBT/ZurichCondensedBT.eot');
+	src: url('../fonts/ZurichCondensedBT/ZurichCondensedBT.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/ZurichCondensedBT/ZurichCondensedBT.woff') format('woff'),
+		 url('../fonts/ZurichCondensedBT/ZurichCondensedBT.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'ZurichBoldCondensedBT';
+	src: url('../fonts/ZurichBoldCondensedBT/ZurichBoldCondensedBT.eot');
+	src: url('../fonts/ZurichBoldCondensedBT/ZurichBoldCondensedBT.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/ZurichBoldCondensedBT/ZurichBoldCondensedBT.woff') format('woff'),
+		 url('../fonts/ZurichBoldCondensedBT/ZurichBoldCondensedBT.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Klavika Medium";
+  src: url("../fonts/KlavikaMediumPlain/KlavikaMediumPlain.eot");
+  src: url("../fonts/KlavikaMediumPlain/KlavikaMediumPlain.eot?#iefix") format("embedded-opentype"),  	 
+  	 url("../fonts/KlavikaMediumPlain/KlavikaMediumPlain.woff") format("woff"),
+  	 url("../fonts/KlavikaMediumPlain/KlavikaMediumPlain.ttf") format("truetype");
+}
