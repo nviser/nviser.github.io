@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body, html {
+	background-color: #C0CEDC;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+button {
+	width: 804px;
+	height: 40px;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin: 0 auto;
+} 
+
+iframe {
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 15px;
+}
+
+.container {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 70px;
+}
