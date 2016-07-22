@@ -15,7 +15,7 @@ $(function () {
 			}
 		}
 
-		ajax_get('/test/players.json', function(data) { //here should insert right path to 'json' file
+		ajax_get('/json/players.json', function(data) { //here should insert right path to 'json' file
 			$("#data").html("");
 			if(s.length == 1){						//single or multiple query
 				foo1();
