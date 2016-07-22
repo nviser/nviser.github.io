@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "TitilliumWebRegular";
+  src: url("../fonts1/TitilliumWebRegular/titilliumwebregular.eot");
+  src: url("../fonts1/TitilliumWebRegular/titilliumwebregular.eot?#iefix")format("embedded-opentype"),
+  url("../fonts1/TitilliumWebRegular/titilliumwebregular.woff") format("woff"),
+  url("../fonts1/TitilliumWebRegular/titilliumwebregular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "TitilliumWebBold";
+  src: url("../fonts1/TitilliumWebBold/titilliumwebbold.eot");
+  src: url("../fonts1/TitilliumWebBold/titilliumwebbold.eot?#iefix")format("embedded-opentype"),
+  url("../fonts1/TitilliumWebBold/titilliumwebbold.woff") format("woff"),
+  url("../fonts1/TitilliumWebBold/titilliumwebbold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "TitilliumWebSemibold";
+  src: url("../fonts1/TitilliumWebSemibold/titilliumwebsemibold.eot");
+  src: url("../fonts1/TTitilliumWebSemibold/titilliumwebsemibold.eot?#iefix")format("embedded-opentype"),
+  url("../fonts1/TitilliumWebSemibold/titilliumwebsemibold.woff") format("woff"),
+  url("../fonts1/TitilliumWebSemibold/titilliumwebsemibold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "TitilliumWebLight";
+  src: url("../fonts1/TitilliumWebLight/titilliumweblight.eot");
+  src: url("../fonts1/TitilliumWebLight/titilliumweblight.eot?#iefix")format("embedded-opentype"),
+  url("../fonts1/TitilliumWebLight/titilliumweblight.woff") format("woff"),
+  url("../fonts1/TitilliumWebLight/titilliumweblight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "TitilliumWebItalic";
+  src: url("../fonts1/TitilliumWebItalic/titilliumwebitalic.eot");
+  src: url("../fonts1/TitilliumWebItalic/titilliumwebitalic.eot?#iefix")format("embedded-opentype"),
+  url("../fonts1/TitilliumWebItalic/titilliumwebitalic.woff") format("woff"),
+  url("../fonts1/TitilliumWebItalic/titilliumwebitalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}

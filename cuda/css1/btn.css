@@ -1,0 +1,94 @@
+
+.fy {
+	cursor: pointer;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background-color: #fff;
+	border: 2px solid;
+}
+/*  Size  */
+
+.fy.m_size {
+	padding: 10px 12px;
+}
+.fy.l_size {
+	padding: 14px 17px;
+}
+.fy.xl_size {
+	padding: 20px 36px;
+}
+/* Colors */
+.fy.clr_def{
+	border: 2px solid brown;
+	background: #fff;
+}
+.fy.clr_def:hover {
+	background: #F4F4F4;
+}
+.fy.clr_def:active {
+	border-color: #C7BA04;
+	color: #7F3F3F;
+}
+.fy.clr_inv{
+	border: none;
+	background: #333;
+	color: #fff;
+	border: 2px solid #333;
+}
+.fy.clr_inv:hover {
+	background: #555;
+}
+.fy.clr_inv:active {
+	border-color: #A0A0A0;
+	color: #A0A0A0;
+}
+.fy.clr_scc{
+	background: #5DA160;
+	border: none;
+	border: 2px solid #5DA160;
+}
+.fy.clr_scc:hover {
+	background: #5D9160;
+}
+.fy.clr_scc:active {
+	border-color: #0AE015;
+	color: #0AE015;
+}
+.fy.clr_wrn{
+	background: #E11D3F;
+	border: none;
+	border: 2px solid #E11D3F;
+}
+.fy.clr_wrn:hover {
+	background: #Ec3D3F;
+}
+.fy.clr_wrn:active {
+	border-color: #FF6A00;
+	color: #FF6A00;
+}
+
+/* Disabled */
+
+.fy.dsbl {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+.fy.dsbl:active {
+	color: #fff;
+	border-color: #c00;
+	background: #c00;
+}
+/* Mim */
+
+.fy.ref {
+	background: none;
+	border: none;
+	color: #0A93F4;
+}
+.fy.ref:hover {
+	text-decoration: underline;
+}
+.fy.txt {
+	background: none;
+	border: none;
+}
