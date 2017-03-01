@@ -3,7 +3,7 @@ angular.module('store').controller('customCtrl', ['$scope',
         $scope.notification = $scope.saved = false;
         var products = JSON.parse(localStorage.getItem('products'));
         $scope.logo = 'noimg.jpg';
-        $scope.part = 'store/assets/img/';
+        $scope.part = 'assets/img/';
         $scope.addProd = function (arg) {
             $scope.warn = false;
             $scope.notification = false;
