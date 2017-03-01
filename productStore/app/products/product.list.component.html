@@ -1,0 +1,8 @@
+<div class="jumbotron">
+    <h2>Product list</h2>
+    <ul>
+        <li *ngFor="let product of products | async" (click)="moveTo(product)">
+            <div class="well-sm text text-left"><span class="badge">{{product.id}}</span> {{product.name}}</div>
+        </li>
+    </ul>
+</div>

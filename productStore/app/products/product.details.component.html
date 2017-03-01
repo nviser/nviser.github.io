@@ -1,0 +1,22 @@
+<div class="jumbotron">
+    <h2>Product details page</h2>
+    <table class="table table-bordered" *ngIf="product">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="./../img/{{product.image}}" alt="img_for_prod"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price | currency: UK}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="gotoProducts()">Back</button>
+</div>

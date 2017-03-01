@@ -1,0 +1,20 @@
+
+<div class="container">
+    <h3 class="text text-info text-center text-uppercase">create your product easily</h3>
+    <form name="createForm" ng-submit="addProd()" class="jumbotron">
+        <div><img ng-src="{{path}}" alt="prod-img" style="width: 100px; height: 100px;"></div>
+        <div><input name="ident" type="number" ng-model="id" placeholder="id" pattern="\d+" ng-class="{'warn' : createForm.ident.$touched && createForm.ident.$invalid}"></div>
+        <div><input name="name" type="text" ng-model="name" placeholder="name" maxlength="15" ng-class="{'warn' : createForm.name.$touched && createForm.name.$invalid}"></div>
+        <div><input name="description" type="text" ng-model="description" placeholder="description" minlength="10" ng-class="{'warn' : createForm.description.$touched && createForm.description.$invalid}"></div>
+        <div><input name="price" type="number" ng-model="price" placeholder="price" pattern="\d+" ng-class="{'warn' : createForm.price.$touched && createForm.price.$invalid}"></div>
+        <div><input name="img" type="file" ng-model="img" onchange="angular.element(this).scope().saveLogo(this)"></div>
+
+    <div>
+        <button type="submit" ng-if="!saved" class="btn btn-success">Save</button>
+        <a href="#/" class="btn btn-default">Back</a>
+        <div ng-if="notification" class="notification">Fill out all fields, please</div>
+        <div ng-if="fails" class="notification">Limit for image is 400x400</div>
+        <div ng-if="warn" class="notification">Product with such <strong>id</strong> is used, choose another <strong>id</strong></div>
+        <h4 class="text-success" ng-if="saved">New product successfully added</h4>
+    </div>
+</form>
