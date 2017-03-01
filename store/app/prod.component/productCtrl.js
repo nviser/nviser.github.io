@@ -1,7 +1,7 @@
 angular.module('store').controller('productCtrl', ['$scope', '$location', '$routeParams',
     function ($scope, $location, $routeParams) {
         $scope.editProduct = $scope.saved = false;
-        $scope.part = '../../assets/img/';
+        $scope.part = 'assets/img/';
         var id = $routeParams['id'];
         var products = JSON.parse(localStorage.getItem('products'));
         angular.forEach(products, function (value, key) {
