@@ -1,31 +1,11 @@
 var app = angular.module('mainApp', []);
 
 app.run(function () {
-    var str = JSON.stringify(dataFactory());
-    localStorage.setItem('items', str);
-});
-
-app.factory('actFactory', actFactory);
-function actFactory () {
-    var obj = {
-        add: function (item) {
-            var items = JSON.parse(localStorage.getItem('items'));
-            items.push({ name: item, quantity: 0});
-            console.log('run');
-            localStorage.setItem('items', JSON.stringify(items));
-            return items;
-        },
-        delete: function (item) {
-            var items = JSON.parse(localStorage.getItem('items'));
-            var index = items.indexOf(item);
-            items.splice(index, 1);
-            console.log('del ->>');
-            localStorage.setItem('items', JSON.stringify(items));
-            return items;
-        }
+    if(localStorage.getItem('items') == undefined) {
+        var str = JSON.stringify(dataFactory());
+        localStorage.setItem('items', str);
     }
-    return obj;
-}
+});
 
 app.controller('mainCtrl', ['$scope', function($scope) {
     var items = JSON.parse(localStorage.getItem('items'));
@@ -38,6 +18,34 @@ app.controller('mainCtrl', ['$scope', function($scope) {
         $scope.items = actFactory().delete(item); 
      }
 }]);
+
+app.service('actFactory', actFactory);
+function actFactory () {
+    var obj = {
+        add: function (item) {
+            var items = JSON.parse(localStorage.getItem('items'));
+            items.push({ name: item, quantity: 0});
+            localStorage.setItem('items', JSON.stringify(items));
+            return items;
+        },
+        delete: function (item) {
+            var index, items = JSON.parse(localStorage.getItem('items'));
+            
+            angular.forEach(items, function (val, key){
+                if(val.name == item.name && val.quantity == item.quantity){
+                    index = key;
+                }
+            });
+
+            items.splice(index, 1);
+            localStorage.setItem('items', JSON.stringify(items));
+            return items;
+        }
+    }
+    return obj;
+}
+
+
 
 
 
