@@ -1,0 +1,97 @@
+html, body, aside, section {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+}
+aside, section {
+    height: 100%;
+}
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 5% 0;
+    border: none;
+}
+/*-----------Aside----------*/
+aside {
+    background-color: #2b2f3e;
+    float: left;
+    width: 20%;
+}
+header {
+    height: 10%;
+    padding: 10px;
+    color: #555968;
+}
+nav ul {
+    padding: 0;
+    height: 5%;
+}
+nav ul li {
+    padding: 7%;
+    background-color: #ff3555;
+    list-style-type: none;
+    width: 100%;
+    cursor: pointer;
+    color: #fff;
+}
+
+/*-----------Section----------*/
+section {
+    color: #f9f9f9;
+    float: left;
+    width: 80%;
+    background-color: #f9f9f9;
+    padding: 2%;
+    overflow: auto;
+}
+section .items {
+    width: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 3px 2px #b5b5b5;
+    min-height: 80%;
+}
+section .items h1 {
+    color: #7b7e8a;
+    padding: 3% 0 3% 10%;
+}
+
+section .items form {
+    text-align: center;
+    position: relative;
+}
+section .items form input {
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    padding: 5px;
+    width: 55%;
+}
+
+section .items form button {
+    height: 27px;
+    color: #fff;
+    background-color: #27ccc0;
+} 
+section .items .danger {
+    height: 25px;
+    color: #ff3555;
+    border: 1px solid  #ff3555;
+    background-color: #fff;
+}
+section .item {
+    text-align: center;
+}
+section .item h5 {
+    text-align: left;
+    width: 60%;
+    color: #525662;
+    display: inline-block;
+}
