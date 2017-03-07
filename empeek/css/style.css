@@ -9,7 +9,7 @@ html, body, aside, section {
 aside, section {
     height: 100%;
 }
-h1 {
+h1, h5 {
     margin: 0;
     padding: 0;
 }
@@ -66,32 +66,53 @@ section .items h1 {
 
 section .items form {
     text-align: center;
-    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 section .items form input {
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     padding: 5px;
     width: 55%;
+    float: left;
 }
 
 section .items form button {
     height: 27px;
     color: #fff;
     background-color: #27ccc0;
+    float: right;
 } 
-section .items .danger {
+table {
+    width: 90%;
+    margin: 0 auto;
+    color: #525662;
+    border-collapse: collapse;
+}
+table tr {
+    border-bottom: 1px solid #e5e5e5;
+}
+table td {
+    padding: 10px 0;
+}
+table td span.text {
+    color: #525662;
+    font-weight: bold;    
+}
+table td span.digit {
+    color: #fff;
+    border-radius: 10px;
+    background-color: #27ccc0;
+    padding: 2px 5px;
+    font-size: 10px;
+}
+table .danger {
     height: 25px;
     color: #ff3555;
     border: 1px solid  #ff3555;
     background-color: #fff;
-}
-section .item {
-    text-align: center;
-}
-section .item h5 {
-    text-align: left;
-    width: 60%;
-    color: #525662;
-    display: inline-block;
+    float: right;
+    width: 80px;
 }

@@ -23,90 +23,19 @@
     <section>
         <div class="items">
             <h1>Items</h1>
-            <form name="form">
-                    <input type="text" placeholder="Type name here...">
+            <form name="form" ng-submit="addItem()">
+                    <input type="text" placeholder="Type name here..." ng-model="newItem" required>
                     <button>Add new</button>
             </form>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
-            <div class="item">
-                <h5>Some item</h5>
-                <button class="danger">Delete</button>
-            </div>
+            <table>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td><span class="text">{{item.name}}</span>&nbsp;<span class="digit">{{item.quantity}}</span></td>
+                        <td><button class="danger" ng-click="deleteItem(item)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
         </div>
     </section>
 </body>
