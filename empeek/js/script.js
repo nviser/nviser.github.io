@@ -13,8 +13,10 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
     $scope.curItemComments = items[0].comments;
     $scope.id = items[0].id;
     $scope.addItem = function () {
-        $scope.items = actFactory().add($scope.newItem);
-        $scope.newItem = '';
+        if($scope.newItem){
+            $scope.items = actFactory().add($scope.newItem);
+            $scope.newItem = '';
+        }
     }
     $scope.deleteItem = function (item) {
         var isApproved = confirm('Are you sure want to delete this item?');
