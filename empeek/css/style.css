@@ -54,13 +54,14 @@ section {
     padding: 2%;
     overflow: auto;
 }
-section .items {
+section .items, section .comments  {
     width: 50%;
     background-color: #fff;
     box-shadow: 0 0 3px 2px #b5b5b5;
     min-height: 80%;
+    float: left;
 }
-section .items h1 {
+section .items h1, section .comments h1 {
     color: #7b7e8a;
     padding: 3% 0 3% 10%;
 }
@@ -116,4 +117,23 @@ table .danger {
     background-color: #fff;
     float: right;
     width: 80px;
+}
+
+section .comments {
+    float: right;
+    width: 48%;
+}
+section .comments form {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+section .comments form textarea {
+    width: 98%;
+    resize: none;
+}
+section .comments table tr:last-child {
+    border-bottom: none;
 }

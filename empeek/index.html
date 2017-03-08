@@ -20,21 +20,36 @@
             </ul>
         </nav>
     </aside>
-    <section>
+    <section class="items-sec">
         <div class="items">
             <h1>Items</h1>
             <form name="form" ng-submit="addItem()">
-                    <input type="text" placeholder="Type name here..." ng-model="newItem" required>
+                    <input type="text" name="item" placeholder="Type name here..." ng-model="newItem" required>
                     <button>Add new</button>
             </form>
             <table>
                 <tbody>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="item in items" ng-click="details(item)">
                         <td><span class="text">{{item.name}}</span>&nbsp;<span class="digit">{{item.quantity}}</span></td>
                         <td><button class="danger" ng-click="deleteItem(item)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
+            
+        </div>
+        <div class="comments">
+            <h1>Comments #{{id}}</h1>
+            <table>
+                <tbody>
+                    <tr ng-repeat="item in curItemComments">
+                        <td></td>
+                        <td>{{item.comment}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form name="formComment">
+                    <textarea ng-keypress="subm($event, id)" name="comment" rows="5" placeholder="Type comment here..." ng-model="newComment"></textarea>
+            </form>
             
         </div>
     </section>
