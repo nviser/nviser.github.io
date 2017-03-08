@@ -5,32 +5,36 @@ html, body, aside, section {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 aside, section {
     height: 100%;
 }
-h1, h5 {
+h1{
     margin: 0;
     padding: 0;
+    font-weight: 300;
+    font-size: 36px;
 }
 
 button {
     cursor: pointer;
     border-radius: 3px;
-    padding: 0 5% 0;
     border: none;
+    font-size: 16px;
+    height: 35px;
 }
 
 /*-----------Aside----------*/
 aside {
-    background-color: #2b2f3e;
+    background-color: #2B2F3E;
     float: left;
     width: 20%;
 }
 header {
     height: 10%;
     padding: 10px;
-    color: #555968;
+    color: #565A69;
 }
 nav ul {
     padding: 0;
@@ -38,11 +42,13 @@ nav ul {
 }
 nav ul li {
     padding: 7%;
-    background-color: #ff3555;
+    background-color: #FF305A;
     list-style-type: none;
     width: 100%;
     cursor: pointer;
     color: #fff;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 /*-----------Section----------*/
@@ -58,11 +64,11 @@ section .items, section .comments  {
     width: 50%;
     background-color: #fff;
     box-shadow: 0 0 3px 2px #b5b5b5;
-    min-height: 80%;
+    min-height: 525px;
     float: left;
 }
 section .items h1, section .comments h1 {
-    color: #7b7e8a;
+    color: #565A69;
     padding: 3% 0 3% 10%;
 }
 
@@ -74,21 +80,24 @@ section .items form {
     margin-bottom: 5px;
 }
 section .items form input {
-    border: 1px solid #e5e5e5;
+    border: 1px solid #f2f2f2;
     border-radius: 3px;
-    padding: 5px;
-    width: 70%;
+    padding: 8px 8px;
+    width: calc(100% - 160px);
     float: left;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 section .items form button {
-    height: 27px;
     color: #fff;
     background-color: #27ccc0;
     float: right;
+    font-weight: 400;
+    width: 130px;
 } 
 section .items .active td.name:before {
-    background-color: #ff2f5a;
+    background-color: #FF2F5A;
     position: absolute;
     content: '';
     height: 100%;
@@ -97,43 +106,45 @@ section .items .active td.name:before {
     left: -8%;
 }
 section .items table tr {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #F2F2F2;
     cursor: pointer;
 }
 table {
     width: 90%;
     margin: 0 auto;
-    color: #525662;
+    color: #666666;
     border-collapse: collapse;
 }
 section .items table {
     margin-bottom: 5%;
 }
 section .comments table tr {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #F2F2F2;
 }
 table td {
     padding: 10px 0;
     position: relative;
 }
 table td span.text {
-    color: #525662;
-    font-weight: bold;    
+    color: #2B2F3E;
+    font-weight: 600;
+    font-size: 16px;    
 }
 table td span.digit {
     color: #fff;
     border-radius: 10px;
     background-color: #27ccc0;
-    padding: 2px 5px;
-    font-size: 10px;
+    padding: 1px 8px;
+    font-size: 13px;
+    font-weight: 700;
 }
 table .danger {
-    height: 25px;
-    color: #ff3555;
-    border: 1px solid  #ff3555;
+    color: #FF305A;
+    border: 1px solid  #FF305A;
     background-color: #fff;
     float: right;
-    width: 80px;
+    font-weight: 300;
+    width: 100px;
 }
 
 section .comments {
@@ -149,7 +160,7 @@ section .comments form {
 section .comments form textarea {
     width: 98%;
     resize: none;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #cccccc;
 }
 section .comments table tr:first-child, section .comments table tr:last-child {
     border-top: none;
