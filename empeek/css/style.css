@@ -23,6 +23,7 @@ button {
     border: none;
     font-size: 16px;
     height: 35px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*-----------Aside----------*/
@@ -33,7 +34,7 @@ aside {
 }
 header {
     height: 10%;
-    padding: 10px;
+    padding: 20px;
     color: #565A69;
 }
 nav ul {
@@ -69,7 +70,7 @@ section .items, section .comments  {
 }
 section .items h1, section .comments h1 {
     color: #565A69;
-    padding: 3% 0 3% 10%;
+    padding: 3% 0 3% 5%;
 }
 
 section .items form {
@@ -93,7 +94,7 @@ section .items form button {
     color: #fff;
     background-color: #27ccc0;
     float: right;
-    font-weight: 400;
+    font-weight: 600;
     width: 130px;
 } 
 section .items .active td.name:before {
