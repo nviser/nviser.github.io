@@ -77,7 +77,7 @@ section .items form input {
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     padding: 5px;
-    width: 55%;
+    width: 70%;
     float: left;
 }
 
@@ -87,17 +87,34 @@ section .items form button {
     background-color: #27ccc0;
     float: right;
 } 
+section .items .active td.name:before {
+    background-color: #ff2f5a;
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 5px;
+    top: 0;
+    left: -7%;
+}
+section .items table tr {
+    border-bottom: 1px solid #e5e5e5;
+    cursor: pointer;
+}
 table {
     width: 90%;
     margin: 0 auto;
     color: #525662;
     border-collapse: collapse;
 }
-table tr {
-    border-bottom: 1px solid #e5e5e5;
+section .items table {
+    margin-bottom: 5%;
+}
+section .comments table tr {
+    border-top: 1px solid #e5e5e5;
 }
 table td {
     padding: 10px 0;
+    position: relative;
 }
 table td span.text {
     color: #525662;
@@ -125,7 +142,6 @@ section .comments {
 }
 section .comments form {
     text-align: center;
-    width: 90%;
     margin: 0 auto;
     overflow: hidden;
     margin-bottom: 5px;
@@ -133,7 +149,29 @@ section .comments form {
 section .comments form textarea {
     width: 98%;
     resize: none;
+    border: 1px solid #e6e6e6;
 }
-section .comments table tr:last-child {
-    border-bottom: none;
+section .comments table tr:first-child, section .comments table tr:last-child {
+    border-top: none;
+}
+section .comments .rect {
+    width: 50px;
+    height: 50px;    
+}
+section .comments .even {
+    background-color: #47568c;
+}
+section .comments .odd {
+    background-color: #ff8a00;
+}
+section .comments .text {
+    background-color: #e6e6e6;
+    vertical-align: top;
+}
+section .comments .disk {
+    vertical-align: top;
+    width: 50px;
+}
+section td.name, section td.disk {
+    padding-right: 10px;
 }
