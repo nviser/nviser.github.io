@@ -1,4 +1,4 @@
-app.controller('mainCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+app.controller('mainCtrl', ['$scope', function ($scope) {
     var items = JSON.parse(localStorage.getItem('items'));
     $scope.items = items;
     $scope.init = function () {
