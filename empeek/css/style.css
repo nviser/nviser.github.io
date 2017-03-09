@@ -164,6 +164,7 @@ section .comments form textarea {
     width: 98%;
     resize: none;
     border: 1px solid #cccccc;
+    padding: 8px;
 }
 section .comments table tr:first-child, section .comments table tr:last-child {
     border-top: none;
