@@ -104,7 +104,7 @@ section .items .active td.name:before {
     height: 100%;
     width: 5px;
     top: 0;
-    left: -19%;
+    left: -8.5%;
 }
 section .items table tr {
     border-bottom: 1px solid #F2F2F2;
