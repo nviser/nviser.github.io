@@ -1,0 +1,20 @@
+<header>
+    <h1>{{title}}</h1>
+</header>
+
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let todo of todos">{{todo.header}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td tabindex="{{i+1}}" *ngFor="let todo of todos; let i = index" (click)="edit(todo, $event)" (dblclick)="edit(todo, $event)"
+                (keyup)="edit(todo, $event)">
+                <span *ngIf="!todo.editable">{{todo.dataIndex}}</span>
+                <input *ngIf="todo.editable" type="text" (keyup)="action(todo, $event)" (focusout)="action(todo, $event)" required>
+            </td>
+        </tr>
+    </tbody>
+</table>
