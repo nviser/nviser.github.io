@@ -33,12 +33,13 @@ export class AppComponent implements OnInit {
     }
 
     edit(todo: Todo, event: any) {
+        let target = event.target || event.srcElement;
         if (event.type == "click") {
-            (event.srcElement.tagName == 'TD') ? this.curCell = event.srcElement : this.curCell = event.srcElement.closest('td');
-            event.srcElement.focus();
+            (target.tagName == 'TD') ? this.curCell = target : this.curCell = target.closest('td');
+            target.focus();
             todo.editable = false;
         }
-        else if (event.target.innerText == todo.dataIndex && (event.which == 13 || event.type == "dblclick")) {
+        else if (target.innerText == todo.dataIndex && (event.which == 13 || event.type == "dblclick")) {
             todo.editable = !todo.editable;
             this.switchOn();
         }
@@ -60,11 +61,12 @@ export class AppComponent implements OnInit {
         }, 0)
     }
     action(todo: Todo, event: any) {
+        let target = event.target || event.srcElement;
         if (event.keyCode == 27) {
             todo.editable = !todo.editable;
             this.curCell.focus();
-        } else if (event.keyCode == 13 && event.target.value.trim()) {
-            todo.dataIndex = event.target.value;
+        } else if (event.keyCode == 13 && target.value.trim()) {
+            todo.dataIndex = target.value;
             todo.editable = !todo.editable;
             this.curCell.focus();
         } else if (event.type == 'focusout') {

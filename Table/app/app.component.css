@@ -24,3 +24,7 @@ table td, table th {
     text-align: center;
     border: 1px solid #ccc;        
 }
+table td:focus {
+    background: #0c5;
+    outline: none;
+}
