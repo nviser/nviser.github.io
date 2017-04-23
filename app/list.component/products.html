@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="text text-center text-uppercase text-info">product list</h1>
+    <a href="#/create" class="btn btn-info pull-right">Create product</a>
+    <table class="table" ng-if="products.length">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in products" ng-click="moveTo(product)">
+                <td>
+                    <img ng-src="{{path}}{{product.img}}" alt="prod-img" style="width: 100px; height: 100px;">
+                </td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price | currency}} </td>
+                <td><button class="btn btn-warning" ng-click="delete(product); $event.stopPropagation();">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

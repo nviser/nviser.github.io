@@ -1,0 +1,38 @@
+.warn {
+    background: lightpink;
+    border: 2px solid darkslateblue;
+}
+.success {
+    background: darkseagreen;
+    border: 2px solid palegoldenrod;
+}
+.notification {
+    color: orangered;
+    margin-top: 7px;
+}
+.text-success {
+    color: lightgreen;
+}
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle !important;
+}
+.table tr {
+    cursor: pointer;
+}
+.well {
+    text-align: center;
+    height: 50px;
+}
+.jumbotron input {
+    margin: 10px;
+    width: 75%;
+}
+.jumbotron {
+    text-align: center;
+    margin-top: 10px;
+}
+.wrapper {
+    text-align: center;
+    height: 90px;
+}
