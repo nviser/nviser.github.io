@@ -1,0 +1,45 @@
+.bg-img {
+    background-image: url(../img/main-bg-img.png);
+    width: 100%;
+}
+.for-buttons {
+    margin-top: 15px;
+}
+.service__text {
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.service_cancel-btn {
+    margin-top: 10px;
+}
+.service__for-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid  #920021;
+    margin: 0 auto;
+    padding: 5.6px;
+    img {
+        border: 1px solid  #777;
+    }
+}
+.service__for-date {
+    padding-top: 15px;
+    margin: 0 auto;
+    height: 100px;
+    width: 100px;
+    color: #fff;
+    background: #920021;
+    strong {
+        font-size: 30px;
+        display: block;
+    }
+    span {
+        color: #920021;
+        font-size: 20px;
+    }
+}
+.repeater {
+    border-top: 1px solid #ccc;
+    padding: 20px;
+}

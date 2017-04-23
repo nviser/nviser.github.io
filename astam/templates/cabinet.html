@@ -1,0 +1,56 @@
+<section class="choose">
+    <div class="bg-img">
+        <div class="container">
+            <h1 class="choose__title">Мои записи</h1>
+            <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
+            <div class="container for-buttons">
+                <div class="row text-center">
+                    <button class="btn btn-danger">Предстоящие сеансы</button>
+                    <button class="btn btn-default">Прошедшие сеансы</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите филиал:</div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">Ваш баланс: 1200 руб Ваша скидка 10%</div>
+            </div>
+        </div>
+
+        <div class="service">
+            <div class="container">
+                <div class="row repeater" ng-repeat="item in items">
+                    <div class="col-lg-6 col md-6 col-sm-6 col-xs-6">
+                        Услуга:
+                        <div class="service__text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </div>
+                        Адрес:
+                        <div class="service__text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing. Краснобогатырская 64
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-2">
+                        Стоимость:
+                        <div>
+                            <span>1900</span> рублей
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-2 text-center">
+                        Специалист:
+                        <div class="service__for-img">
+                            <img src="img/master1.jpg" alt="master_photo" class="img-circle">
+                        </div>
+                        <div>Рита Чобанян</div>
+                    </div>
+                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-2 text-center">
+                        Дата и время:
+                        <div class="service__for-date">
+                            <strong>17</strong> Марта
+                        </div>
+                        <span>09.00 - 09.30</span>
+                    </div>
+                    <button class="btn btn-danger service_cancel-btn">Отменить запись</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

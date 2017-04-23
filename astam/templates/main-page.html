@@ -1,0 +1,315 @@
+<section class="choose">
+    <div class="background-img">
+        <div class="container">
+            <h1 class="choose__title">Онлайн запись</h1>
+            <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите филиал:</div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">1 из 5</div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+<div class="choose__repeat-branch" ng-repeat="branch in branches" ng-click="chooseBranch(branch)">
+    <input class="choose__repeat-branch_input" type="checkbox" id="{{branch.id}}" ng-model="branch.checked" value="{{branch.id}}">
+    <label class="choose__repeat-branch_label" for="{{branch.id}}"><span
+                            style="float: left"><span></span></span><strong>
+                        {{branch.name }}</strong>
+<p>{{ branch.address }}</p>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="choose__map" id="map">
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A68d3e9fd09384f1061c9892c4cb078e8e0e77d528e8f3747750a2ae2a86dec15&amp;width=100%25&amp;height=300&amp;lang=ru_UA&amp;scroll=true"></script>
+</div>
+
+<p class="choose__button-next">
+    <button type="button" class="btn btn-default">Продолжить</button>
+</p>
+</section>
+
+<section class="choose choose-service" ng-show="address">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите услугу:</div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">2 из 5</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4 choose-service__block1 ">
+                <div class="choose-service__item" ng-repeat="service in services1" ng-click="chooseService(service, $event)">
+                    <i class="fa fa-angle-down angle-down" aria-hidden="true"></i>{{service.name}}
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 choose-service__block2 ">
+                <div class="choose-service__item" ng-repeat="service in services2" ng-click="chooseService(service, $event)">
+                    <i class="fa fa-angle-down angle-down" aria-hidden="true"></i>{{service.name}}
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 choose-service__block3 ">
+                <div class="choose-service__item" ng-repeat="service in services3" ng-click="chooseService(service, $event)">
+                    <i class="fa fa-angle-down angle-down" aria-hidden="true"></i>{{service.name}}
+                </div>
+            </div>
+        </div>
+        <div class="choose-service__info-block" ng-show="open">
+            <div class="container">
+                <div class="col-md-4 col-lg-4 col-sm-4">
+                    <div class="row choose-service__choose" ng-repeat="service in service1" ng-click="choose(service)">
+                        <label>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7"><span class="choose-service__text">{{service.name}}</span></div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="choose-service__currency">{{service.price}}</span></div>
+                            <input type="checkbox" ng-model="service.checked" >
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-4">
+                    <div class="row choose-service__choose" ng-repeat="service in service2" ng-click="choose(service)">
+                        <label>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7"><span class="choose-service__text">{{service.name}}</span></div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="choose-service__currency">{{service.price}}</span></div>
+                            <input type="checkbox" ng-model="service.checked" >
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-4">
+                    <div class="row choose-service__choose" ng-repeat="service in service3" ng-click="choose(service)">
+                        <label>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7"><span class="choose-service__text">{{service.name}}</span></div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="choose-service__currency">{{service.price}}</span></div>
+                            <input type="checkbox" ng-model="service.checked" >
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-service__output" ng-if="choise && sum">
+        Выбрано: <span>{{choise}}</span> на сумму: <span>{{sum}}</span>
+    </div>
+    <p class="choose__button-next">
+        <button type="button" class="btn btn-default">Продолжить</button>
+    </p>
+</section>
+
+<section class="choose choose-date" ng-show="sum && choise">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">Выберите время:
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right">3 из 5</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-md-offset-1 col-lg-offset-1 choose__align-left">
+                <div class="cal_wrap">
+
+                
+                <table id="calendar2">
+                    <thead>
+                        <tr><td colspan="2" class="calendar2-left">‹<td colspan="3" class="calendar_header"><td colspan="2" class="calendar2-right">›
+                        <tr class="calendar_days"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                    <tbody>
+                </table>
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 col-md-offset-1 col-lg-offset-1 choose__align-right your-request__align-right choose-date__time">
+                <div class="row choose-date__row-text">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-date__text">Доступное время:</div>
+                </div>
+                
+                    <div class="row choose-date__row">
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">09:00 - 09:30</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">09:30 - 10:00</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">12:00 - 12:30</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">14:30 - 15:00</div></div>
+                    </div>
+                    <div class="row choose-date__row">
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">15:00 - 15:30</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">15:30 - 16:00</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">16:00 - 16:30</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">16:30 - 17:00</div></div>
+                    </div>
+                    <div class="row choose-date__row">
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">17:00 - 17:30</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">17:30 - 18:00</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">18:00 - 18:30</div></div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">18:30 - 19:00</div></div>
+                    </div>
+                
+            </div>
+    </div>
+    <div></div>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-service__output" ng-if="pickDate && pickedTime">
+        Дата и время: <span>{{pickDate}} {{pickMonth}}, {{pickedTime}}</span>
+    </div>
+    <p class="choose__button-next">
+        <button type="button" class="btn btn-default">Продолжить</button>
+    </p>
+</section>
+
+<section class="choose choose-specialist" ng-show="pickedTime && pickDate">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите специалиста:</div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">4 из 5</div>
+        </div>
+        <div class="row choose-specialist_row">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-specialist__block">
+                <div class="choose-spesialist_wrap">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                            <div class="choose-specialis_master">
+                            <img alt="photo" src="img/master1.jpg" class="img-circle"></img>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8 choose-specialis_master-name">
+                            <span>Рита Чобанян</span> <br> парикмахер
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-specialist__block">
+                <div class="choose-spesialist_wrap">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                            <div class="choose-specialis_master">
+                            <img alt="photo" src="img/master2.jpg" class="img-circle"></img>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8 choose-specialis_master-name">
+                           <span>Мальвина Узунян</span> <br> парикмахер
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-specialist__block">
+                <div class="choose-spesialist_wrap">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                            <div class="choose-specialis_master">
+                            <img alt="photo" src="img/master3.jpg" class="img-circle"></img>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8 choose-specialis_master-name">
+                            <span>Андрей Ермаков</span> <br> парикмахер
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-service__output">
+        Ваш выбор: <span>{{pickedSpec}}</span>
+    </div>
+    <p class="choose__button-next">
+        <button type="button" class="btn btn-default">Продолжить</button>
+    </p>
+</section>
+
+<section class="choose your-request" ng-show="pickedSpec">
+    <div class="background-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose__align-left">Ваша заявка:</div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">Введите данные для связи:
+                </div>
+                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right">5 из 5</div>
+            </div>
+            <div class="your-request__wrapper-form">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose__align-left">
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 col-sm-2 hidden-xs">
+                                <img class="your-request__img-text" src="img/icon-info.png" />
+                            </div>
+                            <div class="col-md-10 col-lg-10 col-sm-10 hidden-xs">
+                                <p class="your-request__wrapper-form_info-text">Предварительная запись на данные услуги возможно толькоодин раз в неделю. Об отмене записи
+                                    просим сообщить заранее</p>
+                            </div>
+                        </div>
+                        <div class="your-request__blank-order">
+                            <p class="your-request__blank-order_black-title">Адрес:</p>
+                            <p class="your-request__blank-order_red-content">{{address}}</p>
+                            <p class="your-request__blank-order_black-title">Услуги:</p>
+                            <p class="your-request__blank-order_red-content">{{totalService}}
+                            </p>
+                            <p class="your-request__blank-order_black-title">Стоимость:</p>
+                            <p class="your-request__blank-order_red-content">{{totalSum}}</p>
+                            <p class="your-request__blank-order_black-title">Дата и время:</p>
+                            <p class="your-request__blank-order_red-content">{{totalDate}}, {{totalTime}}</p>
+                            <p class="your-request__blank-order_black-title">Специалист:</p>
+                            <p class="your-request__blank-order_red-content">{{totalSpec}}</p>
+                            <p class="navbar-text your-request__add-new-order">
+                                <img class="navbar-text__user-img" src="img/icon-plus.png" />
+                                <a href="" class="navbar-link your-request__add-new-order_link">Добавить еще заявку</a>
+                            </p>
+                            <p class="choose__button-next">
+                                <button type="button" ng-click="correct()" class="btn btn-default" style="margin-top: 15px">Редактировать
+</button>
+</p>
+</div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">
+    <form class="your-request__form">
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя:">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="+" value="+">
+                </div>
+                <div class="col-md-8">
+                    <input type="tel" class="form-control" placeholder="Телефон:">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-mail:">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4" style="font-size: 16px; padding: 5px"> Напомнить:
+</div>
+<div class="col-md-8">
+    <div class="form-group">
+        <select class="form-control" id="sel1">
+                                                <option>За 1 час до визита</option>
+                                                <option>За 2 час до визита</option>
+                                                <option>За 3 час до визита</option>
+                                                <option>За 4 час до визита</option>
+                                            </select>
+    </div>
+
+</div>
+</div>
+</div>
+<div class="choose__repeat-branch your-request__form-checkbox">
+    <input class="choose__repeat-branch_input your-request__form-checkbox" type="checkbox" id="policy" ng-model="branch.checked"
+        value="policy">
+    <label class="choose__repeat-branch_label" for="policy"><span
+                                        style="float: left"><span></span></span>
+Нажимая на кнопку "Оформить заявку", Вы соглашаетесь с условиями<strong>
+                                        <a class="your-request__policy-blank" href="">Пользовательского
+                                            соглашения</a></strong>
+</label>
+</div>
+<button type="submit" class="btn btn-default your-request__button-ok" disabled>Оформить заявку</button>
+</form>
+</div>
+<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
