@@ -1,6 +1,7 @@
 // Declare app level module which depends on views, and components
 angular.module('BeautySalon', [
     'ngRoute',
+    'ngResource',
     /*'ngAnimate',*/
     'beautySalon.controllers'
 ])

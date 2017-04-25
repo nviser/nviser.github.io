@@ -1,3 +1,37 @@
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <!--div class="hidden">
+                    <div class="logo1"></div>
+                </div>-->
+                <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+                    <div class="wrapper-logo2">
+                        <img class="wrapper-logo2__logo2 img-responsive" src="img/logo-center.png" alt=""/>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-center navigation">
+                    <ul class="list-inline" style="display: inline-block">
+                        <li><a href="#/">Онлайн запись</a></li>
+                        <li><a href="#/">Мои записи</a></li>
+                        <li><a href="#/">О сервисе</a></li>
+                        <li><a href="#/">Лояльность</a></li>
+                    </ul>
+                        <!--<div style="display: inline-block">Онлайн запись</div>
+                        <div style="display: inline-block">Мои записи</div>
+                        <div style="display: inline-block">О сервисе</div>
+                        <div style="display: inline-block">Лояльность</div>-->
+                </div>
+                <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+                    <p class="navbar-text">
+                        <img class="navbar-text__user-img" src="img/login-user.png"/>
+                        <a href="#/" class="navbar-link navbar-text__user-link">Выход</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 <section class="choose">
     <div class="bg-img">
         <div class="container">
@@ -5,8 +39,8 @@
             <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
             <div class="container for-buttons">
                 <div class="row text-center">
-                    <button class="btn btn-danger">Предстоящие сеансы</button>
-                    <button class="btn btn-default">Прошедшие сеансы</button>
+                    <button class="btn" ng-class="{'btn-danger': cansellation }" ng-click="impendingSessions()">Предстоящие сеансы</button>
+                    <button class="btn" ng-class="{'btn-danger': !cansellation }" ng-click="lastSessions()">Прошедшие сеансы</button>
                 </div>
             </div>
             <div class="row">
@@ -17,11 +51,11 @@
 
         <div class="service">
             <div class="container">
-                <div class="row repeater" ng-repeat="item in items">
+                <div class="row repeater" ng-repeat="item in products">
                     <div class="col-lg-6 col md-6 col-sm-6 col-xs-6">
                         Услуга:
                         <div class="service__text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                            {{item.serviceName}}
                         </div>
                         Адрес:
                         <div class="service__text">
@@ -39,18 +73,24 @@
                         <div class="service__for-img">
                             <img src="img/master1.jpg" alt="master_photo" class="img-circle">
                         </div>
-                        <div>Рита Чобанян</div>
+                        <div>{{item.fullName}}</div>
                     </div>
                     <div class="col-lg-2 col md-2 col-sm-2 col-xs-2 text-center">
                         Дата и время:
                         <div class="service__for-date">
-                            <strong>17</strong> Марта
+                            <strong>{{item.serviceDetails.date | date: "d"}}</strong>
+                            <span class="service-month">{{item.serviceDetails.date | date: "MMMM"}}</span>
                         </div>
-                        <span>09.00 - 09.30</span>
+                        <span>{{item.serviceDetails.start | date: "hh.mm"}} - {{item.serviceDetails.end | date: "hh.mm"}}</span>
                     </div>
-                    <button class="btn btn-danger service_cancel-btn">Отменить запись</button>
+                    <button class="btn btn-danger service_cancel-btn" ng-if="cansellation">Отменить запись</button>
                 </div>
             </div>
+            <div class="pagination-wrap text-center">
+                <ul class="pagination">
+                    <li ng-repeat="page in paginationList" ng-click="showPage(page.link)" ng-class="{'active': currentPageNum() == page.link}"><a ng-bind-html="page.name"></a></li>
+                </ul>
+		    </div>
         </div>
     </div>
 </section>

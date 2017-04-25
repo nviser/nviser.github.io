@@ -189,7 +189,7 @@ $colorPurple: #9a2b22;
         .choose-date__active {
             color: #fff;
             background: $colorPurple;
-            border: none;
+            border: 1px solid #9a2b22;
         }
     }
 }
@@ -199,9 +199,10 @@ $colorPurple: #9a2b22;
     }
     .choose-spesialist_wrap {
         border: 1px solid #ccc;
-        height: 145px;
+        min-height: 145px;
         padding: 10px;
         position: relative;
+        margin-bottom: 10px;
         .img-circle {
             border: 1px solid #777;
         }
@@ -211,7 +212,7 @@ $colorPurple: #9a2b22;
             width: 30px;
             height: 30px;
             background: #e8e8e8;
-            border: 1px solid  #dcdcdc;
+            border: 1px solid #dcdcdc;
             bottom: 10px;
             right: 10px;
             border-radius: 3px;
@@ -239,7 +240,7 @@ $colorPurple: #9a2b22;
         border-radius: 50%;
         border: 1px solid $colorPurple;
         padding: 3px 3.5px 3.5px 3.5px;
-        margin-top: 14px;
+        margin: 14px auto 0;
     }
     .choose-specialis_master-name {
         padding-top: 30px;

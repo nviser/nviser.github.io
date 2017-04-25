@@ -1,9 +1,42 @@
 angular.module('beautySalon.controllers')
 
-    .controller('MainCtrl',['$scope', 'getData', function ($scope, getData) {
+    .controller('MainCtrl',['$scope', 'getData', 'authService', '$resource', function ($scope, getData, authService, $resource) {
+
+        $scope.authorization = function () {
+            //console.log($scope.userPhone);
+            authService.auth({ phone: $scope.userPhone, type: 0}, function (response) {
+                //console.log(response);
+            });
+
+        };
+
+        $scope.next = function () {
+            $scope.first = false;
+            $scope.second = false;
+            $scope.third = false;
+            $scope.fourth = false;
+            $scope.fifth = false;
+        }
+        $scope.next();
 
         $scope.branches = getData.branches(); //get salons from back-end
-
+        /*getData.orders().query(function(data) {
+            $scope.orders = data;
+        console.log($scope.orders);
+        });*/ //get orders from back-end
+        /*$http({
+                    method: 'GET',
+                    url: 'http://belisimo.dev-topsu.ru/v1/orders',
+                    params: {
+                       // "sessionId": sessionData.sessionId
+                    }
+                }).success(function(result) {
+                    console.log('success');
+                    //console.log(result);
+                   $scope.orders = result;
+                }).error(function() {
+                    console.log('err');
+                });*/
 
         /*----------choose one of salons-----------*/
 
@@ -12,6 +45,7 @@ angular.module('beautySalon.controllers')
                 angular.forEach($scope.branches, function (value, key) {
                     if (value.id == item.id) {
                         value.checked = true;
+                        $scope.first = true;
                         sessionStorage.setItem('address', value.address);
                         $scope.getData();
                     } else {
@@ -117,35 +151,38 @@ angular.module('beautySalon.controllers')
             angular.forEach($scope.innerServices, function(val, key) {
                 if(service && service.id == val.id) {
                     val.checked = true;
+                    $scope.secondBtn = true;
                     $scope.sum = val.price;
                     $scope.choise = val.name;
                     sessionStorage.setItem('sum', $scope.sum);
                     sessionStorage.setItem('choise', $scope.choise);
                     $scope.getData();
-                    console.log('if');
                 } else {
                     val.checked = false;
-                    console.log('else');
                 }
             })
         
         }
 
-
-        var pickedTime = document.querySelectorAll('.time-block');
-        for (var i = 0, len = pickedTime.length; i < len; i++) {
-            pickedTime[i].addEventListener('click', function (event) {
-                $scope.pickedTime = event.target.innerText;
-                if (document.querySelector('.choose-date__active')) {
-                    document.querySelector('.choose-date__active').classList.remove('choose-date__active');
-                }
-                event.target.classList.add('choose-date__active');
-                sessionStorage.setItem('time', $scope.pickedTime);
-                $scope.getData();
-                $scope.$apply();
-            });
+        $scope.refreshTimeBlock = function () {
+            var pickedTime = document.querySelectorAll('.time-block');
+            //console.log(pickedTime);
+            for (var i = 0, len = pickedTime.length; i < len; i++) {
+                pickedTime[i].addEventListener('click', function (event) {
+                    $scope.pickedTime = event.target.innerText;
+                    if (document.querySelector('.choose-date__active')) {
+                        document.querySelector('.choose-date__active').classList.remove('choose-date__active');
+                    }
+                    event.target.classList.add('choose-date__active');
+                    sessionStorage.setItem('time', $scope.pickedTime);
+                    $scope.thirdBtn1 = true;
+                    $scope.getData();
+                    $scope.$apply();
+                });
+            }            
         }
-
+        $scope.specAvalTime = getData.availableDates();
+        //console.log( $scope.specAvalTime);
         $scope.months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
         $scope.refresh = function () {
             var pickedDate = document.querySelectorAll('.pickDate');
@@ -158,7 +195,22 @@ angular.module('beautySalon.controllers')
                     event.target.classList.add('choose-date__date-active');
                     $scope.pickYear = document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year;
                     $scope.pickMonth = $scope.months[parseInt(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)];
+                    $scope.curMonth = parseInt(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month);
                     sessionStorage.setItem('date', $scope.pickDate + ' ' + $scope.pickMonth);
+                    $scope.curDate = Date.parse(new Date(+$scope.pickYear, +$scope.curMonth, +event.target.innerText));
+                    $scope.thirdBtn2 = true;
+                    $scope.pickedTime = null;
+                    $scope.thirdBtn1 = false;
+                    for (var i = 0, len = $scope.specAvalTime.length; i < len; i++){
+                        if($scope.specAvalTime[i].date == $scope.curDate){
+                            $scope.avalTime = $scope.specAvalTime[i].avalTime;
+                            $scope.$apply();
+                            $scope.refreshTimeBlock();
+                            return;
+                        } else {
+                            $scope.avalTime = [];
+                        }
+                    }
                     $scope.getData();
                     $scope.$apply();
                 });
@@ -167,21 +219,31 @@ angular.module('beautySalon.controllers')
         window.onload = function () {
             $scope.refresh();
         }
-
-
-        var pickedSpec = document.querySelectorAll('.choose-spesialist_wrap');
-        for (var i = 0, len = pickedSpec.length; i < len; i++) {
-            pickedSpec[i].addEventListener('click', function (event) {
-                $scope.pickedSpec = event.target.children[0].innerText;
-                sessionStorage.setItem('spec', $scope.pickedSpec);
-                if (document.querySelector('.choose-spesialis_active')) {
-                    document.querySelector('.choose-spesialis_active').classList.remove('choose-spesialis_active');
-                }
-                event.target.parentNode.parentNode.classList.toggle('choose-spesialis_active');
-                $scope.getData();
-                $scope.$apply();
-            });
+        $scope.nextToSpec = function() {
+            $scope.thirdBtn1 && $scope.thirdBtn2 ? $scope.fourth = true : $scope.fourth = false;
         }
+        
+        $scope.specialists = getData.specialists();
+
+        $scope.specialists1 = $scope.divider($scope.specialists)[0];
+        $scope.specialists2 = $scope.divider($scope.specialists)[1];
+        $scope.specialists3 = $scope.divider($scope.specialists)[2];
+
+        $scope.chooseSpecialist = function(spec, event) {
+            angular.forEach($scope.specialists, function(val, key) {
+                if(spec && spec.id == val.id) {
+                    val.checked = true;
+                    $scope.pickedSpec = val.name;
+                    sessionStorage.setItem('spec', $scope.pickedSpec);
+                    $scope.fourthBtn = true;
+                    //$scope.getData();
+                } else {
+                    val.checked = false;
+                }
+            })
+        
+        }
+
         /*---------CAlendar-----------*/
 
         function Calendar2(id, year, month) {
@@ -243,16 +305,28 @@ angular.module('beautySalon.controllers')
             $scope.sum = null;
             $scope.choise = null;
             $scope.pickedTime = null;
-            $scope.pickedDate = null;
+            $scope.avalTime = [];
+            $scope.pickDate = null;
             $scope.pickedSpec = null;
             $scope.chooseBranch(null);
             $scope.choose(null);
+            $scope.next();
+            $scope.open = false;
+            $scope.first = false;
+            $scope.secondBtn = false;
+            $scope.thirdBtn1 = false;
+            $scope.thirdBtn2 = false;
+            $scope.fourthBtn = false;
             document.querySelector('.choose-service__choose-active').classList.remove('choose-service__choose-active');
             document.querySelector('.choose-service__active').classList.remove('choose-service__active');
             document.querySelector('.choose-spesialis_active').classList.remove('choose-spesialis_active');
             document.querySelector('.choose-date__date-active').classList.remove('choose-date__date-active');
             document.querySelector('.choose-date__active').classList.remove('choose-date__active');
-            console.log('choose');
+            if(document.querySelector('.fa-angle-up')){                     //turn all angles-up to angles-down
+                var el = document.querySelector('.fa-angle-up');
+                el.classList.remove('fa-angle-up');
+                el.classList.add('fa-angle-down');
+            }
         }
 
 

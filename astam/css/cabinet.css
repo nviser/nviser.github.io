@@ -9,6 +9,9 @@
   background: #fff;
   border: 1px solid #ccc; }
 
+.service-month {
+  text-transform: capitalize; }
+
 .service_cancel-btn {
   margin-top: 10px; }
 
@@ -33,11 +36,27 @@
     font-size: 30px;
     display: block; }
   .service__for-date span {
-    color: #920021;
-    font-size: 20px; }
+    font-size: 16px; }
 
 .repeater {
   border-top: 1px solid #ccc;
   padding: 20px; }
+
+.navigation {
+  padding-top: 35px; }
+
+@media (max-width: 768px) {
+  .navigation {
+    padding-top: 15px; } }
+.pagination-wrap ul li {
+  cursor: pointer; }
+  .pagination-wrap ul li a {
+    color: #000; }
+  .pagination-wrap ul li.active a {
+    background-color: #c9302c;
+    border-color: #ac2925; }
+    .pagination-wrap ul li.active a:hover {
+      border-color: #ac2925;
+      background-color: #ac2925; }
 
 /*# sourceMappingURL=cabinet.css.map */

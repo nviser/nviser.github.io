@@ -168,15 +168,16 @@
 .choose-date__time .choose-date__row .choose-date__active {
   color: #fff;
   background: #9a2b22;
-  border: none; }
+  border: 1px solid #9a2b22; }
 
 .choose-specialist .choose-specialist_row {
   margin-top: 20px; }
 .choose-specialist .choose-spesialist_wrap {
   border: 1px solid #ccc;
-  height: 145px;
+  min-height: 145px;
   padding: 10px;
-  position: relative; }
+  position: relative;
+  margin-bottom: 10px; }
   .choose-specialist .choose-spesialist_wrap .img-circle {
     border: 1px solid #777; }
   .choose-specialist .choose-spesialist_wrap:after {
@@ -185,7 +186,7 @@
     width: 30px;
     height: 30px;
     background: #e8e8e8;
-    border: 1px solid  #dcdcdc;
+    border: 1px solid #dcdcdc;
     bottom: 10px;
     right: 10px;
     border-radius: 3px; }
@@ -207,7 +208,7 @@
   border-radius: 50%;
   border: 1px solid #9a2b22;
   padding: 3px 3.5px 3.5px 3.5px;
-  margin-top: 14px; }
+  margin: 14px auto 0; }
 .choose-specialist .choose-specialis_master-name {
   padding-top: 30px; }
   .choose-specialist .choose-specialis_master-name span {
