@@ -189,7 +189,7 @@
     </p>
 </section>
 
-<section class="choose choose-date" ng-show="fifth && pickedSpec"> <!---->
+<section class="choose choose-date" ng-show="fifth && pickedSpec"> <!--ng-show="fifth && pickedSpec"-->
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
@@ -220,27 +220,11 @@
                 
                     <div class="row choose-date__row">
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper" ng-repeat="time in avalTime">
-                            <div class="time-block">{{time.start | date: "HH.mm"}} - {{time.end | date: "HH.mm"}}</div>
+                       <!---->     <div class="time-block" ng-click="pickedTimeRange(time)">{{time.start | date: "HH.mm"}} - {{time.end | date: "HH.mm"}}</div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 time-block-wrapper" ng-if="!avalTime.length">
                             <div class="text-danger">На выбранную дату нет записей</div>
                         </div>
-        
-
-                        <!--<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">09:30 - 10:00</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">14:30 - 15:00</div></div>
-                    </div>
-                    <div class="row choose-date__row">
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">15:00 - 15:30</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">15:30 - 16:00</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">16:00 - 16:30</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">16:30 - 17:00</div></div>
-                    </div>
-                    <div class="row choose-date__row">
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">17:00 - 17:30</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">17:30 - 18:00</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">18:00 - 18:30</div></div>
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper"><div class="time-block">18:30 - 19:00</div></div>-->
                     </div>
                 
             </div>
@@ -254,7 +238,7 @@
     </p>
 </section>
 
-<section class="choose your-request" ng-show="fourth && pickedTime && pickDate">
+<section class="choose your-request" ng-show="fourth && pickedTime && pickDate"> <!-- -->
     <div class="background-img">
         <div class="container">
             <div class="row">
@@ -298,22 +282,22 @@
 </div>
 </div>
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">
-    <form class="your-request__form">
+    <form class="your-request__form" ng-submit="sendForm()" name="orderForm">
         <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя:">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя:" ng-model="firstName">
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="+" value="+">
+                    <input name="phone1" type="text" class="form-control" id="exampleInputPassword1" placeholder="+" value="+" ng-model="userPhone1" required>
                 </div>
                 <div class="col-md-8">
-                    <input type="tel" class="form-control" placeholder="Телефон:">
+                    <input name="phone2" type="tel" class="form-control" placeholder="Телефон:" ng-model="userPhone2" required>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" placeholder="E-mail:">
+            <input type="email" class="form-control" placeholder="E-mail:" ng-model="userEmail">
         </div>
         <div class="form-group">
             <div class="row">
@@ -321,11 +305,11 @@
 </div>
 <div class="col-md-8">
     <div class="form-group">
-        <select class="form-control" id="sel1">
-                                                <option>За 1 час до визита</option>
+        <select class="form-control" id="sel1" ng-model="reminder" ng-change="getReminder()" ng-options="opt for opt in reminderArr">
+                                                <!--<option>За 1 час до визита</option>
                                                 <option>За 2 час до визита</option>
                                                 <option>За 3 час до визита</option>
-                                                <option>За 4 час до визита</option>
+                                                <option>За 4 час до визита</option>-->
                                             </select>
     </div>
 
@@ -334,7 +318,7 @@
 </div>
 <div class="choose__repeat-branch your-request__form-checkbox">
     <input class="choose__repeat-branch_input your-request__form-checkbox" type="checkbox" id="policy" ng-model="branch.checked"
-        value="policy">
+        value="policy" required>
     <label class="choose__repeat-branch_label" for="policy"><span
                                         style="float: left"><span></span></span>
 Нажимая на кнопку "Оформить заявку", Вы соглашаетесь с условиями<strong>
@@ -342,7 +326,7 @@
                                             соглашения</a></strong>
 </label>
 </div>
-<button type="submit" class="btn btn-default your-request__button-ok" disabled>Оформить заявку</button>
+<button class="btn btn-default your-request__button-ok" ng-disabled="orderForm.$invalid">Оформить заявку</button>
 </form>
 </div>
 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right"></div>
@@ -361,20 +345,26 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-        <form ng-submit="authorization()">
+        <form > <!--ng-submit="authorization()"-->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center">Вход</h4>
+                <h4 class="modal-title text-center" ng-hide="isModalErr">Вход</h4>
+                <h4 class="modal-title text-center text-danger" ng-show="isModalErr">Ошибка сервера</h4>
             </div>
             <div class="modal-body">
-                <div class="input-group">
+                <div class="input-group" ng-show="isModalPhone">
                     <!--<label for="auth-phone">Для авторизации введите номер телефона:</label>-->
                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                    <input id="auth-phone" ng-model="userPhone" type="text" class="form-control" name="text" placeholder="Для авторизации введите номер телефона">
+                    <input ng-model="userPhone" type="text" class="form-control" name="text" placeholder="Для авторизации введите номер телефона">
+                </div>
+                <div class="input-group" ng-hide="isModalPhone">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input ng-model="userPass" type="password" class="form-control" name="text" placeholder="Введите пароль">
                 </div>
             </div>
             <div class="modal-footer">
-                        <button class="btn btn-primary">Авторизоваться</button>
+                        <button class="btn btn-primary" ng-click="authorization()" ng-show="isModalPhone">Отправить</button>
+                        <button class="btn btn-primary" ng-click="sendPass()" ng-hide="isModalPhone">Авторизоваться</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
             </div>
         </form>

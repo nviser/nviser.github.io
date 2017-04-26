@@ -7,27 +7,27 @@ angular.module('BeautySalon')
             specialists: function () {
                 return [
                         {
-                            id: '1',
+                            person_id: '1',
                             name: 'Рита Чобанян',
                             job: 'Парикмахер'
                         },
                         {
-                            id: '2',
+                            person_id: '2',
                             name: 'Мальвина Узунян',
                             job: 'Парикмахер'
                         },
                         {
-                            id: '3',
+                            person_id: '3',
                             name: 'Андрей Ермаков',
                             job: 'Парикмахер'
                         },
                         {
-                            id: '4',
+                            person_id: '4',
                             name: 'Иван Петров',
                             job: 'Парикмахер'
                         },
                         {
-                            id: '5',
+                            person_id: '5',
                             name: 'Мария Климова',
                             job: 'Парикмахер'
                         }
@@ -99,27 +99,27 @@ angular.module('BeautySalon')
                                 name: 'Ведущий VIP педикюр.маникюр',
                                 services: [
                                             {
-                                                id: '1',
+                                                service_id: '1',
                                                 name: 'Простой',
                                                 price: '150 руб'
                                             },
                                             {
-                                                id: '2',
+                                                service_id: '2',
                                                 name: 'С бальзамами',
                                                 price: '300 руб'
                                             },
                                             {
-                                                id: '3',
+                                                service_id: '3',
                                                 name: 'Freestyle neet',
                                                 price: '500 руб'
                                             },
                                             {
-                                                id: '4',
+                                                service_id: '4',
                                                 name: 'Праздничный',
                                                 price: '220 руб'
                                             },
                                             {
-                                                id: '5',
+                                                service_id: '5',
                                                 name: 'VIP педикюр',
                                                 price: '200 руб'
                                             }
@@ -130,7 +130,7 @@ angular.module('BeautySalon')
                                 name: 'Ведущий VIP гель-лак',
                                 services: [
                                             {
-                                                id: '1',
+                                                service_id: '6',
                                                 name: 'Fairytale-gel',
                                                 price: '110 руб'
                                             }
@@ -141,12 +141,12 @@ angular.module('BeautySalon')
                                 name: 'VIP Шелак',
                                 services: [
                                             {
-                                                id: '1',
+                                                service_id: '7',
                                                 name: 'Шелак-мусс',
                                                 price: '150 руб'
                                             },
                                             {
-                                                id: '2',
+                                                service_id: '8',
                                                 name: 'Шелак-гель',
                                                 price: '250 руб'
                                             }
@@ -157,27 +157,27 @@ angular.module('BeautySalon')
                                 name: 'Детские стрижки',
                                 services: [
                                             {
-                                                id: '1',
+                                                service_id: '9',
                                                 name: 'Стрижка челки',
                                                 price: '50 руб'
                                             },
                                             {
-                                                id: '2',
+                                                service_id: '10',
                                                 name: 'Стрижки детская до 6 лет',
                                                 price: '70 руб'
                                             },
                                             {
-                                                id: '3',
+                                                service_id: '11',
                                                 name: 'Стрижки детская с 6 до 10 лет',
                                                 price: '100 руб'
                                             },
                                             {
-                                                id: '4',
+                                                service_id: '12',
                                                 name: 'Детская стрижка под машинку',
                                                 price: '120 руб'
                                             },
                                             {
-                                                id: '5',
+                                                service_id: '13',
                                                 name: 'Стрижка для девочек (до 10 лет)',
                                                 price: '200 руб'
                                             }
@@ -188,17 +188,17 @@ angular.module('BeautySalon')
                                 name: 'Ведущий VIP гостевой сервис',
                                 services: [
                                             {
-                                                id: '1',
+                                                service_id: '14',
                                                 name: 'Простой',
                                                 price: '150 руб'
                                             },
                                             {
-                                                id: '2',
+                                                service_id: '15',
                                                 name: 'С бальзамами',
                                                 price: '300 руб'
                                             },
                                             {
-                                                id: '3',
+                                                service_id: '16',
                                                 name: 'Freestyle neet',
                                                 price: '500 руб'
                                             }

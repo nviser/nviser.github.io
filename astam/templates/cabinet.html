@@ -39,8 +39,8 @@
             <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
             <div class="container for-buttons">
                 <div class="row text-center">
-                    <button class="btn" ng-class="{'btn-danger': cansellation }" ng-click="impendingSessions()">Предстоящие сеансы</button>
-                    <button class="btn" ng-class="{'btn-danger': !cansellation }" ng-click="lastSessions()">Прошедшие сеансы</button>
+                    <button class="btn" ng-class="cansellation ? 'btn-danger' : 'btn-default'" ng-click="impendingSessions()">Предстоящие сеансы</button>
+                    <button class="btn" ng-class="!cansellation ? 'btn-danger' : 'btn-default'" ng-click="lastSessions()">Прошедшие сеансы</button>
                 </div>
             </div>
             <div class="row">

@@ -1,14 +1,64 @@
 angular.module('beautySalon.controllers')
 
-    .controller('MainCtrl',['$scope', 'getData', 'authService', '$resource', function ($scope, getData, authService, $resource) {
+    .controller('MainCtrl',['$scope', 'getData', 'authService', 'api', '$location', function ($scope, getData, authService, api, $location) {
 
-        $scope.authorization = function () {
+       /* $scope.authorization = function () {
             //console.log($scope.userPhone);
             authService.auth({ phone: $scope.userPhone, type: 0}, function (response) {
                 //console.log(response);
             });
 
-        };
+        };*/
+        $scope.isModalPhone = true;
+        $scope.isModalErr = false;
+        $scope.authorization = function () {
+            //console.log(authService.auth($scope.userPhone));
+            var http = new XMLHttpRequest();
+            var url = api + "v1/auth";
+            var params = "phone=" + $scope.userPhone;
+            http.open("POST", url, true);
+
+            //Send the proper header information along with the request
+            http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                if(http.readyState == 4 && http.status == 200) {
+                    $scope.result = JSON.parse(http.responseText);
+                    //sessionStorage.setItem('token', $scope.result.access_token);
+                    //alert($scope.result.code);
+                    if($scope.result.code == 1){
+                        $scope.isModalPhone = false;
+                    } else {
+                        $scope.isModalErr = true;
+                    }
+                    $scope.$apply();
+                }
+            }
+            http.send(params);
+        }
+
+        $scope.sendPass = function () {
+            //console.log(authService.auth($scope.userPhone));
+            var http = new XMLHttpRequest();
+            var url = api + "v1/auth";
+            var params = "phone=" + $scope.userPhone + "&code=" + $scope.userPass;
+            http.open("POST", url, true);
+
+            //Send the proper header information along with the request
+            http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                if(http.readyState == 4 && http.status == 200) {
+                    $scope.result = JSON.parse(http.responseText);
+                    sessionStorage.setItem('token', $scope.result.access_token);
+                    //alert(http.responseText);
+                    $('#myModal').modal('hide');
+                    $location.path("/cabinet");
+                    $scope.$apply();
+                }
+            }
+            http.send(params);
+        }
 
         $scope.next = function () {
             $scope.first = false;
@@ -149,11 +199,13 @@ angular.module('beautySalon.controllers')
 
         $scope.choose = function(service, event) {
             angular.forEach($scope.innerServices, function(val, key) {
-                if(service && service.id == val.id) {
+                if(service && service.service_id == val.service_id) {
                     val.checked = true;
                     $scope.secondBtn = true;
                     $scope.sum = val.price;
                     $scope.choise = val.name;
+                    $scope.serviceId = val.name;
+                    sessionStorage.setItem('serviceId', $scope.serviceId);
                     sessionStorage.setItem('sum', $scope.sum);
                     sessionStorage.setItem('choise', $scope.choise);
                     $scope.getData();
@@ -216,6 +268,11 @@ angular.module('beautySalon.controllers')
                 });
             }
         }
+
+        $scope.pickedTimeRange = function (arg) { //pick selected time range (format ms e.g 1492083000000)
+            $scope.pickedStartTime = arg.start;
+            $scope.pickedEndTime = arg.end;
+        }
         window.onload = function () {
             $scope.refresh();
         }
@@ -231,9 +288,11 @@ angular.module('beautySalon.controllers')
 
         $scope.chooseSpecialist = function(spec, event) {
             angular.forEach($scope.specialists, function(val, key) {
-                if(spec && spec.id == val.id) {
+                if(spec && spec.person_id == val.person_id) {
                     val.checked = true;
                     $scope.pickedSpec = val.name;
+                    $scope.specId = val.person_id;
+                    sessionStorage.setItem('specId', $scope.specId);
                     sessionStorage.setItem('spec', $scope.pickedSpec);
                     $scope.fourthBtn = true;
                     //$scope.getData();
@@ -328,8 +387,34 @@ angular.module('beautySalon.controllers')
                 el.classList.add('fa-angle-down');
             }
         }
+        /*$scope.getReminder = function () {
+            console.log($scope.reminder);
+        }*/
+        $scope.reminderArr = ['За 1 час до визита', 'За 2 часа до визита', 'За 3 часа до визита', 'За 4 часа до визита'];
+        $scope.reminder = $scope.reminderArr[0];
+        $scope.sendForm = function () {
+            $scope.serviceId = sessionStorage.getItem('serviceId');
+            $scope.specId = sessionStorage.getItem('specId');
+            var http = new XMLHttpRequest();
+            var url = api + "v1/orders";
+            var params = "first_name=" + $scope.firstName + "&last_name=" + "&phone=" + $scope.userPhone1 + $scope.userPhone2 + "&email=" + $scope.userEmail + "&service_id=" + $scope.serviceId + "&person_id=" + $scope.specId + "&date=" + $scope.curDate + "&start=" + $scope.pickedStartTime + "&end=" + $scope.pickedEndTime + "&reminder=" + $scope.reminder;
+            http.open("POST", url, true);
 
+            //Send the proper header information along with the request
+            http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                if(http.readyState == 4 && http.status == 200) {
+                    $scope.result = JSON.parse(http.responseText);
+                    sessionStorage.setItem('token', $scope.result.access_token);
+                    //alert(http.responseText);
+                    $('#myModal').modal('hide');
+                    $location.path("/cabinet");
+                    $scope.$apply();
+                }
+            }
+            http.send(params);
+        }
     }]);
 
 
