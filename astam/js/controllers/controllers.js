@@ -318,14 +318,24 @@ angular.module('beautySalon.controllers')
                 for (var i = 0; i < 6; i++) calendar += '<td>';
             }
             for (var i = 1; i <= Dlast; i++) {
-                if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
-                    calendar += '<td class="today pickDate">' + i;
-                } else {
-                    calendar += '<td class="pickDate">' + i;
-                }
-                if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
-                    calendar += '<tr>';
-                }
+                var count = 0;//variable for determining either available date or not (0 unavailable)
+                angular.forEach($scope.specAvalTime, function (val, key) {
+                    if(new Date(val.date).getDate() == i && D.getFullYear() == new Date(val.date).getFullYear() && D.getMonth() == new Date(val.date).getMonth()){
+                        count = 1;
+                    } 
+                })
+                    if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth() && count) {
+                        calendar += '<td class="today pickDate available">' + i;
+                    } else if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth() && !count) {
+                        calendar += '<td class="today pickDate">' + i;
+                    } else if (count) {
+                        calendar += '<td class="pickDate available">' + i;
+                    } else {
+                        calendar += '<td class="pickDate">' + i;
+                    }
+                    if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
+                        calendar += '<tr>';
+                    }
             }
             for (var i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
             document.querySelector('#' + id + ' tbody').innerHTML = calendar;
@@ -407,7 +417,6 @@ angular.module('beautySalon.controllers')
                 if(http.readyState == 4 && http.status == 200) {
                     $scope.result = JSON.parse(http.responseText);
                     sessionStorage.setItem('token', $scope.result.access_token);
-                    //alert(http.responseText);
                     $('#myModal').modal('hide');
                     $location.path("/cabinet");
                     $scope.$apply();
