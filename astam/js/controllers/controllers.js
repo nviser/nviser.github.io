@@ -11,6 +11,10 @@ angular.module('beautySalon.controllers')
         };*/
         $scope.isModalPhone = true;
         $scope.isModalErr = false;
+        $scope.resetModal = function () {
+            $scope.isModalPhone = true;
+            $scope.isModalErr = false;
+        }
         $scope.authorization = function () {
             //console.log(authService.auth($scope.userPhone));
             var http = new XMLHttpRequest();
@@ -339,9 +343,9 @@ angular.module('beautySalon.controllers')
             }
             for (var i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
             document.querySelector('#' + id + ' tbody').innerHTML = calendar;
-            document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = month[D.getMonth()] + '<br>' + D.getFullYear();
-            document.querySelector('#' + id + ' thead td:nth-child(1)').innerHTML = month[D.getMonth() === 0 ? 11 : D.getMonth() - 1] + '<br>' + (D.getMonth() === 0 ? D.getFullYear() - 1 : D.getFullYear());
-            document.querySelector('#' + id + ' thead td:nth-child(3)').innerHTML = month[D.getMonth() === 11 ? 0 : D.getMonth() + 1] + '<br>' + (D.getMonth() === 11 ? D.getFullYear() + 1 : D.getFullYear());
+            document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = month[D.getMonth()] + '<br>' + '<p>' + D.getFullYear() + '</p>';
+            document.querySelector('#' + id + ' thead td:nth-child(1)').innerHTML = month[D.getMonth() === 0 ? 11 : D.getMonth() - 1] + '<br>' + '<i class="fa fa-angle-left" aria-hidden="true"></i>' + (D.getMonth() === 0 ? D.getFullYear() - 1 : D.getFullYear());
+            document.querySelector('#' + id + ' thead td:nth-child(3)').innerHTML = month[D.getMonth() === 11 ? 0 : D.getMonth() + 1] + '<br>' + '<i class="fa fa-angle-right" aria-hidden="true"></i>'  + (D.getMonth() === 11 ? D.getFullYear() + 1 : D.getFullYear());
             document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
             document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
             if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
@@ -396,6 +400,12 @@ angular.module('beautySalon.controllers')
                 el.classList.remove('fa-angle-up');
                 el.classList.add('fa-angle-down');
             }
+            $scope.firstName = '';
+            $scope.userPhone1 = '';
+            $scope.userPhone2 = '';
+            $scope.userEmail = '';
+            $scope.branch.checked = false;
+            $scope.reminder = 'За 1 час до визита';
         }
         /*$scope.getReminder = function () {
             console.log($scope.reminder);

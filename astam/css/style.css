@@ -1,6 +1,31 @@
 /*.choose-service .row ~ .row {
     margin-top: 20px;
 }*/
+.textRLR, .choose__title, .choose__align-left, .choose__align-right, .choose__repeat-branch_label, .choose__repeat-branch_label .treaty-consent, .choose__repeat-branch_label p, .choose-service__output, .calendar2-left, .calendar2-right, #calendar2 tbody td, .choose-date__time .choose-date__text, .choose-date__time .choose-date__row .time-block, .choose-specialist .choose-specialis_master-name, .your-request__form .form-control, .your-request__form .your-request__button-ok {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300; }
+
+.textRR, .choose-service__item, .choose-service__item2, .choose-service__currency, .choose-service__text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; }
+
+.textRB, .choose__repeat-branch_label strong, .calendar_header, .choose-specialist .choose-specialis_master-name span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; }
+
+.choose__title {
+  font-size: 48px; }
+
+.choose__repeat-branch_label {
+  font-size: 14px; }
+  .choose__repeat-branch_label strong {
+    font-size: 16px; }
+  .choose__repeat-branch_label .treaty-consent {
+    font-size: 14px; }
+
+.choose-service_row {
+  margin-top: 20px; }
+
 .choose-service__item, .choose-service__item2 {
   vertical-align: middle;
   padding: 10px 40px 10px;
@@ -10,7 +35,8 @@
   .choose-service__item:hover, .choose-service__item2:hover {
     cursor: pointer; }
   .choose-service__item i, .choose-service__item2 i {
-    font-size: 20px; }
+    font-size: 20px;
+    color: #a3a3a3; }
 
 .choose-service__item:last-child, .choose-service__item2:last-child {
   border-bottom: 1px solid  #dcdcdc; }
@@ -31,7 +57,8 @@
   background: #fff1ef; }
   .choose-service__info-block label {
     display: block;
-    font-weight: normal; }
+    font-weight: normal;
+    cursor: pointer; }
 
 .pseudo-check {
   width: 20px;
@@ -46,8 +73,15 @@
   background: #9a2b22;
   border: 1px solid #770900; }
 
+.choose-service__text-active {
+  color: #9a2b22;
+  text-decoration-color: #9a2b22 !important; }
+
 .choose-service__currency {
-  color: #9a2b22; }
+  color: #9a2b22;
+  font-size: 18px; }
+  .choose-service__currency + span {
+    color: #9a2b22; }
 
 .choose-service__text {
   text-decoration: underline;
@@ -61,7 +95,8 @@
 
 .choose-service__output {
   text-align: center;
-  margin: 20px 0; }
+  margin: 20px 0;
+  font-size: 16px; }
   .choose-service__output span {
     text-decoration: underline;
     text-decoration-style: dashed;
@@ -89,15 +124,21 @@
     position: absolute;
     width: 10px;
     height: 20px;
-    top: 15px;
+    top: 19px;
     font-size: 35px;
     z-index: -2; }
 
 .calendar2-left {
-  padding-left: 10px; }
+  padding-left: 15px;
+  font-size: 18px;
+  vertical-align: middle;
+  position: relative; }
 
 .calendar2-right {
-  padding-right: 10px; }
+  padding-right: 15px;
+  font-size: 18px;
+  vertical-align: middle;
+  position: relative; }
 
 #calendar2 thead tr:first-child {
   border: 1px solid  #dcdcdc; }
@@ -116,9 +157,11 @@
 #calendar2 tbody td {
   color: #dcdcdc;
   border: 1px solid  #dcdcdc;
-  padding: 7px;
-  font-size: 20px;
-  cursor: pointer; }
+  padding: 3px;
+  font-size: 35px;
+  cursor: pointer;
+  height: 47px;
+  vertical-align: middle; }
   #calendar2 tbody td.available {
     color: #333333; }
 
@@ -132,13 +175,14 @@
 
 .calendar_header {
   background: #770900;
-  font-size: 22px;
+  font-size: 30px;
   color: #fff !important;
-  font-weight: bold;
   height: 50px;
   padding: 11px;
   border: 1px solid #520600;
   line-height: 1.1; }
+  .calendar_header p {
+    font-size: 18px; }
 
 .calendar_days td {
   background: #770900;
@@ -154,7 +198,8 @@
   color: #fff !important; }
 
 .choose-date__time .choose-date__text {
-  padding: 0; }
+  padding: 0;
+  font-size: 18px; }
 .choose-date__time .choose-date__row-text {
   font-size: 18px;
   text-align: left;
@@ -164,7 +209,7 @@
 .choose-date__time .choose-date__row .time-block {
   border: 1px solid #ccc;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 16px;
   padding: 5px;
   cursor: pointer; }
 .choose-date__time .choose-date__row .choose-date__active {
@@ -179,7 +224,10 @@
   min-height: 145px;
   padding: 10px;
   position: relative;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  cursor: pointer; }
+  .choose-specialist .choose-spesialist_wrap label {
+    cursor: pointer; }
   .choose-specialist .choose-spesialist_wrap .img-circle {
     border: 1px solid #777; }
   .choose-specialist .choose-spesialist_wrap:after {
@@ -212,10 +260,56 @@
   padding: 3px 3.5px 3.5px 3.5px;
   margin: 14px auto 0; }
 .choose-specialist .choose-specialis_master-name {
-  padding-top: 30px; }
+  padding-top: 30px;
+  font-size: 16px; }
   .choose-specialist .choose-specialis_master-name span {
     font-size: 24px;
-    font-weight: bold;
     color: #9a2b22; }
+
+.your-request__form .form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 58px;
+  font-size: 16px; }
+.your-request__form .form-group {
+  position: relative; }
+  .your-request__form .form-group .fa {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 35px;
+    color: #9a2b22; }
+.your-request__form .your-request__button-ok {
+  font-size: 24px; }
+
+@media (min-width: 768px) {
+  #myModal .modal-dialog, #sendModal .modal-dialog {
+    width: 400px;
+    margin: 30px auto; } }
+
+#sendModal {
+  padding-right: 0 !important; }
+  #sendModal .modal-footer {
+    text-align: center; }
+
+.modal-body {
+  background: #d9534f; }
+
+#sendModal .modal-title {
+  color: #fff; }
+
+@media (max-width: 1200px) {
+  .your-request__form {
+    margin: 0 auto; } }
+@media (max-width: 992px) {
+  .your-request__form {
+    float: right; }
+
+  /*.choose__align-right {
+      margin-top: 10px;
+  }*/ }
+@media (max-width: 768px) {
+  .your-request__form {
+    float: none; } }
 
 /*# sourceMappingURL=style.css.map */

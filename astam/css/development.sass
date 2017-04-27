@@ -93,35 +93,32 @@ q:after
 
 .background-img
   background-image: url('../img/main-bg-img.png')
-  height: 480px
   width: 100%
+  padding-bottom: 50px
 
 .choose
   border-bottom: 1px solid $borderOrSmallThings
   &__title
     text-align: center
     padding: 40px 40px 5px 40px
-    color: $hoverAndOtherRedColor
   &__bottom-line
     display: block
     margin: 0 auto
-    width: 200px
   &__align-left
     text-align: left
-    font-size: 20px
+    font-size: 24px
     margin-top: 20px
     @media (max-width: 768px)
-      font-size: 12px
+      font-size: 20px
   &__align-right
     text-align: right
-    font-weight: bold
-    color: $borderOrSmallThings
+    color: #999999
     margin-top: 20px
+    font-size: 24px
     @media (max-width: 768px)
-      font-size: 12px
+      font-size: 20px
   &__repeat-branch
     display: inline-block
-    width: 33.3%
     padding: 8px
     &_label
       border-bottom: 1px solid $borderOrSmallThings
@@ -129,8 +126,10 @@ q:after
       strong
         color: $textRedColor
       p
-        font-size: 12px
-        color: #999999
+        font-size: 14px
+        color: #777777
+        margin-top: -5px
+        margin-bottom: 5px
     &_input
       float: left
   &__map
@@ -162,10 +161,12 @@ input[type=radio   ]:not(old) + label
   display: inline-block
   margin-left: -2em
   line-height: 1.5em
+  cursor: pointer
 
 input[type=checkbox]:not(old) + label > span,
 input[type=radio   ]:not(old) + label > span
   display: inline-block
+  position: relative
   width: 30px
   height: 30px
   margin: 0.25em 0.5em 0.25em 0.25em
@@ -185,20 +186,36 @@ input[type=checkbox]:not(old):checked + label > span:before
   width: 24px
   height: 24px
   margin: 2px
+  border-radius: 3px
   background: $textRedColor
+
+input[type=checkbox]:not(old):checked + label > span:after
+  content: ''
+  position: absolute
+  top: -3px
+  left: -3px
+  display: block
+  width: 30px
+  height: 30px
+  margin: 2px
+  border-radius: 3px
+  border: 1px solid #9a2b22
 
 .choose-service
 
 .your-request
   .background-img
-    height: 600px !important
   &__align-right
     color: $textAndButtonBlack
     font-size: 20px
     font-weight: normal
     text-align: center
     @media (max-width: 768px)
-      font-size: 12px
+      font-size: 20px
+      &>div
+        margin-bottom: 15px
+      #exampleInputPassword1
+        margin-bottom: 15px
   &__wrapper-form
     &_info-text
       font-size: 10px
@@ -209,6 +226,7 @@ input[type=checkbox]:not(old):checked + label > span:before
     height: 430px
     margin-top: 10px
     padding: 45px
+    margin: 0 auto
     &_black-title
       font-size: 12px
       padding-top: 10px

@@ -101,27 +101,27 @@ angular.module('BeautySalon')
                                             {
                                                 service_id: '1',
                                                 name: 'Простой',
-                                                price: '150 руб'
+                                                price: '150',
                                             },
                                             {
                                                 service_id: '2',
                                                 name: 'С бальзамами',
-                                                price: '300 руб'
+                                                price: '300'
                                             },
                                             {
                                                 service_id: '3',
                                                 name: 'Freestyle neet',
-                                                price: '500 руб'
+                                                price: '500'
                                             },
                                             {
                                                 service_id: '4',
                                                 name: 'Праздничный',
-                                                price: '220 руб'
+                                                price: '220'
                                             },
                                             {
                                                 service_id: '5',
                                                 name: 'VIP педикюр',
-                                                price: '200 руб'
+                                                price: '200'
                                             }
                                 ]
                             },
@@ -132,7 +132,7 @@ angular.module('BeautySalon')
                                             {
                                                 service_id: '6',
                                                 name: 'Fairytale-gel',
-                                                price: '110 руб'
+                                                price: '110'
                                             }
                                 ]
                             },
@@ -143,12 +143,12 @@ angular.module('BeautySalon')
                                             {
                                                 service_id: '7',
                                                 name: 'Шелак-мусс',
-                                                price: '150 руб'
+                                                price: '150'
                                             },
                                             {
                                                 service_id: '8',
                                                 name: 'Шелак-гель',
-                                                price: '250 руб'
+                                                price: '250'
                                             }
                                 ]
                             },
@@ -159,27 +159,27 @@ angular.module('BeautySalon')
                                             {
                                                 service_id: '9',
                                                 name: 'Стрижка челки',
-                                                price: '50 руб'
+                                                price: '50'
                                             },
                                             {
                                                 service_id: '10',
                                                 name: 'Стрижки детская до 6 лет',
-                                                price: '70 руб'
+                                                price: '70'
                                             },
                                             {
                                                 service_id: '11',
                                                 name: 'Стрижки детская с 6 до 10 лет',
-                                                price: '100 руб'
+                                                price: '100'
                                             },
                                             {
                                                 service_id: '12',
                                                 name: 'Детская стрижка под машинку',
-                                                price: '120 руб'
+                                                price: '120'
                                             },
                                             {
                                                 service_id: '13',
                                                 name: 'Стрижка для девочек (до 10 лет)',
-                                                price: '200 руб'
+                                                price: '200'
                                             }
                                         ]
                             },
@@ -190,17 +190,17 @@ angular.module('BeautySalon')
                                             {
                                                 service_id: '14',
                                                 name: 'Простой',
-                                                price: '150 руб'
+                                                price: '150'
                                             },
                                             {
                                                 service_id: '15',
                                                 name: 'С бальзамами',
-                                                price: '300 руб'
+                                                price: '300'
                                             },
                                             {
                                                 service_id: '16',
                                                 name: 'Freestyle neet',
-                                                price: '500 руб'
+                                                price: '500'
                                             }
                                 ]
                             },

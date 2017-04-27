@@ -93,37 +93,34 @@ q:after {
 
 .background-img {
   background-image: url("../img/main-bg-img.png");
-  height: 480px;
-  width: 100%; }
+  width: 100%;
+  padding-bottom: 50px; }
 
 .choose {
   border-bottom: 1px solid #d4d4d4; }
   .choose__title {
     text-align: center;
-    padding: 40px 40px 5px 40px;
-    color: #770900; }
+    padding: 40px 40px 5px 40px; }
   .choose__bottom-line {
     display: block;
-    margin: 0 auto;
-    width: 200px; }
+    margin: 0 auto; }
   .choose__align-left {
     text-align: left;
-    font-size: 20px;
+    font-size: 24px;
     margin-top: 20px; }
     @media (max-width: 768px) {
       .choose__align-left {
-        font-size: 12px; } }
+        font-size: 20px; } }
   .choose__align-right {
     text-align: right;
-    font-weight: bold;
-    color: #d4d4d4;
-    margin-top: 20px; }
+    color: #999999;
+    margin-top: 20px;
+    font-size: 24px; }
     @media (max-width: 768px) {
       .choose__align-right {
-        font-size: 12px; } }
+        font-size: 20px; } }
   .choose__repeat-branch {
     display: inline-block;
-    width: 33.3%;
     padding: 8px; }
     .choose__repeat-branch_label {
       border-bottom: 1px solid #d4d4d4;
@@ -131,8 +128,10 @@ q:after {
       .choose__repeat-branch_label strong {
         color: #9a2b22; }
       .choose__repeat-branch_label p {
-        font-size: 12px;
-        color: #999999; }
+        font-size: 14px;
+        color: #777777;
+        margin-top: -5px;
+        margin-bottom: 5px; }
     .choose__repeat-branch_input {
       float: left; }
   .choose__map {
@@ -161,11 +160,13 @@ input[type=checkbox]:not(old) + label,
 input[type=radio]:not(old) + label {
   display: inline-block;
   margin-left: -2em;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  cursor: pointer; }
 
 input[type=checkbox]:not(old) + label > span,
 input[type=radio]:not(old) + label > span {
   display: inline-block;
+  position: relative;
   width: 30px;
   height: 30px;
   margin: 0.25em 0.5em 0.25em 0.25em;
@@ -185,10 +186,21 @@ input[type=checkbox]:not(old):checked + label > span:before {
   width: 24px;
   height: 24px;
   margin: 2px;
+  border-radius: 3px;
   background: #9a2b22; }
 
-.your-request .background-img {
-  height: 600px !important; }
+input[type=checkbox]:not(old):checked + label > span:after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  border-radius: 3px;
+  border: 1px solid #9a2b22; }
+
 .your-request__align-right {
   color: #333333;
   font-size: 20px;
@@ -196,7 +208,11 @@ input[type=checkbox]:not(old):checked + label > span:before {
   text-align: center; }
   @media (max-width: 768px) {
     .your-request__align-right {
-      font-size: 12px; } }
+      font-size: 20px; }
+      .your-request__align-right > div {
+        margin-bottom: 15px; }
+      .your-request__align-right #exampleInputPassword1 {
+        margin-bottom: 15px; } }
 .your-request__wrapper-form_info-text {
   font-size: 10px;
   color: #9a2b22; }
@@ -205,7 +221,8 @@ input[type=checkbox]:not(old):checked + label > span:before {
   width: 326px;
   height: 430px;
   margin-top: 10px;
-  padding: 45px; }
+  padding: 45px;
+  margin: 0 auto; }
   .your-request__blank-order_black-title {
     font-size: 12px;
     padding-top: 10px; }

@@ -24,23 +24,22 @@
     <div class="background-img">
         <div class="container">
             <h1 class="choose__title">Онлайн запись</h1>
-            <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
-            <div class="row">
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите филиал:</div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">1 из 5</div>
-            </div>
-            <div class="row" style="margin-top: 30px;">
-<div class="choose__repeat-branch" ng-repeat="branch in branches" ng-click="chooseBranch(branch)">
-    <input class="choose__repeat-branch_input" type="checkbox" id="{{branch.id}}" ng-model="branch.checked" value="{{branch.id}}">
-    <label class="choose__repeat-branch_label" for="{{branch.id}}"><span
-                            style="float: left"><span></span></span><strong>
-                        {{branch.name }}</strong>
-<p>{{ branch.address }}</p>
-</label>
-</div>
-</div>
-</div>
-</div>
+                <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите филиал:</div>
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">1 из 5</div>
+                    </div>
+                    <div class="row" style="margin-top: 30px;">
+                        <div class="choose__repeat-branch col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="branch in branches" ng-click="chooseBranch(branch)">
+                            <input class="choose__repeat-branch_input" type="checkbox" id="{{branch.id}}" ng-model="branch.checked" value="{{branch.id}}">
+                            <label class="choose__repeat-branch_label" for="{{branch.id}}"><span style="float: left"><span></span></span>
+                                <strong>{{branch.name }}</strong>
+                                <p>{{ branch.address }}</p>
+                            </label>
+                        </div>
+                    </div>
+    </div>
+    </div>
 <div class="choose__map" id="map">
     <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A68d3e9fd09384f1061c9892c4cb078e8e0e77d528e8f3747750a2ae2a86dec15&amp;width=100%25&amp;height=300&amp;lang=ru_UA&amp;scroll=true"></script>
 </div>
@@ -50,13 +49,13 @@
 </p>
 </section>
 
-<section class="choose choose-service" ng-show="second && address">
+<section class="choose choose-service" > <!--ng-show="second && address"-->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите услугу:</div>
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">2 из 5</div>
         </div>
-        <div class="row">
+        <div class="row choose-service_row">
             <div class="col-md-4 col-lg-4 col-sm-4 choose-service__block1 ">
                 <div class="choose-service__item" ng-repeat="service in services1" ng-click="chooseService(service, $event)">
                     <i class="fa fa-angle-down angle-down" aria-hidden="true"></i>{{service.name}}
@@ -81,58 +80,34 @@
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                 <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
                             </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7"><span class="choose-service__text">{{service.name}}</span></div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="choose-service__currency">{{service.price}}</span></div>
+                            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8"><span class="choose-service__text" ng-class="{'choose-service__text-active' : service.checked}">{{service.name}}</span></div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right"><span class="choose-service__currency">{{service.price}}</span><span>&nbsp;руб.</span></div>
                             <input type="checkbox" ng-model="service.checked" >
                         </label>
                     </div>
                 </div>
-                <!--<div class="col-md-4 col-lg-4 col-sm-4">
-                    <div class="row choose-service__choose" ng-repeat="service in service2" ng-click="choose(service)">
-                        <label>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7"><span class="choose-service__text">{{service.name}}</span></div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="choose-service__currency">{{service.price}}</span></div>
-                            <input type="checkbox" ng-model="service.checked" >
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-4 col-sm-4">
-                    <div class="row choose-service__choose" ng-repeat="service in service3" ng-click="choose(service)">
-                        <label>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7"><span class="choose-service__text">{{service.name}}</span></div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="choose-service__currency">{{service.price}}</span></div>
-                            <input type="checkbox" ng-model="service.checked" >
-                        </label>
-                    </div>
-                </div>-->
             </div>
         </div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-service__output" ng-if="choise && sum">
-        Выбрано: <span>{{choise}}</span> на сумму: <span>{{sum}}</span>
+        Выбрано: <span>{{choise}}</span> на сумму: <span>{{sum}}&nbsp;руб.</span>
     </div>
     <p class="choose__button-next">
         <button type="button" class="btn btn-default" ng-click="third = true" ng-disabled="!secondBtn">Продолжить</button>
     </p>
 </section>
 
-<section class="choose choose-specialist" ng-show="third && sum && choise" >
+<section class="choose choose-specialist"> <!--ng-show="third && sum && choise"-->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите специалиста:</div>
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">3 из 5</div>
         </div>
         <div class="row choose-specialist_row">
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-specialist__block" ng-repeat="specialist in specialists">
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 choose-specialist__block" ng-repeat="specialist in specialists">
                 <div class="choose-spesialist_wrap"  ng-click="chooseSpecialist(specialist)" ng-class="{'choose-spesialis_active' : specialist.checked}">
                     <label>
                         <div class="row">
-                            <div class="col-md-4 col-lg-4 col-sm-4">
+                            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                                 <div class="choose-specialis_master">
                                 <img alt="photo" src="img/master1.jpg" class="img-circle"></img>
                                 </div>
@@ -145,40 +120,6 @@
                     </label>
                 </div>
             </div>
-            <!--<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-specialist__block">
-                <div class="choose-spesialist_wrap" ng-repeat="specialist in specialists2" ng-click="chooseSpecialist(specialist)" ng-class="{'choose-spesialis_active' : specialist.checked}">
-                    <label>
-                        <div class="row">
-                            <div class="col-md-4 col-lg-4 col-sm-4">
-                                <div class="choose-specialis_master">
-                                <img alt="photo" src="img/master2.jpg" class="img-circle"></img>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8 choose-specialis_master-name">
-                            <span>{{specialist.name}}</span> <br> {{specialist.job}}
-                            </div>
-                        </div>
-                        <input type="checkbox" ng-model="specialist.checked">
-                    </label>
-                </div>                    
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-specialist__block">
-                <div class="choose-spesialist_wrap" ng-repeat="specialist in specialists3" ng-click="chooseSpecialist(specialist)" ng-class="{'choose-spesialis_active' : specialist.checked}">
-                    <label>
-                        <div class="row">
-                            <div class="col-md-4 col-lg-4 col-sm-4">
-                                <div class="choose-specialis_master">
-                                <img alt="photo" src="img/master3.jpg" class="img-circle"></img>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8 choose-specialis_master-name">
-                                <span>{{specialist.name}}</span> <br> {{specialist.job}}
-                            </div>
-                        </div>
-                        <input type="checkbox" ng-model="specialist.checked">
-                    </label>
-                </div>
-            </div>-->
         </div>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-service__output">
@@ -192,13 +133,13 @@
 <section class="choose choose-date" ng-show="fifth && pickedSpec"> <!--ng-show="fifth && pickedSpec"-->
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
-            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">Выберите время:
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
+            <div class="col-md-6 col-lg-6 hidden-sm hidden-xs choose__align-right your-request__align-right">Выберите время:
             </div>
-            <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right">4 из 5</div>
+            <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6 choose__align-right">4 из 5</div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-md-offset-1 col-lg-offset-1 choose__align-left">
+            <div class="col-md-5 col-lg-4 col-sm-7 col-xs-12 col-md-offset-1 col-lg-offset-1 choose__align-left">
                 <div class="cal_wrap">
 
                 
@@ -208,11 +149,11 @@
                         <tr class="calendar_days"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
                     <tbody>
                 </table>
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <!--<i class="fa fa-angle-left" aria-hidden="true"></i>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>-->
                 </div>
             </div>
-            <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 col-md-offset-1 col-lg-offset-1 choose__align-right your-request__align-right choose-date__time">
+            <div class="col-md-5 col-lg-5 col-sm-5 col-xs-12 col-md-offset-1 col-lg-offset-1 choose__align-right your-request__align-right choose-date__time">
                 <div class="row choose-date__row-text">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-date__text">Доступное время:</div>
                     <div ></div>
@@ -238,18 +179,18 @@
     </p>
 </section>
 
-<section class="choose your-request" ng-show="fourth && pickedTime && pickDate"> <!-- -->
+<section class="choose your-request" > <!--ng-show="fourth && pickedTime && pickDate" -->
     <div class="background-img">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose__align-left">Ваша заявка:</div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">Введите данные для связи:
+                <div class="col-md-4 col-lg-4 col-lg-offset-1 col-sm-6 col-xs-6 choose__align-left">Ваша заявка:</div>
+                <div class="col-md-6 col-lg-6 hidden-sm hidden-xs choose__align-right your-request__align-right"><span class="">Введите данные для связи:</span>
                 </div>
-                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right">5 из 5</div>
+                <div class="col-md-2 col-lg-1 col-sm-6 col-xs-6 choose__align-right">5 из 5</div>
             </div>
             <div class="your-request__wrapper-form">
                 <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose__align-left">
+                    <div class="col-md-4 col-lg-4 col-lg-offset-1 col-sm-3 choose__align-left text-center">
                         <div class="row">
                             <div class="col-md-2 col-lg-2 col-sm-2 hidden-xs">
                                 <img class="your-request__img-text" src="img/icon-info.png" />
@@ -281,17 +222,18 @@
 </p>
 </div>
 </div>
-<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right your-request__align-right">
+<div class="col-md-8 col-lg-6 col-sm-9 choose__align-right your-request__align-right">
+    <div class="hidden-lg hidden-md hidden-sm">Введите данные для связи:</div>
     <form class="your-request__form" ng-submit="sendForm()" name="orderForm">
         <div class="form-group">
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя:" ng-model="firstName">
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4">
                     <input name="phone1" type="text" class="form-control" id="exampleInputPassword1" placeholder="+" value="+" ng-model="userPhone1" required>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 col-sm-8">
                     <input name="phone2" type="tel" class="form-control" placeholder="Телефон:" ng-model="userPhone2" required>
                 </div>
             </div>
@@ -301,32 +243,31 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="font-size: 16px; padding: 5px"> Напомнить:
+                <div class="col-md-4 col-sm-4" style="font-size: 16px; padding: 18px 0 0 15px;"> Напомнить:
 </div>
-<div class="col-md-8">
+<div class="col-md-8 col-sm-8">
     <div class="form-group">
-        <select class="form-control" id="sel1" ng-model="reminder" ng-change="getReminder()" ng-options="opt for opt in reminderArr">
-                                                <!--<option>За 1 час до визита</option>
-                                                <option>За 2 час до визита</option>
-                                                <option>За 3 час до визита</option>
-                                                <option>За 4 час до визита</option>-->
-                                            </select>
+        <select class="form-control" id="sel1" ng-model="reminder" ng-change="getReminder()" ng-options="opt for opt in reminderArr"></select>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
     </div>
-
 </div>
 </div>
 </div>
 <div class="choose__repeat-branch your-request__form-checkbox">
     <input class="choose__repeat-branch_input your-request__form-checkbox" type="checkbox" id="policy" ng-model="branch.checked"
         value="policy" required>
-    <label class="choose__repeat-branch_label" for="policy"><span
-                                        style="float: left"><span></span></span>
-Нажимая на кнопку "Оформить заявку", Вы соглашаетесь с условиями<strong>
-                                        <a class="your-request__policy-blank" href="">Пользовательского
-                                            соглашения</a></strong>
+    <label class="choose__repeat-branch_label" for="policy">
+        <span style="float: left">
+            <span>
+            </span>
+        </span>
+                Нажимая на кнопку "Оформить заявку", Вы соглашаетесь с условиями
+        <small class="treaty-consent">
+            <a class="your-request__policy-blank" href="">пользовательского соглашения</a>
+        </small>
 </label>
 </div>
-<button class="btn btn-default your-request__button-ok" ng-disabled="orderForm.$invalid">Оформить заявку</button>
+<button class="btn btn-default your-request__button-ok" ng-disabled="orderForm.$invalid" data-toggle="modal" data-target="#sendModal">Оформить заявку</button>
 </form>
 </div>
 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 choose__align-right"></div>
@@ -340,7 +281,7 @@
 <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" role="dialog" ng-click="resetModal()">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -363,11 +304,31 @@
                 </div>
             </div>
             <div class="modal-footer">
-                        <button class="btn btn-primary" ng-click="authorization()" ng-show="isModalPhone">Отправить</button>
-                        <button class="btn btn-primary" ng-click="sendPass()" ng-hide="isModalPhone">Авторизоваться</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-danger" ng-click="authorization()" ng-show="isModalPhone">Отправить</button>
+                <button class="btn btn-danger" ng-click="sendPass()" ng-hide="isModalPhone">Авторизоваться</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">Отмена</button>
             </div>
         </form>
+    </div>
+
+  </div>
+</div>
+
+<div id="sendModal" class="modal fade" role="dialog" ng-click="correct()">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title text-center" ng-hide="isModalErr">Заявка принята</h4>
+                <h4 class="modal-title text-center text-danger" ng-show="isModalErr">Ошибка сервера</h4>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">ОК</button>
+            </div>
     </div>
 
   </div>

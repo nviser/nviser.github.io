@@ -3,17 +3,61 @@ $colorPurple: #9a2b22;
 /*.choose-service .row ~ .row {
     margin-top: 20px;
 }*/
+.textRLR {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;   
+}
+.textRR {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;   
+}
+.textRB {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;   
+}
+.choose__title {
+    @extend .textRLR;
+    font-size: 48px;
+}
+.choose__align-left {
+    @extend .textRLR;
+}
+.choose__align-right {
+    @extend .textRLR;
+}
+.choose__repeat-branch_label {
+    font-size: 14px;
+    @extend .textRLR;
+    strong {
+        @extend .textRB;
+        font-size: 16px;
+    }
+    .treaty-consent {
+        font-size: 14px;    
+        @extend .textRLR;
+    }
+}
+.choose__repeat-branch_label {
+    p {
+        @extend .textRLR;
+    }
+}
+.choose-service_row {
+    margin-top: 20px;
+}
 .choose-service__item, .choose-service__item2 {
     vertical-align: middle;
     padding: 10px 40px 10px;
     position: relative;
     border: 1px solid #dcdcdc;
     border-bottom: none;
+    @extend .textRR;
     &:hover {
         cursor: pointer;
     }
     i {
         font-size: 20px;
+        color: #a3a3a3;
     }
 }
 .choose-service__item:last-child, .choose-service__item2:last-child {
@@ -37,6 +81,7 @@ $colorPurple: #9a2b22;
     label {
         display: block;
         font-weight: normal;
+        cursor: pointer;
     }
 }
 .pseudo-check {
@@ -52,10 +97,20 @@ $colorPurple: #9a2b22;
     background: #9a2b22;
     border: 1px solid #770900;
 }
+.choose-service__text-active {
+    color: $colorPurple;
+    text-decoration-color: $colorPurple !important;
+}
 .choose-service__currency {
     color: $colorPurple;
+    @extend .textRR;
+    font-size: 18px;
+    & + span {
+        color: $colorPurple;
+    }    
 }
 .choose-service__text {
+    @extend .textRR;
     text-decoration: underline;
     text-decoration-style: dashed;
     text-decoration-color: #afafaf;
@@ -68,6 +123,8 @@ $colorPurple: #9a2b22;
 .choose-service__output {
     text-align: center;
     margin: 20px 0;
+    @extend .textRLR;
+    font-size: 16px;
     span {
         text-decoration: underline;
         text-decoration-style: dashed;
@@ -100,16 +157,24 @@ $colorPurple: #9a2b22;
         position: absolute;
         width: 10px;
         height: 20px;
-        top: 15px;
+        top: 19px;
         font-size: 35px;
         z-index: -2;
     }
 }
 .calendar2-left {
-    padding-left: 10px;
+    padding-left: 15px;
+    font-size: 18px;
+    @extend .textRLR;
+    vertical-align: middle;
+    position: relative;
 }
 .calendar2-right {
-    padding-right: 10px;
+    padding-right: 15px;
+    font-size: 18px;
+    @extend .textRLR;
+    vertical-align: middle;
+    position: relative;
 }
 #calendar2 thead tr:first-child {
   border: 1px solid  #dcdcdc;
@@ -128,9 +193,12 @@ $colorPurple: #9a2b22;
 #calendar2 tbody td {
   color: #dcdcdc;
   border: 1px solid  #dcdcdc;
-  padding: 7px;
-  font-size: 20px;
+  padding: 3px;
+  font-size: 35px;
+  @extend .textRLR;
   cursor: pointer;
+  height: 47px;
+  vertical-align: middle;
     &.available {
         color: #333333;
     }
@@ -140,19 +208,22 @@ $colorPurple: #9a2b22;
 }
 #calendar2 tbody td.today {
   background: #f7f7f7;
-  &.available {
-      color: #333333;
-  }
+    &.available {
+        color: #333333;
+    }
 }
 .calendar_header {
     background: #770900;
-    font-size: 22px;
+    font-size: 30px;
     color: #fff !important;
-    font-weight: bold;
+    @extend .textRB;
     height: 50px;
     padding: 11px;
     border: 1px solid #520600;
     line-height: 1.1;
+    p {
+        font-size: 18px;
+    }
 }
 .calendar_days {
     td {
@@ -173,6 +244,8 @@ $colorPurple: #9a2b22;
 .choose-date__time {
     .choose-date__text {
         padding: 0;
+        font-size: 18px;
+        @extend .textRLR;
     }
     .choose-date__row-text {
         font-size: 18px;
@@ -186,9 +259,10 @@ $colorPurple: #9a2b22;
         .time-block {
             border: 1px solid #ccc;
             margin-bottom: 5px;
-            font-size: 14px;
+            font-size: 16px;
             padding: 5px;
             cursor: pointer;
+            @extend .textRLR;
         }
         .choose-date__active {
             color: #fff;
@@ -207,6 +281,10 @@ $colorPurple: #9a2b22;
         padding: 10px;
         position: relative;
         margin-bottom: 10px;
+        cursor: pointer;
+        label {
+            cursor: pointer;
+        }
         .img-circle {
             border: 1px solid #777;
         }
@@ -248,10 +326,77 @@ $colorPurple: #9a2b22;
     }
     .choose-specialis_master-name {
         padding-top: 30px;
+        font-size: 16px;
+        @extend .textRLR;
         span {
             font-size: 24px;
-            font-weight: bold;
+            @extend .textRB;
             color: $colorPurple;
         }
+    }
+}
+
+.your-request__form {
+    .form-control {
+        @extend .textRLR;
+        appearance: none;
+        -webkit-appearance: none;
+        height: 58px;
+        font-size: 16px;
+    }
+    .form-group {
+        position: relative;
+        .fa {
+            position: absolute;
+            top: 12px;
+            right: 10px;
+            font-size: 35px;
+            color: $colorPurple;
+        }
+    }
+    .your-request__button-ok {
+        font-size: 24px;
+        @extend .textRLR;
+    }
+}
+
+#myModal, #sendModal {
+   @media (min-width: 768px) {
+        .modal-dialog {
+            width: 400px;
+            margin: 30px auto;
+        }
+   }
+}
+#sendModal {
+    padding-right: 0 !important;
+    .modal-footer {
+        text-align: center;
+    }
+}
+.modal-body {
+    background: #d9534f;
+}
+#sendModal {
+    .modal-title {
+        color: #fff;
+    }
+}
+@media (screen and max-width: 1200px) {
+    .your-request__form {
+        margin: 0 auto;
+    }
+}
+@media (screen and max-width: 992px) {
+    .your-request__form {
+        float: right;
+    }
+    /*.choose__align-right {
+        margin-top: 10px;
+    }*/
+}
+@media (screen and max-width: 768px) {
+    .your-request__form {
+        float: none;
     }
 }
