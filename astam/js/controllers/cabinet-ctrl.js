@@ -5,6 +5,11 @@ angular.module('beautySalon.controllers')
                 $scope.items = data;
             }
         );*/
+    $scope.showHiddenMenu = false;
+    $scope.showHideMenu = function () {
+        $scope.showHiddenMenu = !$scope.showHiddenMenu;
+    }
+    $scope.myTracks = true;
     $scope.forRendering = function (array) {
         pagination.setProducts( array );
         $scope.products = pagination.getPageProducts( $scope.currentPage );

@@ -341,8 +341,12 @@ $colorPurple: #9a2b22;
         @extend .textRLR;
         appearance: none;
         -webkit-appearance: none;
+        -moz-appearance: none;
         height: 58px;
         font-size: 16px;
+        &::-ms-expand {
+            display: none;
+        }
     }
     .form-group {
         position: relative;

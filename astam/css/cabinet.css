@@ -1,3 +1,15 @@
+.textRLR, .my-tracks .my-tracks_account, .service .service__text-header, .service .service__cost {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300; }
+
+.textRR, .service .service__text-header .service__text.service__text-service, .navigation ul li a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; }
+
+.textRB, .service .service__text-header .service__text.service__text-address, .service .service__cost .service__sum span, .service .service__for-date, .service .service__date span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; }
+
 .bg-img {
   background-image: url(../img/main-bg-img.png);
   width: 100%; }
@@ -5,15 +17,118 @@
 .for-buttons {
   margin-top: 15px; }
 
-.service__text {
-  background: #fff;
-  border: 1px solid #ccc; }
+.wrapper-logo_cabinet {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/logo.png");
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: left center; }
 
-.service-month {
-  text-transform: capitalize; }
+.my-tracks_menu {
+  cursor: pointer;
+  margin-top: -15px; }
+  .my-tracks_menu:hover {
+    color: #9a2b22; }
+  .my-tracks_menu:active {
+    color: #770900; }
+  .my-tracks_menu i {
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    right: 0px;
+    transition: right 1s;
+    -webkit-transition: right 1s; }
+    .my-tracks_menu i:hover {
+      color: #9a2b22;
+      right: 5px; }
+    .my-tracks_menu i:active {
+      color: #770900; }
+
+.nav_hidden .navigation_items {
+  height: 50px;
+  border-bottom: 1px solid  #e6cbc9;
+  padding-top: 13px;
+  padding-left: 20px; }
+  .nav_hidden .navigation_items.navigation_items_active a {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #333333; }
+    .nav_hidden .navigation_items.navigation_items_active a:hover {
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-decoration-color: #333333;
+      color: #333; }
+  .nav_hidden .navigation_items a {
+    color: #333; }
+    .nav_hidden .navigation_items a:hover {
+      text-decoration: none;
+      color: #770900; }
+  .nav_hidden .navigation_items:last-child {
+    border: none; }
+
+.my-tracks .my-tracks_account {
+  font-size: 14px;
+  color: #333;
+  margin-top: 27px; }
+  .my-tracks .my-tracks_account span {
+    font-size: 18px;
+    color: #770900; }
+  .my-tracks .my-tracks_account .my-tracks_currency {
+    color: #770900;
+    font-size: 14px; }
+
+.service .service__text-header {
+  font-size: 16px; }
+  .service .service__text-header .service__text {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #9a2b22;
+    margin-bottom: 10px; }
+    .service .service__text-header .service__text.service__text-service {
+      font-size: 18px; }
+.service .service__cost {
+  text-align: center;
+  font-size: 16px;
+  border-left: 1px solid #e6cbc9;
+  height: 150px; }
+  .service .service__cost .service__sum {
+    margin-top: 15px; }
+    .service .service__cost .service__sum span {
+      font-size: 36px;
+      color: #770900; }
+.service .service__spec .service__spec-name {
+  color: #770900; }
+.service .service__for-date {
+  padding-top: 20px;
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+  color: #fff;
+  background: #920021;
+  font-size: 18px; }
+  .service .service__for-date strong {
+    font-size: 48px;
+    display: block;
+    line-height: 0.8; }
+  .service .service__for-date .service-month {
+    color: #fff; }
+.service .service__date span {
+  color: #770900; }
 
 .service_cancel-btn {
-  margin-top: 10px; }
+  margin-top: 30px;
+  padding-left: 50px;
+  background-image: url(../img/cancel-icon.png);
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  height: 40px; }
+  .service_cancel-btn:active {
+    background-image: url(../img/cancel-icon.png); }
 
 .service__for-img {
   height: 100px;
@@ -25,29 +140,65 @@
   .service__for-img img {
     border: 1px solid  #777; }
 
-.service__for-date {
-  padding-top: 15px;
-  margin: 0 auto;
-  height: 100px;
-  width: 100px;
-  color: #fff;
-  background: #920021; }
-  .service__for-date strong {
-    font-size: 30px;
-    display: block; }
-  .service__for-date span {
-    font-size: 16px; }
-
 .repeater {
   border-top: 1px solid #ccc;
-  padding: 20px; }
+  padding: 20px;
+  text-align: left; }
 
-.navigation {
-  padding-top: 35px; }
+.navigation ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px; }
+  .navigation ul li:not(.my-tracks_active):hover {
+    border: 1px solid #770900;
+    padding: 7px 15px; }
+    .navigation ul li:not(.my-tracks_active):hover a {
+      text-decoration: none;
+      color: #770900; }
+  .navigation ul li a {
+    color: #333; }
+  .navigation ul li.my-tracks_active a {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #333333; }
 
 @media (max-width: 768px) {
-  .navigation {
-    padding-top: 15px; } }
+  .wrapper-logo_cabinet {
+    height: 70px; }
+
+  .navigation ul {
+    height: 70px; }
+
+  .service .service__text-header {
+    margin-bottom: 30px; }
+    .service .service__text-header .service__text {
+      margin-bottom: 30px; }
+  .service .service__sum {
+    border-left: none; }
+
+  .my-tracks_account {
+    text-align: left; }
+
+  .repeater {
+    /*text-align: center;*/ }
+    .repeater button {
+      margin-top: 30px; } }
+@media (max-width: 992px) {
+  .service__for-img {
+    height: 80px;
+    width: 80px;
+    padding: 3.6px; }
+    .service__for-img img {
+      height: 70px;
+      width: 70px;
+      border: 1px solid  #777; }
+
+  .service__date {
+    text-align: center; }
+    .service__date span {
+      font-size: 14px; } }
 .pagination-wrap ul li {
   cursor: pointer; }
   .pagination-wrap ul li a {

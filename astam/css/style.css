@@ -269,8 +269,11 @@
 .your-request__form .form-control {
   appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
   height: 58px;
   font-size: 16px; }
+  .your-request__form .form-control::-ms-expand {
+    display: none; }
 .your-request__form .form-group {
   position: relative; }
   .your-request__form .form-group .fa {

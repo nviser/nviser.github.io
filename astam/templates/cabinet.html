@@ -2,26 +2,26 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="row">
-                <!--div class="hidden">
-                    <div class="logo1"></div>
-                </div>-->
                 <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
-                    <div class="wrapper-logo2">
+                    <div class="wrapper-logo_cabinet">
                         <img class="wrapper-logo2__logo2 img-responsive" src="img/logo-center.png" alt=""/>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-center navigation">
-                    <ul class="list-inline" style="display: inline-block">
+                    <ul class="list-inline hidden-sm hidden-xs">
                         <li><a href="#/">Онлайн запись</a></li>
-                        <li><a href="#/">Мои записи</a></li>
+                        <li ng-class="{'my-tracks_active' : myTracks}"><a href="#/">Мои записи</a></li>
                         <li><a href="#/">О сервисе</a></li>
                         <li><a href="#/">Лояльность</a></li>
                     </ul>
-                        <!--<div style="display: inline-block">Онлайн запись</div>
-                        <div style="display: inline-block">Мои записи</div>
-                        <div style="display: inline-block">О сервисе</div>
-                        <div style="display: inline-block">Лояльность</div>-->
+                    <ul class="hidden-lg hidden-md">
+                        <li ng-click="showHideMenu()" class="my-tracks_active my-tracks_menu">
+                            <i class="fa fa-times" aria-hidden="true" ng-show="showHiddenMenu"></i>
+                            <i class="fa fa-bars" aria-hidden="true" ng-hide="showHiddenMenu"></i>&nbsp;Меню
+                            </li>
+                    </ul>
                 </div>
+
                 <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
                     <p class="navbar-text">
                         <img class="navbar-text__user-img" src="img/login-user.png"/>
@@ -31,59 +31,69 @@
             </div>
         </div>
     </nav>
+   <div class="nav_hidden hidden-lg hidden-md" ng-show="showHiddenMenu">
+       <div class="navigation_items"><a href="#/">Онлайн запись</a></div>
+       <div class="navigation_items" ng-class="{'navigation_items_active' : myTracks}"><a href="#/">Мои записи</a></div>
+       <div class="navigation_items"><a href="#/">О сервисе</a></div>
+       <div class="navigation_items"><a href="#/">Лояльность</a></div>
+   </div>
 </header>
-<section class="choose">
+<section class="choose my-tracks">
     <div class="bg-img">
         <div class="container">
             <h1 class="choose__title">Мои записи</h1>
             <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
-            <div class="container for-buttons">
+            <div class="for-buttons">
                 <div class="row text-center">
                     <button class="btn" ng-class="cansellation ? 'btn-danger' : 'btn-default'" ng-click="impendingSessions()">Предстоящие сеансы</button>
                     <button class="btn" ng-class="!cansellation ? 'btn-danger' : 'btn-default'" ng-click="lastSessions()">Прошедшие сеансы</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите филиал:</div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">Ваш баланс: 1200 руб Ваша скидка 10%</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 choose__align-left">Ваши заявки:</div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 choose__align-right my-tracks_account">Ваш балланс: <span>1200</span><span class="my-tracks_currency"> руб </span> &nbsp;&nbsp;&nbsp;&nbsp;Ваша скидка <span>10%</span></div>
+                </div>
             </div>
         </div>
 
         <div class="service">
             <div class="container">
                 <div class="row repeater" ng-repeat="item in products">
-                    <div class="col-lg-6 col md-6 col-sm-6 col-xs-6">
+                    <div class="col-lg-6 col md-6 col-sm-6 col-xs-12 service__text-header">
                         Услуга:
-                        <div class="service__text">
+                        <div class="service__text service__text-service">
                             {{item.serviceName}}
                         </div>
                         Адрес:
-                        <div class="service__text">
+                        <div class="service__text service__text-address">
                             Lorem ipsum dolor sit amet, consectetur adipisicing. Краснобогатырская 64
                         </div>
                     </div>
-                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-2">
+                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-4 service__cost service__sum">
                         Стоимость:
-                        <div>
-                            <span>1900</span> рублей
+                        <div class="service__sum">
+                            <span>1900</span> <div>рублей</div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-2 text-center">
+                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-4 text-center service__cost service__spec">
                         Специалист:
                         <div class="service__for-img">
                             <img src="img/master1.jpg" alt="master_photo" class="img-circle">
                         </div>
-                        <div>{{item.fullName}}</div>
+                        <div class="service__spec-name">{{item.fullName}}</div>
                     </div>
-                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-2 text-center">
-                        Дата и время:
+                    <div class="col-lg-2 col md-2 col-sm-2 col-xs-4 text-center service__cost service__date">
+                        <nobr>Дата и время:</nobr>
                         <div class="service__for-date">
                             <strong>{{item.serviceDetails.date | date: "d"}}</strong>
                             <span class="service-month">{{item.serviceDetails.date | date: "MMMM"}}</span>
                         </div>
                         <span>{{item.serviceDetails.start | date: "hh.mm"}} - {{item.serviceDetails.end | date: "hh.mm"}}</span>
                     </div>
-                    <button class="btn btn-danger service_cancel-btn" ng-if="cansellation">Отменить запись</button>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                            <button class="btn btn-danger service_cancel-btn" ng-if="cansellation">Отменить запись</button>
+                        </div>
                 </div>
             </div>
             <div class="pagination-wrap text-center">

@@ -1,3 +1,17 @@
+$colorDeepRed: #770900;
+$colorPurple: #9a2b22;
+.textRLR {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;   
+}
+.textRR {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;   
+}
+.textRB {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;   
+}
 .bg-img {
     background-image: url(../img/main-bg-img.png);
     width: 100%;
@@ -5,15 +19,164 @@
 .for-buttons {
     margin-top: 15px;
 }
-.service__text {
-    background: #fff;
-    border: 1px solid #ccc;
+.wrapper-logo_cabinet {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/logo.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: left center;
 }
-.service-month {
-    text-transform: capitalize;
+.my-tracks_menu {
+    cursor: pointer;
+    margin-top: -15px;
+    &:hover {
+            color: $colorPurple;
+        }
+    &:active {
+        color: $colorDeepRed;
+    }
+    i {
+        font-size: 30px;
+        position: relative;
+        top: 5px;
+        right: 0px;
+        transition: right 1s;
+        -webkit-transition: right 1s;
+        &:hover {
+            color: $colorPurple;
+            right: 5px;
+        }
+        &:active {
+            color: $colorDeepRed;
+        }
+    }
+}
+.nav_hidden {
+    .navigation_items {
+        height: 50px;
+        border-bottom: 1px solid  #e6cbc9;
+        padding-top: 13px;
+        padding-left: 20px;
+        &.navigation_items_active {
+           a {
+                text-decoration: underline;
+                text-decoration-style: dashed;
+                text-decoration-color: #333333;
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-style: dashed;
+                    text-decoration-color: #333333;
+                    color: #333;
+            }
+           } 
+        }
+        a {
+            color: #333;
+            
+            &:hover {
+                text-decoration: none;
+                color: $colorDeepRed;
+            }
+        }
+        &:last-child {
+            border: none;
+        }
+    }
+}
+.my-tracks {
+    .my-tracks_account {
+        @extend .textRLR;
+        font-size: 14px;
+        color: #333;
+        margin-top: 27px;
+        span {
+            font-size: 18px;
+            color: $colorDeepRed;
+        }
+        .my-tracks_currency {
+            color: $colorDeepRed;
+            font-size: 14px;
+        }
+    }
+}
+.service {
+    .service__text-header {
+        @extend .textRLR;
+        font-size: 16px;
+        .service__text {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 5px;
+            color: $colorPurple;
+            margin-bottom: 10px;
+            &.service__text-service {
+                @extend .textRR;
+                font-size: 18px;
+            }
+            &.service__text-address {
+                @extend .textRB;
+            }
+        }
+    }
+    .service__cost {
+        text-align: center;
+        @extend .textRLR;
+        font-size: 16px;
+        border-left: 1px solid #e6cbc9;
+        height: 150px;
+        .service__sum {
+            margin-top: 15px;
+            span {
+                @extend .textRB;
+                font-size: 36px;
+                color: $colorDeepRed;
+            }
+        }
+    }
+    .service__spec {
+        .service__spec-name {
+            color: $colorDeepRed;
+        }
+    }
+    .service__for-date {
+        padding-top: 20px;
+        margin: 0 auto;
+        height: 100px;
+        width: 100px;
+        color: #fff;
+        background: #920021;
+        @extend .textRB;
+        font-size: 18px;
+        strong {
+            font-size: 48px;
+            display: block;
+            line-height: 0.8;
+        }
+        .service-month {
+            color: #fff;
+        }
+    }
+    .service__date {
+        span {
+            color: $colorDeepRed;
+            @extend .textRB;
+        }
+    }
 }
 .service_cancel-btn {
-    margin-top: 10px;
+    margin-top: 30px;
+    padding-left: 50px;
+    background-image: url(../img/cancel-icon.png);
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    height: 40px;
+    &:active {
+        background-image: url(../img/cancel-icon.png);
+    }
 }
 .service__for-img {
     height: 100px;
@@ -26,31 +189,88 @@
         border: 1px solid  #777;
     }
 }
-.service__for-date {
-    padding-top: 15px;
-    margin: 0 auto;
-    height: 100px;
-    width: 100px;
-    color: #fff;
-    background: #920021;
-    strong {
-        font-size: 30px;
-        display: block;
-    }
-    span {
-        font-size: 16px;
-    }
-}
+
 .repeater {
     border-top: 1px solid #ccc;
     padding: 20px;
+    text-align: left;
 }
 .navigation {
-    padding-top: 35px;
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        li {
+            &:not(.my-tracks_active):hover {
+                border: 1px solid $colorDeepRed;
+                padding: 7px 15px;
+                a {
+                    text-decoration: none;
+                    color: $colorDeepRed;
+                }
+            }
+            a {
+                @extend .textRR;
+                color: #333;
+            }
+            &.my-tracks_active {
+                a {
+                    text-decoration: underline;
+                    text-decoration-style: dashed;
+                    text-decoration-color: #333333;
+                }
+            }
+        }
+    }
 }
 @media (max-width: 768px) {
+    .wrapper-logo_cabinet {
+        height: 70px;
+    }
     .navigation {
-        padding-top: 15px;
+        ul {
+            height: 70px;
+        }
+    }
+    .service {
+        .service__text-header {
+            margin-bottom: 30px;
+            .service__text {
+                margin-bottom: 30px;
+            }
+        }
+        .service__sum {
+            border-left: none;
+        }
+    }
+    .my-tracks_account {
+        text-align: left;
+    }
+    .repeater {
+        /*text-align: center;*/
+        button {
+            margin-top: 30px;
+        }
+    }
+}
+@media (max-width: 992px) {
+    .service__for-img {
+        height: 80px;
+        width: 80px;
+        padding: 3.6px;
+        img {
+            height: 70px;
+            width: 70px;
+            border: 1px solid  #777;
+        }
+    }
+    .service__date {
+        text-align: center;
+        span {
+            font-size: 14px;
+        }
     }
 }
 .pagination-wrap {
