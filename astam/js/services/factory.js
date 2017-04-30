@@ -4,7 +4,16 @@ angular.module('BeautySalon')
             orders: function () {
                return $resource(api + 'v1/orders', {}, {query:{method:'GET', isArray: true}});
             },
+            branches: function () {
+                return $resource(api + 'v1/process', {}, {query:{method:'GET', isArray: true}});
+            },
+            services: function () {
+                return $resource(api + 'v1/process', {}, {query:{method:'GET', params: { item_id : '@item_id' }, isArray: true}});
+            },
             specialists: function () {
+                return $resource(api + 'v1/process', {}, {query:{method:'GET', params: { item_id : '@item_id', service_id : '@service_id' }, isArray: true}});
+            },
+            /*specialists: function () {
                 return [
                         {
                             person_id: '1',
@@ -32,7 +41,7 @@ angular.module('BeautySalon')
                             job: 'Парикмахер'
                         }
                 ]
-            },
+            },*/
             salons: function () {
                 return [
                         {
@@ -92,7 +101,7 @@ angular.module('BeautySalon')
                         }
                     ]
             },
-            services: function () {
+            /*services: function () {
                 return [
                             {
                                 id: '1',
@@ -230,8 +239,8 @@ angular.module('BeautySalon')
                                 services: []
                             }
                         ]
-            },
-            branches: function () {
+            },*/
+            /*branches: function () {
                 return [
                             {
                                 id: '6',
@@ -269,7 +278,7 @@ angular.module('BeautySalon')
                                 long: 37.598070
                             }
                         ]
-            },
+            },*/
             availableDates: function() {
                 return [
                             {

@@ -45,7 +45,7 @@
 </div>
 
 <p class="choose__button-next">
-    <button type="button" class="btn btn-default" ng-click="second = true" ng-disabled="!first">Продолжить</button>
+    <button type="button" class="btn btn-default" ng-click="getServices()" ng-disabled="!first">Продолжить</button>
 </p>
 </section>
 
@@ -81,7 +81,7 @@
                                 <div class="pseudo-check" ng-class="{'choose-service__choose-active' : service.checked}"></div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8"><span class="choose-service__text" ng-class="{'choose-service__text-active' : service.checked}">{{service.name}}</span></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right"><span class="choose-service__currency">{{service.price}}</span><span>&nbsp;руб.</span></div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right"><span class="choose-service__currency">{{service.cost}}</span><span>&nbsp;руб.</span></div>
                             <input type="checkbox" ng-model="service.checked" >
                         </label>
                     </div>
@@ -92,7 +92,7 @@
         Выбрано: <span>{{choise}}</span> на сумму: <span>{{sum}}&nbsp;руб.</span>
     </div>
     <p class="choose__button-next">
-        <button type="button" class="btn btn-default" ng-click="third = true" ng-disabled="!secondBtn">Продолжить</button>
+        <button type="button" class="btn btn-default" ng-click="getSpecialists()" ng-disabled="!secondBtn">Продолжить</button>
     </p>
 </section>
 
@@ -149,8 +149,15 @@
                         <tr class="calendar_days"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
                     <tbody>
                 </table>
-                <!--<i class="fa fa-angle-left" aria-hidden="true"></i>
-                <i class="fa fa-angle-right" aria-hidden="true"></i>-->
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 choose-date_wrapper">
+                    <div class="choose-date_days text-center"><span><nobr>Нет записи</nobr></span></div>
+                </div>
+                <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 choose-date_wrapper">
+                    <div class="choose-date_days text-center"><span><nobr>Доступная записи</nobr></span></div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 choose-date_wrapper">
+                    <div class="choose-date_days text-center"><span><nobr>Выходные дни</nobr></span></div>
                 </div>
             </div>
             <div class="col-md-5 col-lg-5 col-sm-5 col-xs-12 col-md-offset-1 col-lg-offset-1 choose__align-right your-request__align-right choose-date__time">
@@ -192,10 +199,10 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-4 col-lg-offset-1 col-sm-3 choose__align-left text-center">
                         <div class="row">
-                            <div class="col-md-2 col-lg-2 col-sm-2 hidden-xs">
+                            <div class="col-md-2 col-lg-2 hidden-sm hidden-xs">
                                 <img class="your-request__img-text" src="img/icon-info.png" />
                             </div>
-                            <div class="col-md-10 col-lg-10 col-sm-10 hidden-xs">
+                            <div class="col-md-10 col-lg-10 hidden-sm hidden-xs">
                                 <p class="your-request__wrapper-form_info-text">Предварительная запись на данные услуги возможно толькоодин раз в неделю. Об отмене записи
                                     просим сообщить заранее</p>
                             </div>

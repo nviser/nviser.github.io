@@ -1,6 +1,25 @@
 angular.module('BeautySalon')
     .factory('authService', ['$resource','api', function ($resource, api) {
-        var token;
+        return {
+            auth: function (phone) {
+                return $resource(api + ':action', {}, {
+                            auth: {method: 'POST', data: {action: 'v1/auth', phone: '@phone', type: '@type'}}
+                            })
+                }
+            }
+    }]);
+
+    
+
+
+        /*$resource(api + ':action', {}, {
+            auth: {method: 'POST', params: {action: 'v1/auth', phone: '@phone', type: '@type'}},
+            save: {method: 'PUT', params: {action: 'UdpateStaff'}},
+            create: {method: 'POST', params: {action: 'CreateStaff'}},
+            remove: {method: 'DELETE', params: {action: 'DeleteStaff'}}*/
+        //});
+
+        /*var token;
         var obj = {
             auth: function (phone) {
                 var z;
@@ -21,13 +40,4 @@ angular.module('BeautySalon')
                 }
                 http.send(params);
                 return http.onreadystatechange();            }
-        }
-        
-        return obj;
-        /*$resource(api + ':action', {}, {
-            auth: {method: 'POST', params: {action: 'v1/auth', phone: '@phone', type: '@type'}},
-            save: {method: 'PUT', params: {action: 'UdpateStaff'}},
-            create: {method: 'POST', params: {action: 'CreateStaff'}},
-            remove: {method: 'DELETE', params: {action: 'DeleteStaff'}}*/
-        //});
-    }]);
+        }*/

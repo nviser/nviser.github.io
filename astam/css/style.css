@@ -1,7 +1,7 @@
 /*.choose-service .row ~ .row {
     margin-top: 20px;
 }*/
-.textRLR, .choose__title, .choose__align-left, .choose__align-right, .choose__repeat-branch_label, .choose__repeat-branch_label .treaty-consent, .choose__repeat-branch_label p, .choose-service__output, .calendar2-left, .calendar2-right, #calendar2 tbody td, .choose-date__time .choose-date__text, .choose-date__time .choose-date__row .time-block, .choose-specialist .choose-specialis_master-name, .your-request__form .form-control, .your-request__form .your-request__button-ok {
+.textRLR, .choose__title, .choose__align-left, .choose__align-right, .choose__repeat-branch_label, .choose__repeat-branch_label .treaty-consent, .choose__repeat-branch_label p, .choose-service__output, .calendar2-left, .calendar2-right, #calendar2 tbody td, .choose-date__time .choose-date__text, .choose-date__time .choose-date__row .time-block, .choose-date .choose-date_days, .choose-specialist .choose-specialis_master-name, .your-request__form .form-control, .your-request__form .your-request__button-ok {
   font-family: 'Roboto', sans-serif;
   font-weight: 300; }
 
@@ -216,6 +216,23 @@
   color: #fff;
   background: #9a2b22;
   border: 1px solid #9a2b22; }
+
+.choose-date .choose-date_wrapper:nth-child(2) .choose-date_days span:before {
+  background: #d5d5d5; }
+.choose-date .choose-date_wrapper:last-child .choose-date_days span:before {
+  background: #770900; }
+.choose-date .choose-date_days {
+  font-size: 13px; }
+  .choose-date .choose-date_days span {
+    position: relative; }
+    .choose-date .choose-date_days span:before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 2px;
+      left: -15px;
+      background: #333333; }
 
 .choose-specialist .choose-specialist_row {
   margin-top: 20px; }

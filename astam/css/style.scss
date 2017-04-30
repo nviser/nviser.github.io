@@ -267,10 +267,50 @@ $colorPurple: #9a2b22;
         .choose-date__active {
             color: #fff;
             background: $colorPurple;
-            border: 1px solid #9a2b22;
+            border: 1px solid $colorPurple;
         }
     }
 }
+.choose-date {
+    .choose-date_wrapper {
+        &:nth-child(2) {
+            .choose-date_days {
+                span {
+                    &:before{
+                        background: #d5d5d5;
+                    }            
+                }
+            }
+        }
+        &:last-child {
+            .choose-date_days {
+                span {
+                    &:before{
+                        background: #770900;
+                    }            
+                }
+            }
+        }
+    }
+    .choose-date_days {
+        @extend .textRLR;
+        font-size: 13px;
+        span {
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                top: 2px;
+                left: -15px;
+                background: #333333;
+            }
+        }
+    }
+}
+
+
 .choose-specialist {
     .choose-specialist_row {
         margin-top: 20px;

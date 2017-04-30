@@ -1,20 +1,20 @@
 angular.module('beautySalon.controllers')
 
-    .controller('MainCtrl',['$scope', 'getData', 'authService', 'api', '$location', function ($scope, getData, authService, api, $location) {
+    .controller('MainCtrl',['$scope', 'getData', 'authService', 'api', '$location','$http', function ($scope, getData, authService, api, $location, $http) {
 
-       /* $scope.authorization = function () {
-            //console.log($scope.userPhone);
-            authService.auth({ phone: $scope.userPhone, type: 0}, function (response) {
-                //console.log(response);
-            });
-
-        };*/
         $scope.isModalPhone = true;
         $scope.isModalErr = false;
         $scope.resetModal = function () {
             $scope.isModalPhone = true;
             $scope.isModalErr = false;
         }
+        /*$scope.authorization = function () {
+            console.log('gooo//');
+            authService.auth().auth({ phone: $scope.userPhone, type: 0}, function (response) {
+                console.log(response);
+            });
+
+        };*/
         $scope.authorization = function () {
             //console.log(authService.auth($scope.userPhone));
             var http = new XMLHttpRequest();
@@ -73,20 +73,22 @@ angular.module('beautySalon.controllers')
         }
         $scope.next();
 
-        $scope.branches = getData.branches(); //get salons from back-end
+        getData.branches().query(function (data) { //get salons from back-end
+            $scope.branches = data;
+        }); 
         /*getData.orders().query(function(data) {
             $scope.orders = data;
         console.log($scope.orders);
         });*/ //get orders from back-end
         /*$http({
                     method: 'GET',
-                    url: 'http://belisimo.dev-topsu.ru/v1/orders',
+                    url: 'http://belisimo.dev-topsu.ru/v1/process',
                     params: {
                        // "sessionId": sessionData.sessionId
                     }
                 }).success(function(result) {
                     console.log('success');
-                    //console.log(result);
+                    console.log(result);
                    $scope.orders = result;
                 }).error(function() {
                     console.log('err');
@@ -96,6 +98,7 @@ angular.module('beautySalon.controllers')
 
         $scope.chooseBranch = function (item) {
             if (item) {
+                $scope.branchId = item.id;
                 angular.forEach($scope.branches, function (value, key) {
                     if (value.id == item.id) {
                         value.checked = true;
@@ -120,14 +123,15 @@ angular.module('beautySalon.controllers')
 
         function init() {
             myMap = new ymaps.Map("map", {
-                center: [$scope.branches[1].lat, $scope.branches[1].long],
+                center: [$scope.branches[1].lat, $scope.branches[1].lng],
+                /*center: [55.769575, 37.713935],*/
                 zoom: 9,
                 controls: []
             });
 
         angular.forEach($scope.branches, function(val, key) {
             myMap.geoObjects.add(
-                    new ymaps.Placemark([val.lat, val.long], {
+                    new ymaps.Placemark([val.lat, val.lng], {
                     hintContent: val.name, 
                     balloonContentHeader: val.name,
                     balloonContentBody: val.address
@@ -146,12 +150,18 @@ angular.module('beautySalon.controllers')
         /*---------- end working with map-----------*/
 
         /*----------rendering services-----------*/
-
-        $scope.services = getData.services(); //get services from back-end
-
+        $scope.getServices = function () {
+            console.log($scope.branchId);
+            $scope.second = true;
+            getData.services().query({ item_id: $scope.branchId }, function (data) { //get services from back-end
+                $scope.services = data;
+                $scope.divide();
+            });
+        }
+        //$scope.services = getData.services();
         $scope.divider = function(array) {
             var n, arr1, arr2, arr3;
-            if(array.length) {
+            if(angular.isDefined(array.length)) {
                 n = Math.ceil(array.length/3)
                 arr1 = array.slice(0, n);
                 arr2 = array.slice(n, 2*n);
@@ -159,11 +169,12 @@ angular.module('beautySalon.controllers')
             }
             return [arr1, arr2, arr3];
         }
-
-        $scope.services1 = $scope.divider($scope.services)[0];
-        $scope.services2 = $scope.divider($scope.services)[1];
-        $scope.services3 = $scope.divider($scope.services)[2];
-
+        $scope.divide = function () {
+            $scope.services1 = $scope.divider($scope.services)[0];
+            $scope.services2 = $scope.divider($scope.services)[1];
+            $scope.services3 = $scope.divider($scope.services)[2];
+        };
+        //$scope.divide();
 
         $scope.open = false;
 
@@ -206,7 +217,8 @@ angular.module('beautySalon.controllers')
                 if(service && service.service_id == val.service_id) {
                     val.checked = true;
                     $scope.secondBtn = true;
-                    $scope.sum = val.price;
+                    $scope.sum = val.cost;
+                    $scope.service_id = val.service_id;
                     $scope.choise = val.name;
                     $scope.serviceId = val.name;
                     sessionStorage.setItem('serviceId', $scope.serviceId);
@@ -284,11 +296,18 @@ angular.module('beautySalon.controllers')
             $scope.thirdBtn1 && $scope.thirdBtn2 ? $scope.fourth = true : $scope.fourth = false;
         }
         
-        $scope.specialists = getData.specialists();
+        //$scope.specialists = getData.specialists();
+        $scope.getSpecialists = function () {
+            $scope.third = true;
+            getData.specialists().query({ item_id: $scope.branchId, service_id : $scope.service_id }, function (data) { //get spec from back-end
+                $scope.specialists = data;
+                //$scope.divide();
+            });
+        }
 
-        $scope.specialists1 = $scope.divider($scope.specialists)[0];
+        /*$scope.specialists1 = $scope.divider($scope.specialists)[0];
         $scope.specialists2 = $scope.divider($scope.specialists)[1];
-        $scope.specialists3 = $scope.divider($scope.specialists)[2];
+        $scope.specialists3 = $scope.divider($scope.specialists)[2];*/
 
         $scope.chooseSpecialist = function(spec, event) {
             angular.forEach($scope.specialists, function(val, key) {
