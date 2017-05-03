@@ -306,6 +306,12 @@
   #myModal .modal-dialog, #sendModal .modal-dialog {
     width: 400px;
     margin: 30px auto; } }
+#myModal input, #sendModal input {
+  /*&.ng-invalid {
+      background: #ff837c;
+  }*/ }
+  #myModal input.ng-invalid, #sendModal input.ng-invalid {
+    background: #ff837c; }
 
 #sendModal {
   padding-right: 0 !important; }

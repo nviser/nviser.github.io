@@ -49,7 +49,7 @@
 </p>
 </section>
 
-<section class="choose choose-service" > <!--ng-show="second && address"-->
+<section class="choose choose-service" ng-show="second && address"> <!---->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите услугу:</div>
@@ -96,7 +96,7 @@
     </p>
 </section>
 
-<section class="choose choose-specialist"> <!--ng-show="third && sum && choise"-->
+<section class="choose choose-specialist" ng-show="third && sum && choise"> <!---->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите специалиста:</div>
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8 choose-specialis_master-name">
-                                <span>{{specialist.name}}</span> <br> {{specialist.job}}
+                                <span>{{specialist.fullName}}</span> <br> {{specialist.profName}}
                             </div>
                         </div>
                         <input type="checkbox" ng-model="specialist.checked">
@@ -126,11 +126,11 @@
         Ваш выбор: <span>{{pickedSpec}}</span>
     </div>
     <p class="choose__button-next">
-        <button type="button" class="btn btn-default" ng-click="fifth = true" ng-disabled="!fourthBtn">Продолжить</button>
+        <button type="button" class="btn btn-default" ng-click="getAvalDate()" ng-disabled="!fourthBtn">Продолжить</button>
     </p>
 </section>
 
-<section class="choose choose-date" ng-show="fifth && pickedSpec"> <!--ng-show="fifth && pickedSpec"-->
+<section class="choose choose-date" ng-show="fifth && pickedSpec"> <!---->
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
@@ -167,8 +167,8 @@
                 </div>
                 
                     <div class="row choose-date__row">
-                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper" ng-repeat="time in avalTime">
-                       <!---->     <div class="time-block" ng-click="pickedTimeRange(time)">{{time.start | date: "HH.mm"}} - {{time.end | date: "HH.mm"}}</div>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 time-block-wrapper" ng-repeat="time in avalTime"><!--time.start | date: "HH.mm"-->
+                       <!---->     <div class="time-block" ng-click="pickedTimeRange(time.value)">{{time.name}}</div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 time-block-wrapper" ng-if="!avalTime.length">
                             <div class="text-danger">Нет записи</div>
@@ -186,7 +186,7 @@
     </p>
 </section>
 
-<section class="choose your-request" > <!--ng-show="fourth && pickedTime && pickDate" -->
+<section class="choose your-request" ng-show="fourth && pickedTime && pickDate"> <!-- -->
     <div class="background-img">
         <div class="container">
             <div class="row">
@@ -288,12 +288,12 @@
 <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog" ng-click="resetModal()">
+<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
-        <form > <!--ng-submit="authorization()"-->
+        <form name="authForm"> <!--ng-submit="authorization()"-->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title text-center" ng-hide="isModalErr">Вход</h4>
@@ -303,16 +303,16 @@
                 <div class="input-group" ng-show="isModalPhone">
                     <!--<label for="auth-phone">Для авторизации введите номер телефона:</label>-->
                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                    <input ng-model="userPhone" type="text" class="form-control" name="text" placeholder="Для авторизации введите номер телефона">
+                    <input name="phone" ng-model="userPhone" ng-maxlength="8"  ng-minlength="7" type="text" class="form-control" name="text" placeholder="Для авторизации введите номер телефона">
                 </div>
                 <div class="input-group" ng-hide="isModalPhone">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input ng-model="userPass" type="password" class="form-control" name="text" placeholder="Введите пароль">
+                    <input name="pass" ng-model="userPass" ng-minlength="4" type="password" class="form-control" name="text" placeholder="Введите пароль">
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" ng-click="authorization()" ng-show="isModalPhone">Отправить</button>
-                <button class="btn btn-danger" ng-click="sendPass()" ng-hide="isModalPhone">Авторизоваться</button>
+                <button class="btn btn-danger" ng-click="authorization()" ng-show="isModalPhone" ng-disabled="authForm.phone.$error.minlength || authForm.phone.$error.maxlength || authForm.phone.$pristine">Отправить</button>
+                <button class="btn btn-danger" ng-click="sendPass()" ng-hide="isModalPhone" ng-disabled="authForm.pass.$error.minlength || authForm.pass.$pristine">Авторизоваться</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">Отмена</button>
             </div>
         </form>

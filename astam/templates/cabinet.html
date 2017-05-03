@@ -67,13 +67,13 @@
                         </div>
                         Адрес:
                         <div class="service__text service__text-address">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing. Краснобогатырская 64
+                            {{item.addressItem}}
                         </div>
                     </div>
                     <div class="col-lg-2 col md-2 col-sm-2 col-xs-4 service__cost service__sum">
                         Стоимость:
                         <div class="service__sum">
-                            <span>1900</span> <div>рублей</div>
+                            <span>{{item.price}}</span> <div>рублей</div>
                         </div>
                     </div>
                     <div class="col-lg-2 col md-2 col-sm-2 col-xs-4 text-center service__cost service__spec">
@@ -81,18 +81,18 @@
                         <div class="service__for-img">
                             <img src="img/master1.jpg" alt="master_photo" class="img-circle">
                         </div>
-                        <div class="service__spec-name">{{item.fullName}}</div>
+                        <div class="service__spec-name">{{item.personName}}</div>
                     </div>
                     <div class="col-lg-2 col md-2 col-sm-2 col-xs-4 text-center service__cost service__date">
                         <nobr>Дата и время:</nobr>
                         <div class="service__for-date">
-                            <strong>{{item.serviceDetails.date | date: "d"}}</strong>
-                            <span class="service-month">{{item.serviceDetails.date | date: "MMMM"}}</span>
+                            <strong>{{item.date | date: "d"}}</strong>
+                            <span class="service-month">{{item.date | date: "MMMM"}}</span>
                         </div>
-                        <span>{{item.serviceDetails.start | date: "hh.mm"}} - {{item.serviceDetails.end | date: "hh.mm"}}</span>
+                        <span>{{item.time.name}}</span>
                     </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
-                            <button class="btn btn-danger service_cancel-btn" ng-if="cansellation">Отменить запись</button>
+                            <button class="btn btn-danger service_cancel-btn" ng-click="cancelOrders(item)" ng-if="cansellation">Отменить запись</button>
                         </div>
                 </div>
             </div>

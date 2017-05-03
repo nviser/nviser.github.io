@@ -17,51 +17,57 @@ angular.module('beautySalon.controllers')
         };*/
         $scope.authorization = function () {
             //console.log(authService.auth($scope.userPhone));
-            var http = new XMLHttpRequest();
-            var url = api + "v1/auth";
-            var params = "phone=" + $scope.userPhone;
-            http.open("POST", url, true);
+            if($scope.userPhone){
+                var http = new XMLHttpRequest();
+                var url = api + "v1/auth";
+                var params = "phone=" + $scope.userPhone;
+                http.open("POST", url, true);
 
-            //Send the proper header information along with the request
-            http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                //Send the proper header information along with the request
+                http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            http.onreadystatechange = function() {//Call a function when the state changes.
-                if(http.readyState == 4 && http.status == 200) {
-                    $scope.result = JSON.parse(http.responseText);
-                    //sessionStorage.setItem('token', $scope.result.access_token);
-                    //alert($scope.result.code);
-                    if($scope.result.code == 1){
-                        $scope.isModalPhone = false;
-                    } else {
-                        $scope.isModalErr = true;
+                http.onreadystatechange = function() {//Call a function when the state changes.
+                    if(http.readyState == 4 && http.status == 200) {
+                        $scope.result = JSON.parse(http.responseText);
+                        //sessionStorage.setItem('token', $scope.result.access_token);
+                        //alert($scope.result.code);
+                        if($scope.result.code == 1){
+                            $scope.isModalPhone = false;
+                        } else {
+                            $scope.isModalErr = true;
+                        }
+                        $scope.$apply();
                     }
-                    $scope.$apply();
                 }
+                http.send(params);
+            } else {
+
             }
-            http.send(params);
         }
 
         $scope.sendPass = function () {
             //console.log(authService.auth($scope.userPhone));
-            var http = new XMLHttpRequest();
-            var url = api + "v1/auth";
-            var params = "phone=" + $scope.userPhone + "&code=" + $scope.userPass;
-            http.open("POST", url, true);
+            if($scope.userPass){
+                var http = new XMLHttpRequest();
+                var url = api + "v1/auth";
+                var params = "phone=" + $scope.userPhone + "&code=" + $scope.userPass;
+                http.open("POST", url, true);
 
-            //Send the proper header information along with the request
-            http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                //Send the proper header information along with the request
+                http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            http.onreadystatechange = function() {//Call a function when the state changes.
-                if(http.readyState == 4 && http.status == 200) {
-                    $scope.result = JSON.parse(http.responseText);
-                    sessionStorage.setItem('token', $scope.result.access_token);
-                    //alert(http.responseText);
-                    $('#myModal').modal('hide');
-                    $location.path("/cabinet");
-                    $scope.$apply();
+                http.onreadystatechange = function() {//Call a function when the state changes.
+                    if(http.readyState == 4 && http.status == 200) {
+                        $scope.token = http.responseText;
+                        sessionStorage.setItem('token', $scope.token);
+                        //alert(http.responseText);
+                        $('#myModal').modal('hide');
+                        $location.path("/cabinet");
+                        $scope.$apply();
+                    }
                 }
+                http.send(params);
             }
-            http.send(params);
         }
 
         $scope.next = function () {
@@ -218,9 +224,9 @@ angular.module('beautySalon.controllers')
                     val.checked = true;
                     $scope.secondBtn = true;
                     $scope.sum = val.cost;
-                    $scope.service_id = val.service_id;
+                    //$scope.service_id = val.service_id;
                     $scope.choise = val.name;
-                    $scope.serviceId = val.name;
+                    $scope.serviceId = val.service_id;
                     sessionStorage.setItem('serviceId', $scope.serviceId);
                     sessionStorage.setItem('sum', $scope.sum);
                     sessionStorage.setItem('choise', $scope.choise);
@@ -249,7 +255,18 @@ angular.module('beautySalon.controllers')
                 });
             }            
         }
-        $scope.specAvalTime = getData.availableDates();
+        //$scope.specAvalTime = getData.availableDates();
+        $scope.getAvalDate = function () {
+            $scope.fifth = true;
+            getData.availableDates().query({ item_id: $scope.branchId, service_id : $scope.serviceId,  person_id : $scope.specId }, function (data) { //get services from back-end
+                $scope.specAvalTime = data;
+            //console.log($scope.specAvalTime);
+                //$scope.divide();
+                Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+                
+                //$scope.$apply();
+            });
+        }
         //console.log( $scope.specAvalTime);
         $scope.months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
         $scope.refresh = function () {
@@ -265,15 +282,22 @@ angular.module('beautySalon.controllers')
                     $scope.pickMonth = $scope.months[parseInt(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)];
                     $scope.curMonth = parseInt(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month);
                     sessionStorage.setItem('date', $scope.pickDate + ' ' + $scope.pickMonth);
-                    $scope.curDate = Date.parse(new Date(+$scope.pickYear, +$scope.curMonth, +event.target.innerText));
+                    //$scope.curDate = Date.parse(new Date(+$scope.pickYear, +$scope.curMonth, +event.target.innerText));
                     $scope.thirdBtn2 = true;
                     $scope.pickedTime = null;
                     $scope.thirdBtn1 = false;
+                    // console.log('refresh w: ', $scope.curDate);
+                    // console.log(Date.parse(new Date($scope.specAvalTime[0].date)));
                     for (var i = 0, len = $scope.specAvalTime.length; i < len; i++){
-                        if($scope.specAvalTime[i].date == $scope.curDate){
-                            $scope.avalTime = $scope.specAvalTime[i].avalTime;
+                        if( new Date($scope.specAvalTime[i].date).getFullYear() == +$scope.pickYear && 
+                            new Date($scope.specAvalTime[i].date).getMonth() == +$scope.curMonth && 
+                            new Date($scope.specAvalTime[i].date).getDate() == +event.target.innerText)
+                        {                 
+                            $scope.avalTime = $scope.specAvalTime[i].time;
+                            //console.log($scope.avalTime);
                             $scope.$apply();
                             $scope.refreshTimeBlock();
+                            $scope.currentDate = $scope.specAvalTime[i].date;
                             return;
                         } else {
                             $scope.avalTime = [];
@@ -285,13 +309,15 @@ angular.module('beautySalon.controllers')
             }
         }
 
-        $scope.pickedTimeRange = function (arg) { //pick selected time range (format ms e.g 1492083000000)
-            $scope.pickedStartTime = arg.start;
-            $scope.pickedEndTime = arg.end;
+        $scope.pickedTimeRange = function (arg) { //pick selected time range (format s e.g 14300)
+            // $scope.pickedStartTime = arg.start;
+            // $scope.pickedEndTime = arg.end;
+            $scope.pickedTimeSend = arg;
+
         }
-        window.onload = function () {
+        /*window.onload = function () {
             $scope.refresh();
-        }
+        }*/
         $scope.nextToSpec = function() {
             $scope.thirdBtn1 && $scope.thirdBtn2 ? $scope.fourth = true : $scope.fourth = false;
         }
@@ -299,7 +325,7 @@ angular.module('beautySalon.controllers')
         //$scope.specialists = getData.specialists();
         $scope.getSpecialists = function () {
             $scope.third = true;
-            getData.specialists().query({ item_id: $scope.branchId, service_id : $scope.service_id }, function (data) { //get spec from back-end
+            getData.specialists().query({ item_id: $scope.branchId, service_id : $scope.serviceId }, function (data) { //get spec from back-end
                 $scope.specialists = data;
                 //$scope.divide();
             });
@@ -310,11 +336,12 @@ angular.module('beautySalon.controllers')
         $scope.specialists3 = $scope.divider($scope.specialists)[2];*/
 
         $scope.chooseSpecialist = function(spec, event) {
+            //console.log(spec);
             angular.forEach($scope.specialists, function(val, key) {
-                if(spec && spec.person_id == val.person_id) {
+                if(spec && spec.id == val.id) {
                     val.checked = true;
-                    $scope.pickedSpec = val.name;
-                    $scope.specId = val.person_id;
+                    $scope.pickedSpec = val.fullName;
+                    $scope.specId = val.id;
                     sessionStorage.setItem('specId', $scope.specId);
                     sessionStorage.setItem('spec', $scope.pickedSpec);
                     $scope.fourthBtn = true;
@@ -370,8 +397,9 @@ angular.module('beautySalon.controllers')
             if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
                 document.querySelector('#' + id + ' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
             }
+            $scope.refresh();
         }
-        Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+        
         // переключатель минус месяц
         document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function () {
             Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month) - 1);
@@ -436,7 +464,7 @@ angular.module('beautySalon.controllers')
             $scope.specId = sessionStorage.getItem('specId');
             var http = new XMLHttpRequest();
             var url = api + "v1/orders";
-            var params = "first_name=" + $scope.firstName + "&last_name=" + "&phone=" + $scope.userPhone1 + $scope.userPhone2 + "&email=" + $scope.userEmail + "&service_id=" + $scope.serviceId + "&person_id=" + $scope.specId + "&date=" + $scope.curDate + "&start=" + $scope.pickedStartTime + "&end=" + $scope.pickedEndTime + "&reminder=" + $scope.reminder;
+            var params = "first_name=" + $scope.firstName + "&last_name=" + "&phone=" + $scope.userPhone1 + $scope.userPhone2 + "&email=" + $scope.userEmail + "&service_id=" + $scope.serviceId + "&person_id=" + $scope.specId + "&date=" + $scope.currentDate + "&start=" + $scope.pickedTimeSend + "&reminder=" + $scope.reminder;
             http.open("POST", url, true);
 
             //Send the proper header information along with the request
@@ -444,11 +472,11 @@ angular.module('beautySalon.controllers')
 
             http.onreadystatechange = function() {//Call a function when the state changes.
                 if(http.readyState == 4 && http.status == 200) {
-                    $scope.result = JSON.parse(http.responseText);
-                    sessionStorage.setItem('token', $scope.result.access_token);
-                    $('#myModal').modal('hide');
-                    $location.path("/cabinet");
-                    $scope.$apply();
+                    //$scope.result = JSON.parse(http.responseText);
+                    //sessionStorage.setItem('token', $scope.result.access_token);
+                    //$('#myModal').modal('hide');
+                   //$location.path("/cabinet");
+                    //$scope.$apply();
                 }
             }
             http.send(params);

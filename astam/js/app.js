@@ -18,9 +18,14 @@ angular.module('BeautySalon', [
             })
             .otherwise({redirectTo: '/'});
     }])
-.run(function() {
+.run(['$rootScope', '$location', '$route', function ($rootScope, $location, $route) {
     sessionStorage.clear();
-});
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        if (!sessionStorage.getItem("token")) {
+            $location.path("/");
+        }
+    })
+}]);
 
 angular.module('beautySalon.controllers', []);
 

@@ -411,6 +411,14 @@ $colorPurple: #9a2b22;
             margin: 30px auto;
         }
    }
+   input {
+       &.ng-invalid {
+           background: #ff837c;
+       }
+       /*&.ng-invalid {
+           background: #ff837c;
+       }*/
+   }
 }
 #sendModal {
     padding-right: 0 !important;

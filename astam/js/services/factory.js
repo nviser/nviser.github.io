@@ -1,8 +1,11 @@
 angular.module('BeautySalon')
-    .factory('getData', ['$resource', 'api', function ($resource, api) {
+    .factory('getData', ['$resource', 'api', function ($resource, api) { 
         return {
-            orders: function () {
-               return $resource(api + 'v1/orders', {}, {query:{method:'GET', isArray: true}});
+            userOrders: function () {
+               return $resource(api + 'v1/userorders', {}, {query:{method:'GET', params: { access_token : '@access_token' }, isArray: true}});
+            },
+            cancelOrders: function () {
+               return $resource(api + 'v1/userorders/cancel', {}, {query:{method:'GET', params: { access_token : '@access_token', id : '@id' }}});
             },
             branches: function () {
                 return $resource(api + 'v1/process', {}, {query:{method:'GET', isArray: true}});
@@ -13,6 +16,11 @@ angular.module('BeautySalon')
             specialists: function () {
                 return $resource(api + 'v1/process', {}, {query:{method:'GET', params: { item_id : '@item_id', service_id : '@service_id' }, isArray: true}});
             },
+            availableDates: function() {
+                return $resource(api + 'v1/process', {}, {query:{method:'GET', params: { item_id : '@item_id', service_id : '@service_id', person_id : '@person_id' }, isArray: true}});                
+            }
+        }
+    }]);
             /*specialists: function () {
                 return [
                         {
@@ -42,7 +50,7 @@ angular.module('BeautySalon')
                         }
                 ]
             },*/
-            salons: function () {
+            /*salons: function () {
                 return [
                         {
                             id: '1',
@@ -100,7 +108,7 @@ angular.module('BeautySalon')
                             address: 'Лермонтовский пр-т, д.2, к'
                         }
                     ]
-            },
+            },*/
             /*services: function () {
                 return [
                             {
@@ -279,7 +287,7 @@ angular.module('BeautySalon')
                             }
                         ]
             },*/
-            availableDates: function() {
+            /*availableDates: function() {
                 return [
                             {
                                 id: '1',
@@ -467,5 +475,5 @@ angular.module('BeautySalon')
                             }
                         ]
             }
-        } //return ends
-    }]);
+        } */ //return ends
+    
