@@ -1,7 +1,9 @@
 angular.module('beautySalon.controllers')
 
-    .controller('cabinetCtrl', ['getData', '$scope','pagination', function (getData, $scope, pagination) {
-
+    .controller('cabinetCtrl', ['getData', '$scope','pagination', '$location', function (getData, $scope, pagination, $location) {
+        $scope.changeLocation = function (path) {
+            $location.path(path);
+        }
         $scope.showHiddenMenu = false;
         $scope.showHideMenu = function () {
             $scope.showHiddenMenu = !$scope.showHiddenMenu;
@@ -26,8 +28,8 @@ angular.module('beautySalon.controllers')
                         return pagination.getCurrentPageNum();
                     }
         }
-        sessionStorage.setItem('access_token', 'fb0a3f6b156ae94cf9cd21d6a82a6c70acf335ed_1493030524');
-        $scope.access_token = sessionStorage.getItem('access_token');
+        sessionStorage.setItem('token', 'fb0a3f6b156ae94cf9cd21d6a82a6c70acf335ed_1493030524');
+        $scope.access_token = sessionStorage.getItem('token');
         $scope.getUserOrders = function () {
             getData.userOrders().query({ access_token: $scope.access_token }, function (data) {
                 $scope.lastSessionsItems = [];

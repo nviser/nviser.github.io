@@ -12,7 +12,8 @@
 
 .bg-img {
   background-image: url(../img/main-bg-img.png);
-  width: 100%; }
+  width: 100%;
+  min-height: 33em; }
 
 .for-buttons {
   margin-top: 15px; }
@@ -40,11 +41,12 @@
     position: relative;
     top: 5px;
     right: 0px;
-    transition: right 1s;
-    -webkit-transition: right 1s; }
+    color: #9a2b22;
+    /*transition: right 1s;
+    -webkit-transition: right 1s;*/ }
     .my-tracks_menu i:hover {
-      color: #9a2b22;
-      right: 5px; }
+      color: #770900;
+      /*right: 5px;*/ }
     .my-tracks_menu i:active {
       color: #770900; }
 
@@ -52,7 +54,8 @@
   height: 50px;
   border-bottom: 1px solid  #e6cbc9;
   padding-top: 13px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  cursor: pointer; }
   .nav_hidden .navigation_items.navigation_items_active a {
     text-decoration: underline;
     text-decoration-style: dashed;
@@ -186,6 +189,9 @@
     .repeater button {
       margin-top: 30px; } }
 @media (max-width: 992px) {
+  .navigation ul {
+    justify-content: flex-end; }
+
   .service__for-img {
     height: 80px;
     width: 80px;

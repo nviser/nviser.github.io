@@ -198,7 +198,7 @@
   color: #fff !important; }
 
 .choose-date__time .choose-date__text {
-  padding: 0;
+  padding: 0 0 0 20px;
   font-size: 18px; }
 .choose-date__time .choose-date__row-text {
   font-size: 18px;
@@ -288,17 +288,24 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   height: 58px;
-  font-size: 16px; }
+  font-size: 16px;
+  /*&.ng-invalid {
+      background: #ff837c;
+  }*/ }
   .your-request__form .form-control::-ms-expand {
     display: none; }
 .your-request__form .form-group {
-  position: relative; }
-  .your-request__form .form-group .fa {
-    position: absolute;
-    top: 12px;
-    right: 10px;
-    font-size: 35px;
-    color: #9a2b22; }
+  /*position: relative;
+  .fa {
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      font-size: 35px;
+      color: $colorPurple;
+  }*/ }
+  .your-request__form .form-group select {
+    background: url(../img/arrow-down.png) no-repeat 95% center, #fff;
+    cursor: pointer; }
 .your-request__form .your-request__button-ok {
   font-size: 24px; }
 
@@ -336,6 +343,9 @@
   }*/ }
 @media (max-width: 768px) {
   .your-request__form {
-    float: none; } }
+    float: none; }
+
+  .choose-specialist .choose-spesialist_wrap label {
+    width: 75vw; } }
 
 /*# sourceMappingURL=style.css.map */

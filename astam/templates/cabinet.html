@@ -7,7 +7,7 @@
                         <img class="wrapper-logo2__logo2 img-responsive" src="img/logo-center.png" alt=""/>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 text-center navigation">
+                <div class="col-md-6 col-lg-6 col-sm-7 col-xs-7 text-center navigation">
                     <ul class="list-inline hidden-sm hidden-xs">
                         <li><a href="#/">Онлайн запись</a></li>
                         <li ng-class="{'my-tracks_active' : myTracks}"><a href="#/">Мои записи</a></li>
@@ -17,13 +17,13 @@
                     <ul class="hidden-lg hidden-md">
                         <li ng-click="showHideMenu()" class="my-tracks_active my-tracks_menu">
                             <i class="fa fa-times" aria-hidden="true" ng-show="showHiddenMenu"></i>
-                            <i class="fa fa-bars" aria-hidden="true" ng-hide="showHiddenMenu"></i>&nbsp;Меню
-                            </li>
+                            <i class="fa fa-bars" aria-hidden="true" ng-hide="showHiddenMenu"></i>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
-                    <p class="navbar-text">
+                    <p class="navbar-text hidden-sm hidden-xs">
                         <img class="navbar-text__user-img" src="img/login-user.png"/>
                         <a href="#/" class="navbar-link navbar-text__user-link">Выход</a>
                     </p>
@@ -32,10 +32,11 @@
         </div>
     </nav>
    <div class="nav_hidden hidden-lg hidden-md" ng-show="showHiddenMenu">
-       <div class="navigation_items"><a href="#/">Онлайн запись</a></div>
-       <div class="navigation_items" ng-class="{'navigation_items_active' : myTracks}"><a href="#/">Мои записи</a></div>
-       <div class="navigation_items"><a href="#/">О сервисе</a></div>
-       <div class="navigation_items"><a href="#/">Лояльность</a></div>
+       <div class="navigation_items" ng-click="changeLocation('/')"><a href="">Онлайн запись</a></div>
+       <div class="navigation_items" ng-click="changeLocation('/')" ng-class="{'navigation_items_active' : myTracks}"><a href="">Мои записи</a></div>
+       <div class="navigation_items" ng-click="changeLocation('/')"><a href="">О сервисе</a></div>
+       <div class="navigation_items" ng-click="changeLocation('/')"><a href="">Лояльность</a></div>
+       <div class="navigation_items" ng-click="changeLocation('/')"><a href="">Выход</a></div>
    </div>
 </header>
 <section class="choose my-tracks">
@@ -52,7 +53,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 choose__align-left">Ваши заявки:</div>
-                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 choose__align-right my-tracks_account">Ваш балланс: <span>1200</span><span class="my-tracks_currency"> руб </span> &nbsp;&nbsp;&nbsp;&nbsp;Ваша скидка <span>10%</span></div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 choose__align-right my-tracks_account">Ваш балланс: <span>1200</span><span class="my-tracks_currency"> руб </span> &nbsp;&nbsp;&nbsp;&nbsp;Ваша скидка: <span>10%</span></div>
                 </div>
             </div>
         </div>

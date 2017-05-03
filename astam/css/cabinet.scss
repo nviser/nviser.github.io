@@ -15,6 +15,7 @@ $colorPurple: #9a2b22;
 .bg-img {
     background-image: url(../img/main-bg-img.png);
     width: 100%;
+    min-height: 33em;
 }
 .for-buttons {
     margin-top: 15px;
@@ -44,11 +45,12 @@ $colorPurple: #9a2b22;
         position: relative;
         top: 5px;
         right: 0px;
-        transition: right 1s;
-        -webkit-transition: right 1s;
+        color: $colorPurple;
+        /*transition: right 1s;
+        -webkit-transition: right 1s;*/
         &:hover {
-            color: $colorPurple;
-            right: 5px;
+            color: $colorDeepRed;
+            /*right: 5px;*/
         }
         &:active {
             color: $colorDeepRed;
@@ -61,6 +63,7 @@ $colorPurple: #9a2b22;
         border-bottom: 1px solid  #e6cbc9;
         padding-top: 13px;
         padding-left: 20px;
+        cursor: pointer;
         &.navigation_items_active {
            a {
                 text-decoration: underline;
@@ -256,6 +259,11 @@ $colorPurple: #9a2b22;
     }
 }
 @media (max-width: 992px) {
+    .navigation {
+        ul {
+            justify-content: flex-end;
+            }
+    }
     .service__for-img {
         height: 80px;
         width: 80px;

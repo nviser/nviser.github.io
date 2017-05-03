@@ -238,7 +238,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-4 col-sm-4">
-                    <input name="phone1" type="text" class="form-control" id="exampleInputPassword1" placeholder="+" value="+" ng-model="userPhone1" required>
+                    <input name="phone1" type="text" class="form-control" id="exampleInputPassword1" placeholder="+7" value="+7" ng-click="userPhone1 = '+7'" ng-model="userPhone1" required>
                 </div>
                 <div class="col-md-8 col-sm-8">
                     <input name="phone2" type="tel" class="form-control" placeholder="Телефон:" ng-model="userPhone2" required>
@@ -255,7 +255,7 @@
 <div class="col-md-8 col-sm-8">
     <div class="form-group">
         <select class="form-control" id="sel1" ng-model="reminder" ng-change="getReminder()" ng-options="opt for opt in reminderArr"></select>
-        <i class="fa fa-angle-down" aria-hidden="true"></i>
+        <!--<i class="fa fa-angle-down" aria-hidden="true"></i>-->
     </div>
 </div>
 </div>
@@ -301,13 +301,12 @@
             </div>
             <div class="modal-body">
                 <div class="input-group" ng-show="isModalPhone">
-                    <!--<label for="auth-phone">Для авторизации введите номер телефона:</label>-->
                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                    <input name="phone" ng-model="userPhone" ng-maxlength="8"  ng-minlength="7" type="text" class="form-control" name="text" placeholder="Для авторизации введите номер телефона">
+                    <input name="phone" ng-model="userPhone" ng-maxlength="13"  ng-minlength="12" type="text" class="form-control" ng-click="userPhone = '+7'" placeholder="Для авторизации введите номер телефона">
                 </div>
                 <div class="input-group" ng-hide="isModalPhone">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input name="pass" ng-model="userPass" ng-minlength="4" type="password" class="form-control" name="text" placeholder="Введите пароль">
+                    <input name="pass" ng-model="userPass" ng-minlength="4" type="password" class="form-control" placeholder="Введите пароль">
                 </div>
             </div>
             <div class="modal-footer">

@@ -243,7 +243,7 @@ $colorPurple: #9a2b22;
 }
 .choose-date__time {
     .choose-date__text {
-        padding: 0;
+        padding: 0 0 0 20px;
         font-size: 18px;
         @extend .textRLR;
     }
@@ -387,15 +387,23 @@ $colorPurple: #9a2b22;
         &::-ms-expand {
             display: none;
         }
+        
+       /*&.ng-invalid {
+           background: #ff837c;
+       }*/
     }
     .form-group {
-        position: relative;
+        /*position: relative;
         .fa {
             position: absolute;
             top: 12px;
             right: 10px;
             font-size: 35px;
             color: $colorPurple;
+        }*/
+        select {
+            background: url(../img/arrow-down.png) no-repeat 95% center, #fff;
+            cursor: pointer;
         }
     }
     .your-request__button-ok {
@@ -450,5 +458,8 @@ $colorPurple: #9a2b22;
 @media (screen and max-width: 768px) {
     .your-request__form {
         float: none;
+    }
+    .choose-specialist .choose-spesialist_wrap label {
+        width: 75vw;    
     }
 }
