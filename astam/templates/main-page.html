@@ -20,7 +20,7 @@
         </div>
     </nav>
 </header>
-<section class="choose">
+<section class="choose branches" ng-show="isBranchVis"> <!---->
     <div class="background-img">
         <div class="container">
             <h1 class="choose__title">Онлайн запись</h1>
@@ -49,7 +49,8 @@
 </p>
 </section>
 
-<section class="choose choose-service" ng-show="second && address"> <!---->
+<section class="choose choose-service background-img" ng-show="second && address && isServiceVis"> <!---->
+<div class="cont-wrap">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите услугу:</div>
@@ -88,15 +89,18 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 choose-service__output" ng-if="choise && sum">
         Выбрано: <span>{{choise}}</span> на сумму: <span>{{sum}}&nbsp;руб.</span>
     </div>
     <p class="choose__button-next">
+        <button type="button" class="btn btn-default" ng-click="isBranchVis = true; isServiceVis = false">Предыдущий шаг</button>
         <button type="button" class="btn btn-default" ng-click="getSpecialists()" ng-disabled="!secondBtn">Продолжить</button>
     </p>
 </section>
 
-<section class="choose choose-specialist" ng-show="third && sum && choise"> <!---->
+<section class="choose choose-specialist background-img" ng-show="third && sum && choise && isSpecVis"> <!---->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите специалиста:</div>
@@ -126,11 +130,12 @@
         Ваш выбор: <span>{{pickedSpec}}</span>
     </div>
     <p class="choose__button-next">
+        <button type="button" class="btn btn-default" ng-click="isServiceVis = true; isSpecVis = false">Предыдущий шаг</button>
         <button type="button" class="btn btn-default" ng-click="getAvalDate()" ng-disabled="!fourthBtn">Продолжить</button>
     </p>
 </section>
 
-<section class="choose choose-date" ng-show="fifth && pickedSpec"> <!---->
+<section class="choose choose-date background-img" ng-show="fifth && pickedSpec && isDateVis"> <!---->
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
@@ -182,7 +187,8 @@
         Дата и время: <span>{{pickDate}} {{pickMonth}}, {{pickedTime}}</span>
     </div>
     <p class="choose__button-next">
-        <button type="button" class="btn btn-default" ng-click="nextToSpec()" ng-disabled="!thirdBtn1">Продолжить</button>
+        <button type="button" class="btn btn-default" ng-click="isSpecVis = true; isDateVis = false">Предыдущий шаг</button>
+        <button type="button" class="btn btn-default" ng-click="nextToSend()" ng-disabled="!thirdBtn1">Продолжить</button>
     </p>
 </section>
 
@@ -219,13 +225,14 @@
                             <p class="your-request__blank-order_red-content">{{totalDate}}, {{totalTime}}</p>
                             <p class="your-request__blank-order_black-title">Специалист:</p>
                             <p class="your-request__blank-order_red-content">{{totalSpec}}</p>
-                            <p class="navbar-text your-request__add-new-order">
+                            <!--<p class="navbar-text your-request__add-new-order">
                                 <img class="navbar-text__user-img" src="img/icon-plus.png" />
                                 <a href="" class="navbar-link your-request__add-new-order_link">Добавить еще заявку</a>
-                            </p>
+                            </p>-->
                             <p class="choose__button-next">
-                                <button type="button" ng-click="correct()" class="btn btn-default" style="margin-top: 15px">Редактировать
+                                <button type="button" ng-click="startOver()" class="btn btn-default" style="margin-top: 15px">Редактировать
 </button>
+<button type="button" class="btn btn-default backward" ng-click="fourth = false; isDateVis = true">Предыдущий шаг</button>
 </p>
 </div>
 </div>
@@ -236,14 +243,14 @@
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя:" ng-model="firstName">
         </div>
         <div class="form-group">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-md-4 col-sm-4">
                     <input name="phone1" type="text" class="form-control" id="exampleInputPassword1" placeholder="+7" value="+7" ng-click="userPhone1 = '+7'" ng-model="userPhone1" required>
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <input name="phone2" type="tel" class="form-control" placeholder="Телефон:" ng-model="userPhone2" required>
-                </div>
-            </div>
+                <div class="col-md-8 col-sm-8">-->
+                    <input name="phone2" type="tel" class="form-control" placeholder="Телефон:" ng-model="userPhone2" placeholder="+7" ng-click="userPhone2 = '+7'" required>
+               <!-- </div>
+            </div>-->
         </div>
         <div class="form-group">
             <input type="email" class="form-control" placeholder="E-mail:" ng-model="userEmail">

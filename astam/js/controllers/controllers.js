@@ -1,6 +1,7 @@
 angular.module('beautySalon.controllers')
 
-    .controller('MainCtrl',['$scope', 'getData', 'authService', 'api', '$location', function ($scope, getData, authService, api, $location) {
+    .controller('MainCtrl', ['$scope', 'getData', 'authService', 'api', '$location', '$anchorScroll', function ($scope, getData, authService, api, $location, $anchorScroll) {
+
 
         $scope.isModalPhone = true;
         $scope.isModalErr = false;
@@ -10,7 +11,7 @@ angular.module('beautySalon.controllers')
         }
 
         $scope.authorization = function () {
-            if($scope.userPhone){
+            if ($scope.userPhone) {
                 var http = new XMLHttpRequest();
                 var url = api + "v1/auth";
                 var params = "phone=" + $scope.userPhone;
@@ -19,10 +20,10 @@ angular.module('beautySalon.controllers')
                 //Send the proper header information along with the request
                 http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                http.onreadystatechange = function() {//Call a function when the state changes.
-                    if(http.readyState == 4 && http.status == 200) {
+                http.onreadystatechange = function () {//Call a function when the state changes.
+                    if (http.readyState == 4 && http.status == 200) {
                         $scope.result = JSON.parse(http.responseText);
-                        if($scope.result.code == 1){
+                        if ($scope.result.code == 1) {
                             $scope.isModalPhone = false;
                         } else {
                             $scope.isModalErr = true;
@@ -37,7 +38,7 @@ angular.module('beautySalon.controllers')
         }
 
         $scope.sendPass = function () {
-            if($scope.userPass){
+            if ($scope.userPass) {
                 var http = new XMLHttpRequest();
                 var url = api + "v1/auth";
                 var params = "phone=" + $scope.userPhone + "&code=" + $scope.userPass;
@@ -46,8 +47,8 @@ angular.module('beautySalon.controllers')
                 //Send the proper header information along with the request
                 http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                http.onreadystatechange = function() {//Call a function when the state changes.
-                    if(http.readyState == 4 && http.status == 200) {
+                http.onreadystatechange = function () {//Call a function when the state changes.
+                    if (http.readyState == 4 && http.status == 200) {
                         $scope.token = JSON.parse(http.responseText);
                         sessionStorage.setItem('token', $scope.token.access_token);
                         $('#myModal').modal('hide');
@@ -67,14 +68,19 @@ angular.module('beautySalon.controllers')
             $scope.fifth = false;
         }
         $scope.next();
-
-        getData.branches().query(function (data) { //get salons from back-end
-            $scope.branches = data;
-            ymaps.ready(init);
-        }); 
+        $scope.getBranches = function () {
+            getData.branches().query(function (data) { //get salons from back-end
+                $scope.branches = data;
+                ymaps.ready(init);
+            });
+        }
+        $scope.getBranches();
 
         /*----------choose one of salons-----------*/
-
+        $scope.isBranchVis = true;
+        $scope.isServiceVis = true;
+        $scope.isSpecVis = true;
+        $scope.isDateVis = true;
         $scope.chooseBranch = function (item) {
             if (item) {
                 $scope.branchId = item.id;
@@ -95,32 +101,32 @@ angular.module('beautySalon.controllers')
                 })
             }
         };
-            
-            /*----------working with map-----------*/
+
+        /*----------working with map-----------*/
 
         function init() {
             myMap = new ymaps.Map("map", {
-                center: [$scope.branches[1].lat, $scope.branches[1].lng],
+                center: [$scope.branches[0].lat, $scope.branches[0].lng],
                 /*center: [55.769575, 37.713935],*/
                 zoom: 9,
                 controls: []
             });
 
-        angular.forEach($scope.branches, function(val, key) {
-            myMap.geoObjects.add(
+            angular.forEach($scope.branches, function (val, key) {
+                myMap.geoObjects.add(
                     new ymaps.Placemark([val.lat, val.lng], {
-                    hintContent: val.name, 
-                    balloonContentHeader: val.name,
-                    balloonContentBody: val.address
-                }, {
-                    iconLayout: 'default#image',
-                    iconImageHref: 'img/placemark.png',
-                    iconImageSize: [32, 37],
-                    iconImageOffset: [-5, -38]
-                })
-            );
+                        hintContent: val.name,
+                        balloonContentHeader: val.name,
+                        balloonContentBody: val.address
+                    }, {
+                            iconLayout: 'default#image',
+                            iconImageHref: 'img/placemark.png',
+                            iconImageSize: [32, 37],
+                            iconImageOffset: [-5, -38]
+                        })
+                );
 
-        });
+            });
 
         }
 
@@ -128,20 +134,32 @@ angular.module('beautySalon.controllers')
 
         /*----------rendering services-----------*/
         $scope.getServices = function () {
+            //if(!$scope.checkChange) $scope.checkChange = $scope.branchId;
+            $scope.isBranchVis = false;
+            $scope.isServiceVis = true;
             $scope.second = true;
-            getData.services().query({ item_id: $scope.branchId }, function (data) { //get services from back-end
-                $scope.services = data;
-                $scope.divide();
-            });
+            if($scope.checkChange !== $scope.branchId){
+                $scope.open = false;
+                $scope.sum = null;
+                $scope.choise = null;
+                $scope.secondBtn = false;
+                getData.services().query({ item_id: $scope.branchId }, function (data) { //get services from back-end
+                    $scope.services = data;
+                    $scope.divide();
+                    $scope.checkChange = $scope.branchId;
+                    /*$location.hash(id);
+                    $anchorScroll();*/
+                });
+            }
         }
 
-        $scope.divider = function(array) {
+        $scope.divider = function (array) {
             var n, arr1, arr2, arr3;
-            if(angular.isDefined(array.length)) {
-                n = Math.ceil(array.length/3)
+            if (angular.isDefined(array.length)) {
+                n = Math.ceil(array.length / 3)
                 arr1 = array.slice(0, n);
-                arr2 = array.slice(n, 2*n);
-                arr3 = array.slice(2*n, 3*n);
+                arr2 = array.slice(n, 2 * n);
+                arr3 = array.slice(2 * n, 3 * n);
             }
             return [arr1, arr2, arr3];
         }
@@ -154,33 +172,33 @@ angular.module('beautySalon.controllers')
 
         $scope.open = false;
 
-        $scope.chooseService = function(service, event) {                   // func highlights clicked service
+        $scope.chooseService = function (service, event) {                   // func highlights clicked service
             var clickedEl;
-            if(event.target.classList.contains('choose-service__item')){    //for existing item
+            if (event.target.classList.contains('choose-service__item')) {    //for existing item
                 clickedEl = event.target;                                   //if clicked at div
             } else {
                 clickedEl = event.target.parentNode;                        //if clicked at i
             }
-            if(document.querySelector('.choose-service__active')){          //deselection previously selected divs
+            if (document.querySelector('.choose-service__active')) {          //deselection previously selected divs
                 document.querySelector('.choose-service__active').classList.remove('choose-service__active');
             }
-            if(document.querySelector('.fa-angle-up')){                     //turn all angles-up to angles-down
+            if (document.querySelector('.fa-angle-up')) {                     //turn all angles-up to angles-down
                 var el = document.querySelector('.fa-angle-up');
                 el.classList.remove('fa-angle-up');
                 el.classList.add('fa-angle-down');
             }
             angular.forEach($scope.services, function (val, key) {          //for selection clicked div
-            if(service.id == val.id){
-                clickedEl.classList.add('choose-service__active');
-                clickedEl.children[0].classList.toggle('fa-angle-down');
-                clickedEl.children[0].classList.toggle('fa-angle-up');
-                $scope.open = true;
-                $scope.innerServices = val.services;
-                var result = $scope.divider(val.services);
-                $scope.service1 = result[0];
-                $scope.service2 = result[1];
-                $scope.service3 = result[2];
-            }
+                if (service.id == val.id) {
+                    clickedEl.classList.add('choose-service__active');
+                    clickedEl.children[0].classList.toggle('fa-angle-down');
+                    clickedEl.children[0].classList.toggle('fa-angle-up');
+                    $scope.open = true;
+                    $scope.innerServices = val.services;
+                    var result = $scope.divider(val.services);
+                    $scope.service1 = result[0];
+                    $scope.service2 = result[1];
+                    $scope.service3 = result[2];
+                }
 
             });
         } // end $scope.chooseService func
@@ -188,9 +206,9 @@ angular.module('beautySalon.controllers')
         $scope.sum = null;
         $scope.choise = null;
 
-        $scope.choose = function(service, event) {
-            angular.forEach($scope.innerServices, function(val, key) {
-                if(service && service.service_id == val.service_id) {
+        $scope.choose = function (service, event) {
+            angular.forEach($scope.innerServices, function (val, key) {
+                if (service && service.service_id == val.service_id) {
                     val.checked = true;
                     $scope.secondBtn = true;
                     $scope.sum = val.cost;
@@ -204,7 +222,7 @@ angular.module('beautySalon.controllers')
                     val.checked = false;
                 }
             })
-        
+
         }
 
         $scope.refreshTimeBlock = function () {
@@ -221,17 +239,23 @@ angular.module('beautySalon.controllers')
                     $scope.getData();
                     $scope.$apply();
                 });
-            }            
+            }
         }
 
         $scope.getAvalDate = function () {
+            $scope.isSpecVis = false;
             $scope.fifth = true;
-            getData.availableDates().query({ item_id: $scope.branchId, service_id : $scope.serviceId,  person_id : $scope.specId }, function (data) { //get services from back-end
-                $scope.specAvalTime = data;
-    
-                Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
-                
-            });
+            $scope.isDateVis = true;
+            if($scope.specId !== $scope.checkChangeSpecId){
+                $scope.checkChangeSpecId = $scope.specId;
+                getData.availableDates().query({ item_id: $scope.branchId, service_id: $scope.serviceId, person_id: $scope.specId }, function (data) { //get services from back-end
+                    $scope.specAvalTime = data;
+                    $scope.Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+                }, function (err) {
+                    console.log(err.statusText + ': ' + err.status);
+                }
+                );
+            }
         }
 
         $scope.months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
@@ -240,7 +264,7 @@ angular.module('beautySalon.controllers')
             for (var i = 0, len = pickedDate.length; i < len; i++) {
                 pickedDate[i].addEventListener('click', function (event) {
                     $scope.pickDate = event.target.innerText;
-                    if(document.querySelector('.choose-date__date-active')) {
+                    if (document.querySelector('.choose-date__date-active')) {
                         document.querySelector('.choose-date__date-active').classList.remove('choose-date__date-active');
                     }
                     event.target.classList.add('choose-date__date-active');
@@ -253,11 +277,10 @@ angular.module('beautySalon.controllers')
                     $scope.pickedTime = null;
                     $scope.thirdBtn1 = false;
 
-                    for (var i = 0, len = $scope.specAvalTime.length; i < len; i++){
-                        if( new Date($scope.specAvalTime[i].date).getFullYear() == +$scope.pickYear && 
-                            new Date($scope.specAvalTime[i].date).getMonth() == +$scope.curMonth && 
-                            new Date($scope.specAvalTime[i].date).getDate() == +event.target.innerText)
-                        {                 
+                    for (var i = 0, len = $scope.specAvalTime.length; i < len; i++) {
+                        if (new Date($scope.specAvalTime[i].date).getFullYear() == +$scope.pickYear &&
+                            new Date($scope.specAvalTime[i].date).getMonth() == +$scope.curMonth &&
+                            new Date($scope.specAvalTime[i].date).getDate() == +event.target.innerText) {
                             $scope.avalTime = $scope.specAvalTime[i].time;
                             $scope.$apply();
                             $scope.refreshTimeBlock();
@@ -276,22 +299,30 @@ angular.module('beautySalon.controllers')
         $scope.pickedTimeRange = function (arg) { //pick selected time range (format s e.g 14300)
             $scope.pickedTimeSend = arg;
         }
-        
-        $scope.nextToSpec = function() {
+
+        $scope.nextToSend = function () {
+            $scope.isDateVis = false;
             $scope.thirdBtn1 && $scope.thirdBtn2 ? $scope.fourth = true : $scope.fourth = false;
         }
-        
+
         $scope.getSpecialists = function () {
+            $scope.isServiceVis = false;
+            $scope.isSpecVis = true;
             $scope.third = true;
-            getData.specialists().query({ item_id: $scope.branchId, service_id : $scope.serviceId }, function (data) { //get spec from back-end
-                $scope.specialists = data;
-            });
+            if($scope.checkChangeService !== $scope.serviceId){
+                $scope.checkChangeService = $scope.serviceId;
+                $scope.pickedSpec = null;
+                $scope.fourthBtn = false;
+                getData.specialists().query({ item_id: $scope.branchId, service_id: $scope.serviceId }, function (data) { //get spec from back-end
+                    $scope.specialists = data;
+                });
+            }
         }
 
 
-        $scope.chooseSpecialist = function(spec, event) {
-            angular.forEach($scope.specialists, function(val, key) {
-                if(spec && spec.id == val.id) {
+        $scope.chooseSpecialist = function (spec, event) {
+            angular.forEach($scope.specialists, function (val, key) {
+                if (spec && spec.id == val.id) {
                     val.checked = true;
                     $scope.pickedSpec = val.fullName;
                     $scope.specId = val.id;
@@ -302,12 +333,12 @@ angular.module('beautySalon.controllers')
                     val.checked = false;
                 }
             })
-        
+
         }
 
         /*---------CAlendar-----------*/
 
-        function Calendar2(id, year, month) {
+        $scope.Calendar2 = function (id, year, month) {
             var Dlast = new Date(year, month + 1, 0).getDate(),
                 D = new Date(year, month, Dlast),
                 DNlast = new Date(D.getFullYear(), D.getMonth(), Dlast).getDay(),
@@ -322,28 +353,28 @@ angular.module('beautySalon.controllers')
             for (var i = 1; i <= Dlast; i++) {
                 var count = 0; //variable for determining either available date or not (0 unavailable)
                 angular.forEach($scope.specAvalTime, function (val, key) {
-                    if(new Date(val.date).getDate() == i && D.getFullYear() == new Date(val.date).getFullYear() && D.getMonth() == new Date(val.date).getMonth()){
+                    if (new Date(val.date).getDate() == i && D.getFullYear() == new Date(val.date).getFullYear() && D.getMonth() == new Date(val.date).getMonth()) {
                         count = 1;
-                    } 
+                    }
                 })
-                    if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth() && count) {
-                        calendar += '<td class="today pickDate available">' + i;
-                    } else if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth() && !count) {
-                        calendar += '<td class="today pickDate">' + i;
-                    } else if (count) {
-                        calendar += '<td class="pickDate available">' + i;
-                    } else {
-                        calendar += '<td class="pickDate">' + i;
-                    }
-                    if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
-                        calendar += '<tr>';
-                    }
+                if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth() && count) {
+                    calendar += '<td class="today pickDate available">' + i;
+                } else if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth() && !count) {
+                    calendar += '<td class="today pickDate">' + i;
+                } else if (count) {
+                    calendar += '<td class="pickDate available">' + i;
+                } else {
+                    calendar += '<td class="pickDate">' + i;
+                }
+                if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
+                    calendar += '<tr>';
+                }
             }
             for (var i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
             document.querySelector('#' + id + ' tbody').innerHTML = calendar;
             document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = month[D.getMonth()] + '<br>' + '<p>' + D.getFullYear() + '</p>';
             document.querySelector('#' + id + ' thead td:nth-child(1)').innerHTML = month[D.getMonth() === 0 ? 11 : D.getMonth() - 1] + '<br>' + '<i class="fa fa-angle-left" aria-hidden="true"></i>' + (D.getMonth() === 0 ? D.getFullYear() - 1 : D.getFullYear());
-            document.querySelector('#' + id + ' thead td:nth-child(3)').innerHTML = month[D.getMonth() === 11 ? 0 : D.getMonth() + 1] + '<br>' + '<i class="fa fa-angle-right" aria-hidden="true"></i>'  + (D.getMonth() === 11 ? D.getFullYear() + 1 : D.getFullYear());
+            document.querySelector('#' + id + ' thead td:nth-child(3)').innerHTML = month[D.getMonth() === 11 ? 0 : D.getMonth() + 1] + '<br>' + '<i class="fa fa-angle-right" aria-hidden="true"></i>' + (D.getMonth() === 11 ? D.getFullYear() + 1 : D.getFullYear());
             document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
             document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
             if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
@@ -351,15 +382,15 @@ angular.module('beautySalon.controllers')
             }
             $scope.refresh();
         }
-        
+
         // переключатель минус месяц
         document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function () {
-            Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month) - 1);
+            $scope.Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month) - 1);
             $scope.refresh();
         }
         // переключатель плюс месяц
         document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').onclick = function () {
-            Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month) + 1);
+            $scope.Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month) + 1);
             $scope.refresh();
         }
 
@@ -372,7 +403,15 @@ angular.module('beautySalon.controllers')
             $scope.totalSpec = sessionStorage.getItem('spec');
         }
 
+        $scope.startOver = function () {
+            $scope.isBranchVis = true;
+            $scope.fourth = false;
+        }
         $scope.correct = function () {
+            $scope.isBranchVis = true;
+            $scope.isServiceVis = true;
+            $scope.isSpecVis = true;
+            $scope.isDateVis = true;
             $scope.address = null;
             $scope.sum = null;
             $scope.choise = null;
@@ -394,13 +433,12 @@ angular.module('beautySalon.controllers')
             document.querySelector('.choose-spesialis_active').classList.remove('choose-spesialis_active');
             document.querySelector('.choose-date__date-active').classList.remove('choose-date__date-active');
             document.querySelector('.choose-date__active').classList.remove('choose-date__active');
-            if(document.querySelector('.fa-angle-up')){                     //turn all angles-up to angles-down
+            if (document.querySelector('.fa-angle-up')) {                     //turn all angles-up to angles-down
                 var el = document.querySelector('.fa-angle-up');
                 el.classList.remove('fa-angle-up');
                 el.classList.add('fa-angle-down');
             }
             $scope.firstName = '';
-            $scope.userPhone1 = '';
             $scope.userPhone2 = '';
             $scope.userEmail = '';
             $scope.branch.checked = false;
@@ -414,18 +452,18 @@ angular.module('beautySalon.controllers')
             $scope.specId = sessionStorage.getItem('specId');
             var http = new XMLHttpRequest();
             var url = api + "v1/orders";
-            var params = "first_name=" + $scope.firstName + "&last_name=" + "&phone=" + $scope.userPhone1 + $scope.userPhone2 + "&email=" + $scope.userEmail + "&service_id=" + $scope.serviceId + "&person_id=" + $scope.specId + "&date=" + $scope.currentDate + "&start=" + $scope.pickedTimeSend + "&reminder=" + $scope.reminder;
+            var params = "first_name=" + $scope.firstName + "&last_name=" + "&phone=" + $scope.userPhone2 + "&email=" + $scope.userEmail + "&service_id=" + $scope.serviceId + "&person_id=" + $scope.specId + "&date=" + $scope.currentDate + "&start=" + $scope.pickedTimeSend + "&reminder=" + $scope.reminder;
             http.open("POST", url, true);
 
             //Send the proper header information along with the request
             http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            http.onreadystatechange = function() {//Call a function when the state changes.
-                if(http.readyState == 4 && http.status == 200) {
+            http.onreadystatechange = function () {//Call a function when the state changes.
+                if (http.readyState == 4 && http.status == 200) {
                     //$scope.result = JSON.parse(http.responseText);
                     //sessionStorage.setItem('token', $scope.result.access_token);
                     //$('#myModal').modal('hide');
-                   //$location.path("/cabinet");
+                    //$location.path("/cabinet");
                     //$scope.$apply();
                 }
             }

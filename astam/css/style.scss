@@ -3,6 +3,18 @@ $colorPurple: #9a2b22;
 /*.choose-service .row ~ .row {
     margin-top: 20px;
 }*/
+html, body, .main-wrapper {
+    height: 100%;
+}
+/*.main-wrapper {
+    height: calc(100% - 50px);
+}*/
+section {
+    min-height: calc(100% - 50px);
+}
+.cont-wrap {
+    min-height: 100%;
+}
 .textRLR {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;   
@@ -15,6 +27,16 @@ $colorPurple: #9a2b22;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;   
 }
+/*.branches.ng-hide-add, .branches.ng-hide-remove {
+    transform: translateY(0);
+    transition: transform .5s ease;
+    -webkit-transition: transform .5s ease;
+}
+.branches {
+    &.ng-hide {
+        transform: translateY(-100%);
+    }
+}*/
 .choose__title {
     @extend .textRLR;
     font-size: 48px;
@@ -42,8 +64,20 @@ $colorPurple: #9a2b22;
         @extend .textRLR;
     }
 }
+/*.choose-service.ng-hide-add, .choose-service.ng-hide-remove {
+    transform: translateY(100%);
+    transition: transform 4s ease;
+    -webkit-transition: transform 4s ease;
+}
+.choose-service.ng-hide {
+    transform: translateY(-100%);
+}*/
+.choose-service .container {
+    min-height: calc(100% - 50px);
+}
 .choose-service_row {
     margin-top: 20px;
+    /*min-height: calc(100% - 70px);*/
 }
 .choose-service__item, .choose-service__item2 {
     vertical-align: middle;
@@ -159,7 +193,7 @@ $colorPurple: #9a2b22;
         height: 20px;
         top: 19px;
         font-size: 35px;
-        z-index: -2;
+        z-index: 0;
     }
 }
 .calendar2-left {
@@ -375,7 +409,11 @@ $colorPurple: #9a2b22;
         }
     }
 }
-
+.your-request {
+    .backward {
+        margin-top: 10px;
+    }
+}
 .your-request__form {
     .form-control {
         @extend .textRLR;

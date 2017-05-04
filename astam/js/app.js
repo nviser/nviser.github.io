@@ -2,7 +2,7 @@
 angular.module('BeautySalon', [
     'ngRoute',
     'ngResource',
-    /*'ngAnimate',*/
+    'ngAnimate',
     'beautySalon.controllers'
 ])
 

@@ -1,6 +1,18 @@
 /*.choose-service .row ~ .row {
     margin-top: 20px;
 }*/
+html, body, .main-wrapper {
+  height: 100%; }
+
+/*.main-wrapper {
+    height: calc(100% - 50px);
+}*/
+section {
+  min-height: calc(100% - 50px); }
+
+.cont-wrap {
+  min-height: 100%; }
+
 .textRLR, .choose__title, .choose__align-left, .choose__align-right, .choose__repeat-branch_label, .choose__repeat-branch_label .treaty-consent, .choose__repeat-branch_label p, .choose-service__output, .calendar2-left, .calendar2-right, #calendar2 tbody td, .choose-date__time .choose-date__text, .choose-date__time .choose-date__row .time-block, .choose-date .choose-date_days, .choose-specialist .choose-specialis_master-name, .your-request__form .form-control, .your-request__form .your-request__button-ok {
   font-family: 'Roboto', sans-serif;
   font-weight: 300; }
@@ -13,6 +25,16 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 700; }
 
+/*.branches.ng-hide-add, .branches.ng-hide-remove {
+    transform: translateY(0);
+    transition: transform .5s ease;
+    -webkit-transition: transform .5s ease;
+}
+.branches {
+    &.ng-hide {
+        transform: translateY(-100%);
+    }
+}*/
 .choose__title {
   font-size: 48px; }
 
@@ -23,8 +45,20 @@
   .choose__repeat-branch_label .treaty-consent {
     font-size: 14px; }
 
+/*.choose-service.ng-hide-add, .choose-service.ng-hide-remove {
+    transform: translateY(100%);
+    transition: transform 4s ease;
+    -webkit-transition: transform 4s ease;
+}
+.choose-service.ng-hide {
+    transform: translateY(-100%);
+}*/
+.choose-service .container {
+  min-height: calc(100% - 50px); }
+
 .choose-service_row {
-  margin-top: 20px; }
+  margin-top: 20px;
+  /*min-height: calc(100% - 70px);*/ }
 
 .choose-service__item, .choose-service__item2 {
   vertical-align: middle;
@@ -126,7 +160,7 @@
     height: 20px;
     top: 19px;
     font-size: 35px;
-    z-index: -2; }
+    z-index: 0; }
 
 .calendar2-left {
   padding-left: 15px;
@@ -282,6 +316,9 @@
   .choose-specialist .choose-specialis_master-name span {
     font-size: 24px;
     color: #9a2b22; }
+
+.your-request .backward {
+  margin-top: 10px; }
 
 .your-request__form .form-control {
   appearance: none;
