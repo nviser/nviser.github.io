@@ -1,8 +1,11 @@
+header {
+  position: relative; }
+
 .textRLR, .my-tracks .my-tracks_account, .service .service__text-header, .service .service__cost {
   font-family: 'Roboto', sans-serif;
   font-weight: 300; }
 
-.textRR, .service .service__text-header .service__text.service__text-service, .navigation ul li a {
+.textRR, .nav_hidden .navigation_items, .service .service__text-header .service__text.service__text-service, .navigation ul li a {
   font-family: 'Roboto', sans-serif;
   font-weight: 400; }
 
@@ -42,6 +45,14 @@
     top: 5px;
     right: 0px;
     color: #9a2b22;
+    /*transform: rotateX(0);
+    transition: transform 1s ease;*/
+    /* &.ng-hide-add, &.ng-hide-remove {
+         transform: rotateX(0deg);
+     }
+     &.ng-hide {
+         transform: rotateX(90deg);
+     }*/
     /*transition: right 1s;
     -webkit-transition: right 1s;*/ }
     .my-tracks_menu i:hover {
@@ -50,28 +61,52 @@
     .my-tracks_menu i:active {
       color: #770900; }
 
-.nav_hidden .navigation_items {
-  height: 50px;
-  border-bottom: 1px solid  #e6cbc9;
-  padding-top: 13px;
-  padding-left: 20px;
-  cursor: pointer; }
-  .nav_hidden .navigation_items.navigation_items_active a {
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-decoration-color: #333333; }
-    .nav_hidden .navigation_items.navigation_items_active a:hover {
+.nav_hidden {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 5px 5px 5px #ccc; }
+  .nav_hidden.ng-hide-add, .nav_hidden.ng-hide-remove {
+    top: -180px;
+    /*max-height: auto;*/
+    transform: translateY(100%);
+    transition: transform 1s ease;
+    -webkit-transition: transform 1s ease; }
+  .nav_hidden.ng-hide {
+    top: -180px;
+    transform: translateY(0);
+    overflow: hidden; }
+  .nav_hidden .navigation_items {
+    height: 50px;
+    border-bottom: 1px solid  #e6cbc9;
+    padding-top: 13px;
+    padding-left: 20px;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px #ccc;
+    font-size: 16px;
+    transition: font .5s ease;
+    -webkit-transition: font .5s ease; }
+    .nav_hidden .navigation_items:hover {
+      font-size: 18px;
+      box-shadow: 5px 5px 7px #ccc; }
+    .nav_hidden .navigation_items.navigation_items_active a {
       text-decoration: underline;
       text-decoration-style: dashed;
-      text-decoration-color: #333333;
+      text-decoration-color: #333333; }
+      .nav_hidden .navigation_items.navigation_items_active a:hover {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-decoration-color: #333333;
+        color: #333; }
+    .nav_hidden .navigation_items a {
       color: #333; }
-  .nav_hidden .navigation_items a {
-    color: #333; }
-    .nav_hidden .navigation_items a:hover {
-      text-decoration: none;
-      color: #770900; }
-  .nav_hidden .navigation_items:last-child {
-    border: none; }
+      .nav_hidden .navigation_items a:hover {
+        text-decoration: none;
+        color: #770900; }
+    .nav_hidden .navigation_items:last-child {
+      border: none; }
 
 .my-tracks .my-tracks_account {
   font-size: 14px;
@@ -168,10 +203,14 @@
     text-decoration-color: #333333; }
 
 @media (max-width: 768px) {
-  .wrapper-logo_cabinet {
+  .navigation ul {
+    justify-content: flex-end;
     height: 70px; }
 
-  .navigation ul {
+  .nav_hidden {
+    top: 70px; }
+
+  .wrapper-logo_cabinet {
     height: 70px; }
 
   .service .service__text-header {

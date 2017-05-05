@@ -224,6 +224,9 @@ section {
 #calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
   cursor: pointer;
 }
+#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+  color: #770900;
+}
 #calendar2 tbody td {
   color: #dcdcdc;
   border: 1px solid  #dcdcdc;
@@ -234,11 +237,8 @@ section {
   height: 47px;
   vertical-align: middle;
     &.available {
-        color: #333333;
+        color: #333333 !important;
     }
-}
-#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
-  color: #770900;
 }
 #calendar2 tbody td.today {
   background: #f7f7f7;
@@ -271,7 +271,7 @@ section {
         border: none;
     }
 }
-.choose-date__date-active {
+#calendar2 tbody td.choose-date__date-active {
     background: #770900 !important;
     color: #fff !important;
 }
@@ -496,6 +496,7 @@ section {
 @media (screen and max-width: 768px) {
     .your-request__form {
         float: none;
+        max-width: 95%;
     }
     .choose-specialist .choose-spesialist_wrap label {
         width: 75vw;    

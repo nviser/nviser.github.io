@@ -1,5 +1,8 @@
 $colorDeepRed: #770900;
 $colorPurple: #9a2b22;
+header {
+    position: relative;
+}
 .textRLR {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;   
@@ -46,6 +49,14 @@ $colorPurple: #9a2b22;
         top: 5px;
         right: 0px;
         color: $colorPurple;
+        /*transform: rotateX(0);
+        transition: transform 1s ease;*/
+       /* &.ng-hide-add, &.ng-hide-remove {
+            transform: rotateX(0deg);
+        }
+        &.ng-hide {
+            transform: rotateX(90deg);
+        }*/
         /*transition: right 1s;
         -webkit-transition: right 1s;*/
         &:hover {
@@ -58,12 +69,39 @@ $colorPurple: #9a2b22;
     }
 }
 .nav_hidden {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    z-index: 1;
+    background: #fff;
+    box-shadow: 5px 5px 5px #ccc;
+    &.ng-hide-add, &.ng-hide-remove {
+        top: -180px;
+        /*max-height: auto;*/
+        transform: translateY(100%);
+        transition: transform 1s ease;
+        -webkit-transition: transform 1s ease;   
+    }
+    &.ng-hide {
+        top: -180px;
+        transform: translateY(0);
+        overflow: hidden;     
+    }
     .navigation_items {
         height: 50px;
         border-bottom: 1px solid  #e6cbc9;
         padding-top: 13px;
         padding-left: 20px;
         cursor: pointer;
+        box-shadow: 1px 1px 2px #ccc;
+        @extend .textRR;
+        font-size: 16px;
+        transition: font .5s ease;
+        -webkit-transition: font .5s ease;
+        &:hover {
+            font-size: 18px;
+            box-shadow: 5px 5px 7px #ccc;
+        }
         &.navigation_items_active {
            a {
                 text-decoration: underline;
@@ -229,14 +267,19 @@ $colorPurple: #9a2b22;
     }
 }
 @media (max-width: 768px) {
-    .wrapper-logo_cabinet {
-        height: 70px;
-    }
     .navigation {
         ul {
+            justify-content: flex-end;
             height: 70px;
         }
     }
+    .nav_hidden {
+        top: 70px;
+    }
+    .wrapper-logo_cabinet {
+        height: 70px;
+    }
+    
     .service {
         .service__text-header {
             margin-bottom: 30px;
@@ -262,7 +305,7 @@ $colorPurple: #9a2b22;
     .navigation {
         ul {
             justify-content: flex-end;
-            }
+        }
     }
     .service__for-img {
         height: 80px;

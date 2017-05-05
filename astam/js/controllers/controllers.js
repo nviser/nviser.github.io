@@ -248,6 +248,10 @@ angular.module('beautySalon.controllers')
             $scope.isDateVis = true;
             if($scope.specId !== $scope.checkChangeSpecId){
                 $scope.checkChangeSpecId = $scope.specId;
+                $scope.avalTime = [];
+                $scope.pickedTime = null;
+                $scope.pickDate = null;
+                $scope.pickMonth = null; 
                 getData.availableDates().query({ item_id: $scope.branchId, service_id: $scope.serviceId, person_id: $scope.specId }, function (data) { //get services from back-end
                     $scope.specAvalTime = data;
                     $scope.Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
