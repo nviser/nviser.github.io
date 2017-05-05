@@ -21,7 +21,7 @@
     </nav>
 </header>
 <section class="choose branches" ng-show="isBranchVis"> <!---->
-    <div class="background-img">
+    <div class=""><!--background-img-->
         <div class="container">
             <h1 class="choose__title">Онлайн запись</h1>
                 <img class="choose__bottom-line" src="img/bottom_line.png" alt="" />
@@ -39,7 +39,7 @@
                         </div>
                     </div>
     </div>
-    </div>
+
 <div class="choose__map" id="map">
     <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A68d3e9fd09384f1061c9892c4cb078e8e0e77d528e8f3747750a2ae2a86dec15&amp;width=100%25&amp;height=300&amp;lang=ru_UA&amp;scroll=true"></script>
 </div>
@@ -47,9 +47,10 @@
 <p class="choose__button-next">
     <button type="button" class="btn btn-default" ng-click="getServices()" ng-disabled="!first">Продолжить</button>
 </p>
+    </div>
 </section>
 
-<section class="choose choose-service background-img" ng-show="second && address && isServiceVis"> <!---->
+<section class="choose choose-service " ng-show="second && address && isServiceVis"> <!--background-img-->
 <div class="cont-wrap">
     <div class="container">
         <div class="row">
@@ -100,7 +101,7 @@
     </p>
 </section>
 
-<section class="choose choose-specialist background-img" ng-show="third && sum && choise && isSpecVis"> <!---->
+<section class="choose choose-specialist " ng-show="third && sum && choise && isSpecVis"> <!--background-img-->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите специалиста:</div>
@@ -135,7 +136,7 @@
     </p>
 </section>
 
-<section class="choose choose-date background-img" ng-show="fifth && pickedSpec && isDateVis"> <!---->
+<section class="choose choose-date " ng-show="fifth && pickedSpec && isDateVis"> <!--background-img-->
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6 col-md-offset-1 col-lg-offset-1 choose__align-left">Выберите дату:</div>
@@ -193,7 +194,7 @@
 </section>
 
 <section class="choose your-request" ng-show="fourth && pickedTime && pickDate"> <!-- -->
-    <div class="background-img">
+    <div class=""> <!--background-img-->
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-lg-4 col-lg-offset-1 col-sm-6 col-xs-6 choose__align-left">Ваша заявка:</div>

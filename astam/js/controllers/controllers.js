@@ -321,6 +321,7 @@ angular.module('beautySalon.controllers')
                     $scope.specialists = data;
                 });
             }
+            /*console.log($scope.third, $scope.sum, $scope.choise, $scope.isSpecVis);*/
         }
 
 

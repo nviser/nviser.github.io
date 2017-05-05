@@ -14,9 +14,9 @@ header {
   font-weight: 700; }
 
 .bg-img {
-  background-image: url(../img/main-bg-img.png);
+  /*background-image: url(../img/main-bg-img.png);
   width: 100%;
-  min-height: 33em; }
+  min-height: 33em;*/ }
 
 .for-buttons {
   margin-top: 15px; }

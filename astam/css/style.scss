@@ -3,17 +3,18 @@ $colorPurple: #9a2b22;
 /*.choose-service .row ~ .row {
     margin-top: 20px;
 }*/
-html, body, .main-wrapper {
-    height: 100%;
-}
-/*.main-wrapper {
-    height: calc(100% - 50px);
-}*/
-section {
-    min-height: calc(100% - 50px);
-}
-.cont-wrap {
+html, body {
     min-height: 100%;
+}
+body {
+    background-image: url('../img/main-bg-img.png');
+    background-size: cover;
+}
+.main-wrapper {
+    height: calc(100% - 100px);
+}
+section {
+    height: calc(100% - 100px);
 }
 .textRLR {
     font-family: 'Roboto', sans-serif;
@@ -27,14 +28,16 @@ section {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;   
 }
-/*.branches.ng-hide-add, .branches.ng-hide-remove {
-    transform: translateY(0);
-    transition: transform .5s ease;
-    -webkit-transition: transform .5s ease;
-}
-.branches {
-    &.ng-hide {
-        transform: translateY(-100%);
+/*.branches.ng-hide-add, .branches.ng-hide-remove {*/
+    /*transform: translateY(0);*/
+/*    opacity: 1;
+    transition: opacity .2s ease;
+    -webkit-transition: opacity .2s ease;
+}*/
+/*.branches {
+    &.ng-hide {*/
+        /*transform: translateY(-100%);*/
+/*        opacity: 0;
     }
 }*/
 .choose__title {
@@ -64,20 +67,37 @@ section {
         @extend .textRLR;
     }
 }
-/*.choose-service.ng-hide-add, .choose-service.ng-hide-remove {
-    transform: translateY(100%);
-    transition: transform 4s ease;
-    -webkit-transition: transform 4s ease;
+.choose-service.ng-hide-add {
+    /*transform: translateY(-100%);*/
+    /*opacity: 0;*/
+    /*transition: opacity .5s ease;
+    -webkit-transition: opacity .5s ease;*/
+}
+.choose-service.ng-hide-remove {
+    /*transform: translateY(100%);*/
+    /*opacity: 0;*/
+    /*transition: opacity 2s ease;
+    -webkit-transition: opacity 2s ease;*/
 }
 .choose-service.ng-hide {
-    transform: translateY(-100%);
-}*/
-.choose-service .container {
-    min-height: calc(100% - 50px);
+   /* opacity: 0;*/
+    /*transform: translateY(-100%);*/
 }
+/*.choose-service  {*/
+    /*transform: translateY(0);*/
+   /* opacity: 1;
+    transition: opacity 0.2s ease;
+    -webkit-transition: opacity 0.2s ease;
+    .container {
+        min-height: calc(100% - 50px);
+    }
+}*/
 .choose-service_row {
     margin-top: 20px;
     /*min-height: calc(100% - 70px);*/
+}
+.choose-service__item {
+    background: #fff;
 }
 .choose-service__item, .choose-service__item2 {
     vertical-align: middle;
@@ -306,6 +326,23 @@ section {
     }
 }
 .choose-date {
+   /* &.ng-hide-add {
+        opacity: 1;
+        position: absolute;
+        top: 100px;
+        transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;
+    }
+    &.ng-hide-remove {
+        opacity: 1;*/
+       /* position: absolute;
+        top: 100px;*/
+       /* transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;
+    }
+    &.ng-hide {
+        opacity: 0;
+    }*/
     .choose-date_wrapper {
         &:nth-child(2) {
             .choose-date_days {
@@ -346,6 +383,28 @@ section {
 
 
 .choose-specialist {
+    /*opacity: 1;*/
+    /*transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;*/
+    /*&.ng-hide-add {
+        opacity: 1;
+        position: absolute;
+        top: 100px;
+        transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;
+    }
+    &.ng-hide-remove {
+        opacity: 1;
+        position: absolute;
+        top: 100px;
+        transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;
+    }
+    &.ng-hide {
+        opacity: 0;*/
+        /*transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;*/
+   /* }*/
     .choose-specialist_row {
         margin-top: 20px;
     }
@@ -410,6 +469,23 @@ section {
     }
 }
 .your-request {
+    /*&.ng-hide-add {
+        opacity: 1;
+        position: absolute;
+        top: 100px;
+        transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;
+    }
+    &.ng-hide-remove {
+        opacity: 1;*/
+       /* position: absolute;
+        top: 100px;*/
+        /*transition: opacity .2s ease;
+        -webkit-transition: opacity .2s ease;
+    }
+    &.ng-hide {
+        opacity: 0;
+    }*/
     .backward {
         margin-top: 10px;
     }
@@ -425,20 +501,8 @@ section {
         &::-ms-expand {
             display: none;
         }
-        
-       /*&.ng-invalid {
-           background: #ff837c;
-       }*/
     }
     .form-group {
-        /*position: relative;
-        .fa {
-            position: absolute;
-            top: 12px;
-            right: 10px;
-            font-size: 35px;
-            color: $colorPurple;
-        }*/
         select {
             background: url(../img/arrow-down.png) no-repeat 95% center, #fff;
             cursor: pointer;
@@ -461,9 +525,6 @@ section {
        &.ng-invalid {
            background: #ff837c;
        }
-       /*&.ng-invalid {
-           background: #ff837c;
-       }*/
    }
 }
 #sendModal {
@@ -489,9 +550,6 @@ section {
     .your-request__form {
         float: right;
     }
-    /*.choose__align-right {
-        margin-top: 10px;
-    }*/
 }
 @media (screen and max-width: 768px) {
     .your-request__form {

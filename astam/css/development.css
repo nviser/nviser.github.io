@@ -93,10 +93,11 @@ q:after {
 .background-img {
   background-image: url("../img/main-bg-img.png");
   width: 100%;
-  padding-bottom: 50px; }
+  height: 100%;
+  background-size: cover; }
 
 .choose {
-  border-bottom: 1px solid #d4d4d4; }
+  height: 100%; }
   .choose__title {
     text-align: center;
     padding: 40px 40px 5px 40px; }
@@ -135,7 +136,8 @@ q:after {
       float: left; }
   .choose__map {
     max-width: 100%;
-    height: 260px; }
+    height: 260px;
+    margin-top: 30px; }
   .choose__button-next {
     padding: 20px;
     text-align: center; }
