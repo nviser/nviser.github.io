@@ -1,6 +1,6 @@
 angular.module('beautySalon.controllers')
 
-    .controller('MainCtrl', ['$scope', 'getData', 'authService', 'api', '$location', '$anchorScroll', function ($scope, getData, authService, api, $location, $anchorScroll) {
+    .controller('MainCtrl', ['$scope', 'getData', 'authService', 'api', '$location', '$anchorScroll', '$timeout', function ($scope, getData, authService, api, $location, $anchorScroll, $timeout) {
 
 
         $scope.isModalPhone = true;
@@ -78,9 +78,9 @@ angular.module('beautySalon.controllers')
 
         /*----------choose one of salons-----------*/
         $scope.isBranchVis = true;
-        $scope.isServiceVis = true;
-        $scope.isSpecVis = true;
-        $scope.isDateVis = true;
+        $scope.isServiceVis = false;
+        $scope.isSpecVis = false;
+        $scope.isDateVis = false;
         $scope.chooseBranch = function (item) {
             if (item) {
                 $scope.branchId = item.id;
@@ -136,7 +136,7 @@ angular.module('beautySalon.controllers')
         $scope.getServices = function () {
             //if(!$scope.checkChange) $scope.checkChange = $scope.branchId;
             $scope.isBranchVis = false;
-            $scope.isServiceVis = true;
+            
             $scope.second = true;
             if($scope.checkChange !== $scope.branchId){
                 $scope.open = false;
@@ -151,8 +151,12 @@ angular.module('beautySalon.controllers')
                     $anchorScroll();*/
                 });
             }
+            $timeout(function() {$scope.isServiceVis = true;}, 600);
         }
-
+        $scope.backToBranches = function () {
+            $scope.isServiceVis = false;             
+            $timeout(function() {$scope.isBranchVis = true;}, 600);
+        }
         $scope.divider = function (array) {
             var n, arr1, arr2, arr3;
             if (angular.isDefined(array.length)) {
@@ -245,7 +249,6 @@ angular.module('beautySalon.controllers')
         $scope.getAvalDate = function () {
             $scope.isSpecVis = false;
             $scope.fifth = true;
-            $scope.isDateVis = true;
             if($scope.specId !== $scope.checkChangeSpecId){
                 $scope.checkChangeSpecId = $scope.specId;
                 $scope.avalTime = [];
@@ -260,6 +263,11 @@ angular.module('beautySalon.controllers')
                 }
                 );
             }
+            $timeout(function() {$scope.isDateVis = true;}, 600);
+        }
+        $scope.backToSpec = function () {
+            $scope.isDateVis = false;
+            $timeout(function() {$scope.isSpecVis = true;}, 600);
         }
 
         $scope.months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
@@ -306,12 +314,14 @@ angular.module('beautySalon.controllers')
 
         $scope.nextToSend = function () {
             $scope.isDateVis = false;
-            $scope.thirdBtn1 && $scope.thirdBtn2 ? $scope.fourth = true : $scope.fourth = false;
+            $scope.thirdBtn1 && $scope.thirdBtn2 ? $timeout(function() {$scope.fourth = true;}, 600) : $scope.fourth = false;
         }
-
+        $scope.backToDate = function () {
+            $scope.fourth = false; 
+            $timeout(function() {$scope.isDateVis = true;}, 600);
+        }
         $scope.getSpecialists = function () {
             $scope.isServiceVis = false;
-            $scope.isSpecVis = true;
             $scope.third = true;
             if($scope.checkChangeService !== $scope.serviceId){
                 $scope.checkChangeService = $scope.serviceId;
@@ -321,9 +331,13 @@ angular.module('beautySalon.controllers')
                     $scope.specialists = data;
                 });
             }
+            $timeout(function () {$scope.isSpecVis = true;}, 600);
             /*console.log($scope.third, $scope.sum, $scope.choise, $scope.isSpecVis);*/
         }
-
+        $scope.backToServices = function() {
+            $scope.isSpecVis = false;
+            $timeout(function () {$scope.isServiceVis = true;}, 600); 
+        }
 
         $scope.chooseSpecialist = function (spec, event) {
             angular.forEach($scope.specialists, function (val, key) {
@@ -409,14 +423,14 @@ angular.module('beautySalon.controllers')
         }
 
         $scope.startOver = function () {
-            $scope.isBranchVis = true;
+            $timeout(function() {$scope.isBranchVis = true;}, 600);
             $scope.fourth = false;
         }
         $scope.correct = function () {
-            $scope.isBranchVis = true;
-            $scope.isServiceVis = true;
+            $timeout(function() {$scope.isBranchVis = true;}, 600);
+            /*$scope.isServiceVis = true;
             $scope.isSpecVis = true;
-            $scope.isDateVis = true;
+            $scope.isDateVis = true;*/
             $scope.address = null;
             $scope.sum = null;
             $scope.choise = null;

@@ -29,8 +29,9 @@
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-left">Выберите филиал:</div>
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 choose__align-right">1 из 5</div>
                     </div>
+                    <input type="text" ng-model="search">
                     <div class="row" style="margin-top: 30px;">
-                        <div class="choose__repeat-branch col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="branch in branches" ng-click="chooseBranch(branch)">
+                        <div class="choose__repeat-branch col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="branch in branches | filter:search" ng-click="chooseBranch(branch)">
                             <input class="choose__repeat-branch_input" type="checkbox" id="{{branch.id}}" ng-model="branch.checked" value="{{branch.id}}">
                             <label class="choose__repeat-branch_label" for="{{branch.id}}"><span style="float: left"><span></span></span>
                                 <strong>{{branch.name }}</strong>
@@ -39,14 +40,14 @@
                         </div>
                     </div>
     </div>
+<p class="choose__button-next">
+    <button type="button" class="btn btn-default" ng-click="getServices()" ng-disabled="!first">Продолжить</button>
+</p>
 
 <div class="choose__map" id="map">
     <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A68d3e9fd09384f1061c9892c4cb078e8e0e77d528e8f3747750a2ae2a86dec15&amp;width=100%25&amp;height=300&amp;lang=ru_UA&amp;scroll=true"></script>
 </div>
 
-<p class="choose__button-next">
-    <button type="button" class="btn btn-default" ng-click="getServices()" ng-disabled="!first">Продолжить</button>
-</p>
     </div>
 </section>
 
@@ -96,7 +97,7 @@
         Выбрано: <span>{{choise}}</span> на сумму: <span>{{sum}}&nbsp;руб.</span>
     </div>
     <p class="choose__button-next">
-        <button type="button" class="btn btn-default" ng-click="isBranchVis = true; isServiceVis = false">Предыдущий шаг</button>
+        <button type="button" class="btn btn-default" ng-click="backToBranches()">Предыдущий шаг</button>
         <button type="button" class="btn btn-default" ng-click="getSpecialists()" ng-disabled="!secondBtn">Продолжить</button>
     </p>
 </section>
@@ -131,7 +132,7 @@
         Ваш выбор: <span>{{pickedSpec}}</span>
     </div>
     <p class="choose__button-next">
-        <button type="button" class="btn btn-default" ng-click="isServiceVis = true; isSpecVis = false">Предыдущий шаг</button>
+        <button type="button" class="btn btn-default" ng-click="backToServices()">Предыдущий шаг</button>
         <button type="button" class="btn btn-default" ng-click="getAvalDate()" ng-disabled="!fourthBtn">Продолжить</button>
     </p>
 </section>
@@ -188,7 +189,7 @@
         Дата и время: <span>{{pickDate}} {{pickMonth}}, {{pickedTime}}</span>
     </div>
     <p class="choose__button-next">
-        <button type="button" class="btn btn-default" ng-click="isSpecVis = true; isDateVis = false">Предыдущий шаг</button>
+        <button type="button" class="btn btn-default" ng-click="backToSpec()">Предыдущий шаг</button>
         <button type="button" class="btn btn-default" ng-click="nextToSend()" ng-disabled="!thirdBtn1">Продолжить</button>
     </p>
 </section>
@@ -233,7 +234,7 @@
                             <p class="choose__button-next">
                                 <button type="button" ng-click="startOver()" class="btn btn-default" style="margin-top: 15px">Редактировать
 </button>
-<button type="button" class="btn btn-default backward" ng-click="fourth = false; isDateVis = true">Предыдущий шаг</button>
+<button type="button" class="btn btn-default backward" ng-click="backToDate()">Предыдущий шаг</button>
 </p>
 </div>
 </div>
